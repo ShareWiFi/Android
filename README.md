@@ -4,7 +4,7 @@ The ShareWiFi application allows to share Wi-Fi networks with all your devices, 
 
 ## How it works (vision)
 
-1. Create user groups inside ShareWiFi, e.g. _family_ and _friends_. Users that do not already are registered at ShareWiFi, will be invited by mail. Creating user groups is an optional step but a requirement for the group share.
+1. Create user groups inside ShareWiFi, e.g. _family_ and _friends_. Users that are not already registered at ShareWiFi, will be invited by mail. Creating user groups is an optional step but a requirement for the group share.
 
 2. Connect with a new Wi-Fi network. ShareWiFi then will ask you whether you want to share this Wi-Fi. Alternatively you can also share registered networks.
 
@@ -17,11 +17,11 @@ The ShareWiFi application allows to share Wi-Fi networks with all your devices, 
 
 4. Turn off sharing if you like.
 
-  In the background, ShareWiFi will update the network information database. If a device that already knows your shared Wi-Fi information, don't worry. ShareWiFi validates the latest connection and will disconnect automatically if this network is expired.
+  In the background, ShareWiFi will update the network information database. Don't worry about devices that already know your shared Wi-Fi information. ShareWiFi validates the latest connection and will disconnect automatically if this network is expired.
 
 ## Development plan
 
-The development just has started. I plan to create four milestone releases:
+The development has just started. I plan to create four milestone releases:
 
 * Milestone 1: Respresentation of Wi-Fi information. Connect/delete a Wi-Fi network. Share Wi-Fi network using the Android's build-in share options. Persistent Wi-Fi information on the local device.
 
