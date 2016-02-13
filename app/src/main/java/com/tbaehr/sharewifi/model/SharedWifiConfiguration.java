@@ -27,8 +27,21 @@ import java.util.Set;
  */
 public class SharedWifiConfiguration {
 
-    private Set<String> groupIDs;
+    /**
+     * The owner of this Wi-Fi configuration.
+     */
+    private IUser owner;
 
     private WifiConfiguration wifiConfiguration;
+
+    private String macAddress;
+
+    private String serialize() {
+        StringBuilder sb = new StringBuilder();
+
+        // TODO: Implementation
+
+        return sb.toString();
+    }
 
 }

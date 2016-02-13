@@ -1,3 +1,21 @@
+/**
+ * The MIT License (MIT) Copyright (c) 2016 Timo Bähr
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or s
+ * ubstantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package com.tbaehr.sharewifi;
 
 import android.support.test.uiautomator.By;
@@ -40,10 +58,10 @@ public class IntegrationTest extends InstrumentationTestCase {
     }
 
     /**
-     * 		openApplication
-     * 	    find "Applications" by 'desc' and click
-     * 	    find the specific App by 'desc' and click
-     * 		@param pAppName : Name of the App to be opened
+     * openApplication
+     * find "Applications" by 'desc' and click
+     * find the specific App by 'desc' and click
+     * @param pAppName : Name of the App to be opened
      */
 
     public void openApplication(String pAppName) throws Exception {
@@ -58,11 +76,11 @@ public class IntegrationTest extends InstrumentationTestCase {
     }
 
     /**
-     * 		findByTypeAndClick
-     * 	    check if the object exists (Assertion: true)
-     * 	    get the object (Assertion: notNull) and click
-     * 		@param pObjVal : value assoziated with the specific criteria
-     * 	    @param pType : criteria to find the Object
+     * findByTypeAndClick
+     * check if the object exists (Assertion: true)
+     * get the object (Assertion: notNull) and click
+     * @param pObjVal : value assoziated with the specific criteria
+     * @param pType : criteria to find the Object
      */
     public void findByTypeAndClick(String pObjVal, String pType) throws Exception {
         // just implemented types : "text", "desc", "class" (this list may extended)
