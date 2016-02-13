@@ -59,13 +59,9 @@ public class WifiConnector {
      * @param networkSSID
      */
     public boolean removeAP(String networkSSID) {
-        int netId = 0;
         for (WifiConfiguration c : wifiManager.getConfiguredNetworks()) {
-            netId++;
-
             if (c.SSID.equals("\""+networkSSID+"\"")) {
-                wifiManager.removeNetwork(netId);
-                return true;
+                return wifiManager.removeNetwork(c.networkId);
             }
         }
 
