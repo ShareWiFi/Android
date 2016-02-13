@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class WifiConnector {
 
-    private final static String TAG = "ShareWifiCon";
+    private final static String TAG = "ShareWiFiCon";
 
     private WifiManager wifiManager;
 
@@ -35,15 +35,19 @@ public class WifiConnector {
     }
 
     /**
-     * @param ssid
-     * @param passkey Original code from Stackoverflow, user AnujAroshA:
-     *                http://stackoverflow.com/questions/6517314/android-wifi-connection-programmatically#
+     * Connect with Wi-Fi network using its ssid and passkey.
+     *
+     * This method will automatically detect the security mode.
+     * It supports OPEN, WEP, and PSK
+     *
+     * @param networkSSID
+     * @param networkPasskey
+     *
+     * Original code from Stackoverflow, user AnujAroshA:
+     * http://stackoverflow.com/questions/6517314/android-wifi-connection-programmatically#
      */
-    public int connectToAP(String ssid, String passkey) {
+    public int connectToAP(String networkSSID, String networkPasskey) {
         WifiConfiguration wifiConfiguration = new WifiConfiguration();
-
-        String networkSSID = ssid;
-        String networkPass = passkey;
 
         for (ScanResult result : scanResultList) {
 
@@ -51,23 +55,22 @@ public class WifiConnector {
 
                 String securityMode = getScanResultSecurity(result);
 
+                wifiConfiguration.SSID = "\"" + networkSSID + "\"";
+
                 if (securityMode.equalsIgnoreCase("OPEN")) {
 
-                    wifiConfiguration.SSID = "\"" + networkSSID + "\"";
                     wifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 
                 } else if (securityMode.equalsIgnoreCase("WEP")) {
 
-                    wifiConfiguration.SSID = "\"" + networkSSID + "\"";
-                    wifiConfiguration.wepKeys[0] = "\"" + networkPass + "\"";
+                    wifiConfiguration.wepKeys[0] = "\"" + networkPasskey + "\"";
                     wifiConfiguration.wepTxKeyIndex = 0;
                     wifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
                     wifiConfiguration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
 
-                } else {
+                } else if (securityMode.equalsIgnoreCase("PSK")) {
 
-                    wifiConfiguration.SSID = "\"" + networkSSID + "\"";
-                    wifiConfiguration.preSharedKey = "\"" + networkPass + "\"";
+                    wifiConfiguration.preSharedKey = "\"" + networkPasskey + "\"";
                     wifiConfiguration.hiddenSSID = true;
                     wifiConfiguration.status = WifiConfiguration.Status.ENABLED;
                     wifiConfiguration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
@@ -78,7 +81,11 @@ public class WifiConnector {
                     wifiConfiguration.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
                     wifiConfiguration.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
 
+                } else {
+                    Log.i(TAG, "# Unsupported security mode: "+securityMode);
+                    return -1;
                 }
+
 
                 int res = wifiManager.addNetwork(wifiConfiguration);
                 Log.d(TAG, "# addNetwork returned " + res);
@@ -107,7 +114,6 @@ public class WifiConnector {
     }
 
     public String getScanResultSecurity(ScanResult scanResult) {
-        //Log.i(TAG, "* getScanResultSecurity");
 
         final String cap = scanResult.capabilities;
         final String[] securityModes = { "WEP", "PSK", "EAP" };

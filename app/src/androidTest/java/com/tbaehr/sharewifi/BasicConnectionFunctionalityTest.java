@@ -25,7 +25,7 @@ public class BasicConnectionFunctionalityTest {
 
     @Test
     public void testConnectAndDisconnect() {
-        int netId = wifiConnector.connectToAP("home_sweet_home", "WLANpvtut2015.");
+        int netId = wifiConnector.connectToAP("home_sweet_home", "WLANPW");
         Log.i("ShareWiFiCon", "netId = "+netId);
         Assert.assertTrue(netId != -1);
 
