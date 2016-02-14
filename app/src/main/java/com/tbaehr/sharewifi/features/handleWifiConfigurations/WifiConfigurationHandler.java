@@ -16,7 +16,7 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.tbaehr.sharewifi.features.connectWithWifi;
+package com.tbaehr.sharewifi.features.handleWifiConfigurations;
 
 import android.content.Context;
 import android.net.wifi.ScanResult;
@@ -26,14 +26,13 @@ import android.net.wifi.WifiManager;
 import android.util.Log;
 
 import com.tbaehr.sharewifi.ShareWiFiApplication;
-import com.tbaehr.sharewifi.model.SharedWifiConfiguration;
 
 import java.util.List;
 
 /**
  * Created by tbaehr on 14.01.16.
  */
-public class WifiConnector {
+public class WifiConfigurationHandler {
 
     private final static String TAG = "ShareWiFiCon";
 
@@ -43,7 +42,7 @@ public class WifiConnector {
 
     private static String connectedSsidName;
 
-    public WifiConnector() {
+    public WifiConfigurationHandler() {
         Context context = ShareWiFiApplication.getAppContext();
         wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         scanResultList = wifiManager.getScanResults();

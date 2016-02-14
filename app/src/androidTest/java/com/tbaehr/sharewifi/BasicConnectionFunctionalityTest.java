@@ -21,7 +21,7 @@ package com.tbaehr.sharewifi;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.tbaehr.sharewifi.features.connectWithWifi.WifiConnector;
+import com.tbaehr.sharewifi.features.handleWifiConfigurations.WifiConfigurationHandler;
 
 import junit.framework.Assert;
 
@@ -37,45 +37,45 @@ public class BasicConnectionFunctionalityTest {
 
     private final static String passkey1 = "internet";
 
-    private WifiConnector wifiConnector;
+    private WifiConfigurationHandler wifiConfigurationHandler;
 
     @Before
     public void setUp() {
-        wifiConnector = new WifiConnector();
+        wifiConfigurationHandler = new WifiConfigurationHandler();
     }
 
     @Test
     public void testSuccessfulConnect() {
-        int netId = wifiConnector.connectToAP(ssid1, passkey1);
+        int netId = wifiConfigurationHandler.connectToAP(ssid1, passkey1);
         Assert.assertTrue(netId != -1);
     }
 
     @Test
     public void testUnsucessfulConnect() {
-        int netId = wifiConnector.connectToAP("saturn-kunden", "internet");
+        int netId = wifiConfigurationHandler.connectToAP("saturn-kunden", "internet");
         Assert.assertTrue(netId == -1);
     }
 
     @Test
     public void testSaveConfiguration() {
-        int netId = wifiConnector.saveWifiConfiguration("saturn-kunden", "internet", "PSK");
+        int netId = wifiConfigurationHandler.saveWifiConfiguration("saturn-kunden", "internet", "PSK");
         Assert.assertTrue(netId != -1);
     }
 
     @Test
     public void testForgetConfiguration1() {
-        int netId = wifiConnector.connectToAP(ssid1, passkey1);
+        int netId = wifiConfigurationHandler.connectToAP(ssid1, passkey1);
         Assert.assertTrue(netId != -1);
 
-        wifiConnector.removeAP(netId);
+        wifiConfigurationHandler.removeAP(netId);
     }
 
     @Test
     public void testForgetConfiguration2() {
-        int netId = wifiConnector.connectToAP(ssid1, passkey1);
+        int netId = wifiConfigurationHandler.connectToAP(ssid1, passkey1);
         Assert.assertTrue(netId != -1);
 
-        Assert.assertTrue(wifiConnector.removeAP(ssid1));
+        Assert.assertTrue(wifiConfigurationHandler.removeAP(ssid1));
     }
 
 }
