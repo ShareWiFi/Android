@@ -18,34 +18,12 @@
  */
 package com.tbaehr.sharewifi.model;
 
-import android.net.wifi.WifiConfiguration;
-
 /**
- * Created by tbaehr on 14.01.16.
+ * Created by tbaehr on 14.02.16.
  */
-public class SharedWifiConfiguration {
-
-    /**
-     * The owner of this Wi-Fi configuration.
-     */
-    private IUser owner;
-
-    private WifiConfiguration wifiConfiguration;
-
-    private String ssid;
-
-    private String passkey;
-
-    private SecurityMode securityMode;
-
-    private String macAddress;
-
-    public String serialize(String publicKey) {
-        StringBuilder sb = new StringBuilder();
-
-        // TODO: Implementation
-
-        return sb.toString();
-    }
-
+public enum SecurityMode {
+    OPEN,
+    WEP,
+    PSK,
+    EAP
 }

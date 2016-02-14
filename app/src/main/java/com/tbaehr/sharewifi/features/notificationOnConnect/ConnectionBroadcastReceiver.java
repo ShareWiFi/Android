@@ -60,11 +60,11 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(ShareWiFiApplication.getAppContext())
                                 .setSmallIcon(R.drawable.ic_menu_share)
-                                .setContentTitle("Share this network?")
-                                .setContentText("Want to share this Wi-Fi network?");
-                mBuilder.addAction(android.R.drawable.arrow_up_float, "Yes", pIntent);
-                mBuilder.addAction(android.R.drawable.arrow_down_float, "Not now", pIntent);
-                mBuilder.addAction(android.R.drawable.arrow_down_float, "Never", pIntent);
+                                .setContentTitle(context.getString(R.string.dialog_share_title).replace("§", ssid))
+                                .setContentText(context.getString(R.string.dialog_share_text));
+                mBuilder.addAction(R.drawable.ic_dialog_yes, context.getString(R.string.dialog_share_option_yes), pIntent);
+                mBuilder.addAction(R.drawable.ic_dialog_no, context.getString(R.string.dialog_share_option_no), pIntent);
+                mBuilder.addAction(R.drawable.ic_dialog_mute, context.getString(R.string.dialog_share_option_neverask), pIntent);
 
                 Notification notification = mBuilder.build();
 

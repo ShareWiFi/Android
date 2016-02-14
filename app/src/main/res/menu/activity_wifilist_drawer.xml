@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
-
-    <item android:title="Communicate">
+    <item android:title="@string/nav_header_networks">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_allnetworks"
+                    android:icon="@drawable/ic_menu_allnetworks"
+                    android:title="@string/nav_allnetworks" />
+                <item
+                    android:id="@+id/nav_sharedByMe"
+                    android:icon="@drawable/ic_menu_sharedbyme"
+                    android:title="@string/nav_sharedbyme" />
+                <item
+                    android:id="@+id/nav_sharedWithMe"
+                    android:icon="@drawable/ic_menu_sharedwithme"
+                    android:title="@string/nav_sharedwithme" />
+            </group>
         </menu>
     </item>
+
+    <item android:title="@string/nav_header_social">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_groups"
+                    android:icon="@drawable/ic_menu_group"
+                    android:title="@string/nav_groups" />
+                <item
+                    android:id="@+id/nav_contacts"
+                    android:icon="@drawable/ic_menu_contact"
+                    android:title="@string/nav_contacts" />
+                <item
+                    android:id="@+id/nav_invite"
+                    android:icon="@drawable/ic_menu_invite"
+                    android:title="@string/nav_invite" />
+            </group>
+        </menu>
+    </item>
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/ic_menu_settings"
+                    android:title="@string/nav_settings" />
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/ic_menu_help"
+                    android:title="@string/nav_help" />
+            </group>
 
 </menu>

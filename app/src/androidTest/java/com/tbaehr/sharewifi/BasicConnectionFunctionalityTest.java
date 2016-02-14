@@ -22,6 +22,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.SmallTest;
 
 import com.tbaehr.sharewifi.features.handleWifiConfigurations.WifiConfigurationHandler;
+import com.tbaehr.sharewifi.model.SecurityMode;
 
 import junit.framework.Assert;
 
@@ -58,7 +59,7 @@ public class BasicConnectionFunctionalityTest {
 
     @Test
     public void testSaveConfiguration() {
-        int netId = wifiConfigurationHandler.saveWifiConfiguration("saturn-kunden", "internet", "PSK");
+        int netId = wifiConfigurationHandler.saveWifiConfiguration("saturn-kunden", "internet", SecurityMode.PSK);
         Assert.assertTrue(netId != -1);
     }
 

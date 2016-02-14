@@ -26,6 +26,7 @@ import android.net.wifi.WifiManager;
 import android.util.Log;
 
 import com.tbaehr.sharewifi.ShareWiFiApplication;
+import com.tbaehr.sharewifi.model.SecurityMode;
 
 import java.util.List;
 
@@ -67,23 +68,23 @@ public class WifiConfigurationHandler {
         return false;
     }
 
-    private WifiConfiguration createAPConfiguration(String networkSSID, String networkPasskey, String securityMode) {
+    private WifiConfiguration createAPConfiguration(String networkSSID, String networkPasskey, SecurityMode securityMode) {
         WifiConfiguration wifiConfiguration = new WifiConfiguration();
 
         wifiConfiguration.SSID = "\"" + networkSSID + "\"";
 
-        if (securityMode.equalsIgnoreCase("OPEN")) {
+        if (securityMode.name().equalsIgnoreCase("OPEN")) {
 
             wifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 
-        } else if (securityMode.equalsIgnoreCase("WEP")) {
+        } else if (securityMode.name().equalsIgnoreCase("WEP")) {
 
             wifiConfiguration.wepKeys[0] = "\"" + networkPasskey + "\"";
             wifiConfiguration.wepTxKeyIndex = 0;
             wifiConfiguration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
             wifiConfiguration.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
 
-        } else if (securityMode.equalsIgnoreCase("PSK")) {
+        } else if (securityMode.name().equalsIgnoreCase("PSK")) {
 
             wifiConfiguration.preSharedKey = "\"" + networkPasskey + "\"";
             wifiConfiguration.hiddenSSID = true;
@@ -106,7 +107,7 @@ public class WifiConfigurationHandler {
 
     }
 
-    public int saveWifiConfiguration(String networkSSID, String networkPasskey, String securityMode) {
+    public int saveWifiConfiguration(String networkSSID, String networkPasskey, SecurityMode securityMode) {
         WifiConfiguration wifiConfiguration = createAPConfiguration(networkSSID, networkPasskey, securityMode);
 
         int res = wifiManager.addNetwork(wifiConfiguration);
@@ -132,7 +133,7 @@ public class WifiConfigurationHandler {
 
             if (result.SSID.equals(networkSSID)) {
 
-                String securityMode = getScanResultSecurity(result);
+                SecurityMode securityMode = getScanResultSecurity(result);
 
                 WifiConfiguration wifiConfiguration = createAPConfiguration(networkSSID, networkPasskey, securityMode);
 
@@ -164,18 +165,18 @@ public class WifiConfigurationHandler {
         return -1;
     }
 
-    public String getScanResultSecurity(ScanResult scanResult) {
+    public SecurityMode getScanResultSecurity(ScanResult scanResult) {
 
         final String cap = scanResult.capabilities;
-        final String[] securityModes = { "WEP", "PSK", "EAP" };
+        final SecurityMode[] securityModes = { SecurityMode.WEP, SecurityMode.PSK, SecurityMode.EAP };
 
         for (int i = securityModes.length - 1; i >= 0; i--) {
-            if (cap.contains(securityModes[i])) {
+            if (cap.contains(securityModes[i].name())) {
                 return securityModes[i];
             }
         }
 
-        return "OPEN";
+        return SecurityMode.OPEN;
     }
 
 }
