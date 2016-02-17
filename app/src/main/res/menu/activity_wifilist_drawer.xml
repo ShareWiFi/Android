@@ -6,7 +6,7 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_allnetworks"
-                    android:icon="@drawable/ic_menu_allnetworks"
+                    android:icon="@drawable/ic_menu_filledcloud"
                     android:title="@string/nav_allnetworks" />
                 <item
                     android:id="@+id/nav_sharedByMe"

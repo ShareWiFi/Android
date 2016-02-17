@@ -59,7 +59,7 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
 
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(ShareWiFiApplication.getAppContext())
-                                .setSmallIcon(R.drawable.ic_menu_share)
+                                .setSmallIcon(R.drawable.ic_menu_uploaded)
                                 .setContentTitle(context.getString(R.string.dialog_share_title).replace("§", ssid))
                                 .setContentText(context.getString(R.string.dialog_share_text));
                 mBuilder.addAction(R.drawable.ic_dialog_yes, context.getString(R.string.dialog_share_option_yes), pIntent);
