@@ -72,6 +72,10 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
 
                 notificationManager.notify(0, notification);
             }
+        } else {
+            NotificationManager notificationManager =
+                    (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(0);
         }
 
     }
