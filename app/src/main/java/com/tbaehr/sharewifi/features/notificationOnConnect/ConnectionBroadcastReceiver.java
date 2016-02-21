@@ -64,7 +64,6 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
                                 .setContentText(context.getString(R.string.dialog_share_text));
                 mBuilder.addAction(R.drawable.ic_dialog_yes, context.getString(R.string.dialog_share_option_yes), pIntent);
                 mBuilder.addAction(R.drawable.ic_dialog_no, context.getString(R.string.dialog_share_option_no), pIntent);
-                mBuilder.addAction(R.drawable.ic_dialog_mute, context.getString(R.string.dialog_share_option_neverask), pIntent);
 
                 Notification notification = mBuilder.build();
 

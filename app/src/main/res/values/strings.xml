@@ -24,4 +24,16 @@
     <string name="dialog_share_option_yes">Yes</string>
     <string name="dialog_share_option_no">No</string>
     <string name="dialog_share_option_neverask">Never ask again</string>
+
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+
+    <string name="unknown_network">Unknown network. Tap to connect.</string>
+    <string name="not_shared">Not shared.</string>
+    <string name="sharedByMe_mydevices">Shared by me with my devices.</string>
+    <string name="sharedByMe_groups">Shared by me within groups.</string>
+    <string name="sharedByMe_everyone">Shared by me with everyone.</string>
+    <string name="sharedWithMe_groups">Shared with me.</string>
+    <string name="sharedWithMe_everyone">Shared with me and everyone.</string>
+
 </resources>

@@ -1,8 +1,24 @@
+/**
+ * The MIT License (MIT) Copyright (c) 2016 Timo Bähr
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or s
+ * ubstantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 package com.tbaehr.sharewifi;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +26,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.tbaehr.sharewifi.model.viewmodel.WiFiNetwork;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -26,48 +42,28 @@ public class WiFiListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.content_wi_fi_list, container, false);
 
-        String[] values = new String[] { "Wi-Fi network ", "Wi-Fi network ",
-                "Wi-Fi network ", "Wi-Fi network ", "Wi-Fi network ",
-                "Wi-Fi network ", "Wi-Fi network ", "Wi-Fi network ",
-                "Wi-Fi network ", "Wi-Fi network ", "Wi-Fi network ",
-                "Wi-Fi network ", "Wi-Fi network ", "Wi-Fi network ",
-                "Wi-Fi network ", "Wi-Fi network ", "Wi-Fi network "};
+        // Some test data (must be removed later)
+        WiFiNetwork[] values = new WiFiNetwork[] {
+                new WiFiNetwork("guest-wifi", true, WiFiNetwork.SignalStrenght.PERFECT, true, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITHIN_GROUPS),
+                new WiFiNetwork("NeighborWiFi", true, WiFiNetwork.SignalStrenght.GOOD, false, WiFiNetwork.ShareStatus.UNKNOWN),
+                new WiFiNetwork("EatMyShorts", true, WiFiNetwork.SignalStrenght.LOW, false, WiFiNetwork.ShareStatus.UNKNOWN),
+                new WiFiNetwork("WiFiAtWork", true, WiFiNetwork.SignalStrenght.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES),
+                new WiFiNetwork("FamilyRocks", true, WiFiNetwork.SignalStrenght.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),
+                new WiFiNetwork("Free-WiFi", false, WiFiNetwork.SignalStrenght.NONE, false, WiFiNetwork.Quality.BAD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),
+                new WiFiNetwork("Saturn-Kunden", true, WiFiNetwork.SignalStrenght.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),
+                new WiFiNetwork("TopSecretWiFi", true, WiFiNetwork.SignalStrenght.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.NOT_SHARED),
+                new WiFiNetwork("Hotel Billich", true, WiFiNetwork.SignalStrenght.NONE, false, WiFiNetwork.Quality.BAD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),
+        };
 
-        final ArrayList<String> list = new ArrayList<>();
+        final ArrayList<WiFiNetwork> list = new ArrayList<>();
         for (int i = 0; i < values.length; i++) {
-            list.add(values[i]+(i+1));
+            list.add(values[i]);
         }
-        final ArrayAdapter<String> adapter = new StableArrayAdapter(getActivity(),
-                android.R.layout.simple_list_item_1, list);
+        final ArrayAdapter<WiFiNetwork> adapter = new WiFiListItemAdapter(getActivity(), list);
 
         wiFiNetList = (ListView) view.findViewById(R.id.listView);
         wiFiNetList.setAdapter(adapter);
 
         return view;
-    }
-
-    private class StableArrayAdapter extends ArrayAdapter<String> {
-
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
-
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
-            }
-        }
-
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
     }
 }
