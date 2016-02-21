@@ -131,6 +131,6 @@ public class WiFiNetwork {
     }
 
     public boolean isQualityBad() {
-        return quality == null || quality == Quality.BAD;
+        return quality != null || quality == Quality.BAD;
     }
 }
