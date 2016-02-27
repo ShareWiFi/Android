@@ -92,11 +92,11 @@ public class WiFiNetwork {
         } else if (shareStatus == ShareStatus.NOT_SHARED) {
             return R.drawable.ic_menu_share_off;
         } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES) {
-            return R.drawable.ic_menu_uploaded_green;
+            return R.drawable.ic_menu_shared_with_devices;
         } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITHIN_GROUPS) {
-            return R.drawable.ic_menu_uploaded_blue;
+            return R.drawable.ic_menu_shared_with_groups;
         } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITH_EVERYONE) {
-            return R.drawable.ic_menu_uploaded_orange;
+            return R.drawable.ic_menu_shared_with_all;
         } else if (shareStatus == ShareStatus.SHARED_WITH_ME_WITHIN_GROUPS) {
             return R.drawable.ic_menu_downloaded_blue;
         } else if (shareStatus == ShareStatus.SHARED_WITH_ME_WITH_EVERYONE) {

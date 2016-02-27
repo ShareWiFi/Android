@@ -18,11 +18,13 @@
  */
 package com.tbaehr.sharewifi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -63,6 +65,14 @@ public class WiFiListFragment extends Fragment {
 
         wiFiNetList = (ListView) view.findViewById(R.id.listView);
         wiFiNetList.setAdapter(adapter);
+
+        wiFiNetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent openShareViewIntent = new Intent(getActivity(), ShareActivity.class);
+                startActivity(openShareViewIntent);
+            }
+        });
 
         return view;
     }

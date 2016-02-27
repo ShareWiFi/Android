@@ -30,8 +30,8 @@ import android.net.wifi.WifiManager;
 import android.support.v4.app.NotificationCompat;
 
 import com.tbaehr.sharewifi.R;
+import com.tbaehr.sharewifi.ShareActivity;
 import com.tbaehr.sharewifi.ShareWiFiApplication;
-import com.tbaehr.sharewifi.WiFiListActivity;
 
 /**
  * Created by tbaehr on 14.02.16.
@@ -54,16 +54,16 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
                 // If it is unknown then show notification (except the user disabled notifications)
                 // TODO: Complete implemenation
 
-                Intent openShareViewIntent = new Intent(context, WiFiListActivity.class);
+                Intent openShareViewIntent = new Intent(context, ShareActivity.class);
                 PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), openShareViewIntent, 0);
 
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(ShareWiFiApplication.getAppContext())
-                                .setSmallIcon(R.drawable.ic_menu_uploaded)
+                                .setSmallIcon(R.drawable.ic_menu_shared)
                                 .setContentTitle(context.getString(R.string.dialog_share_title).replace("§", ssid))
                                 .setContentText(context.getString(R.string.dialog_share_text));
                 mBuilder.addAction(R.drawable.ic_dialog_yes, context.getString(R.string.dialog_share_option_yes), pIntent);
-                mBuilder.addAction(R.drawable.ic_dialog_no, context.getString(R.string.dialog_share_option_no), pIntent);
+                mBuilder.addAction(R.drawable.ic_dialog_no, context.getString(R.string.dialog_share_option_no), null);
 
                 Notification notification = mBuilder.build();
 

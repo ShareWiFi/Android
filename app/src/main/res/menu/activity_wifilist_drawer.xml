@@ -10,7 +10,7 @@
                     android:title="@string/nav_allnetworks" />
                 <item
                     android:id="@+id/nav_sharedByMe"
-                    android:icon="@drawable/ic_menu_uploaded"
+                    android:icon="@drawable/ic_menu_shared"
                     android:title="@string/nav_sharedbyme" />
                 <item
                     android:id="@+id/nav_sharedWithMe"

@@ -25,6 +25,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ShareActivity">
+        </activity>
+
         <receiver android:name="com.tbaehr.sharewifi.features.notificationOnConnect.ConnectionBroadcastReceiver" >
             <intent-filter android:priority="100">
                 <action android:name="android.net.wifi.STATE_CHANGE" />
