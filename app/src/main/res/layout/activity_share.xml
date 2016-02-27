@@ -1,45 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/share_dialog_main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tbaehr.sharewifi.WiFiListActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/nav_header_height"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_height="256dp"
+        android:theme="@style/AppTheme.NoActionBar"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
+            android:id="@+id/share_dialog_collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways"></android.support.v7.widget.Toolbar>
+            app:expandedTitleMarginEnd="64dp">
 
             <ImageView
-                android:src="@drawable/side_nav_bar"
+                android:src="@drawable/sharefoodtoekans"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                android:minHeight="100dp"/>
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/share_dialog_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:layout_collapseMode="pin" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -47,97 +44,210 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
-        <RelativeLayout
-            android:id="@+id/share_dialog_container"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2000dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:background="#ffffff">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!--<android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="&quot;Home_sweet_home&quot; teilen?"
-                android:layout_margin="16dp"
-                android:id="@+id/textView"
-                android:textColor="#ffffff"/>
+                android:layout_marginLeft="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+                android:layout_marginTop="@dimen/card_margin_top">
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:id="@+id/share1"
-                android:src="@drawable/ic_menu_shared_with_all" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginRight="16dp"
-                android:id="@+id/share2"
-                android:src="@drawable/ic_menu_shared_with_groups"
-                android:layout_below="@+id/share1"
-                android:layout_alignStart="@+id/share1" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="WLAN teilen?"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginRight="16dp"
-                android:id="@+id/shar3"
-                android:src="@drawable/ic_menu_shared_with_devices"
-                android:layout_below="@+id/share2"
-                android:layout_alignStart="@+id/share2" />
+                </LinearLayout>
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginRight="16dp"
-                android:id="@+id/share4"
-                android:src="@drawable/ic_menu_share_off"
-                android:layout_below="@+id/shar3"
-                android:layout_alignStart="@+id/shar3" />
+            </android.support.v7.widget.CardView>-->
 
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Mit der ganzen Welt teilen"
-                android:id="@+id/textView2"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/share1" />
+                android:layout_marginTop="@dimen/card_margin_top">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    style="@style/Widget.CardContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/share_global"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginLeft="@dimen/card_margin"
+                        android:layout_marginRight="@dimen/card_margin"
+                        android:src="@drawable/ic_menu_shared_with_all" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="JA, WELTWEIT"
+                            android:textColor="@color/colorBlack"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Dadurch kann sich jeder auf dieser Welt mit diesem WLAN-Netz verbinden." />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Mit meinen Gruppen teilen"
-                android:id="@+id/textView3"
-                android:layout_below="@+id/share1"
-                android:layout_toEndOf="@+id/share2" />
+                android:layout_marginTop="@dimen/card_margin_top">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    style="@style/Widget.CardContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/share_with_groups"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginLeft="@dimen/card_margin"
+                        android:layout_marginRight="@dimen/card_margin"
+                        android:src="@drawable/ic_menu_shared_with_groups" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:text="JA, INNERHALB MEINER GRUPPEN"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Dadurch können sich alle Mitglieder der ausgewählten Gruppen mit diesem WLAN-Netz verbinden." />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Mit meinen Geräten teilen"
-                android:id="@+id/textView4"
-                android:layout_alignTop="@+id/shar3"
-                android:layout_toEndOf="@+id/shar3" />
+                android:layout_marginTop="@dimen/card_margin_top" >
 
-            <TextView
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    style="@style/Widget.CardContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/share_with_devices"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginLeft="@dimen/card_margin"
+                        android:layout_marginRight="@dimen/card_margin"
+                        android:src="@drawable/ic_menu_shared_with_devices" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="JA, MIT MEINEN GERÄTEN"
+                            android:textColor="@color/colorBlack"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Dadurch können sich alle Geräte verbinden, auf denen Du eingeloggt bist." />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Nicht teilen"
-                android:id="@+id/textView5"
-                android:layout_below="@+id/shar3"
-                android:layout_toEndOf="@+id/shar3" />
+                android:layout_marginTop="@dimen/card_margin_top" >
 
-        </RelativeLayout>
+                <LinearLayout
+                    style="@style/Widget.CardContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/share_not"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginLeft="@dimen/card_margin"
+                        android:layout_marginRight="@dimen/card_margin"
+                        android:src="@drawable/ic_menu_share_off" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="NEIN, NICHT TEILEN"
+                            android:textColor="@color/colorBlack"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Die Verbindungsdaten dieses WLAN-Netzes werden nicht von ShareWiFi gespeichert oder geteilt." />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

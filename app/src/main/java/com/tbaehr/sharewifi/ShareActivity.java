@@ -18,15 +18,23 @@
  */
 package com.tbaehr.sharewifi;
 
+import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 public class ShareActivity extends AppCompatActivity {
+
+    public static final String EXTRA_NAME = "network_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +44,6 @@ public class ShareActivity extends AppCompatActivity {
         Window window = getWindow();
         window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -44,12 +51,32 @@ public class ShareActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_share);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.share_dialog_toolbar);
-        //toolbar.setTitle("Share this network?");
-        //setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        final String networkName = intent.getStringExtra(EXTRA_NAME);
 
-        /*CollapsingToolbarLayout collapsingToolbar =
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.share_dialog_toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+
+        CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.share_dialog_collapsing_toolbar);
-        collapsingToolbar.setTitle("Title");*/
+        collapsingToolbar.setTitle("WLAN teilen?");
+
+        // make back arrow white
+        final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        backArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(backArrow);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+        }
+        return true;
     }
 }
