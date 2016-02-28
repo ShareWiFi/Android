@@ -40,6 +40,13 @@ public class SharedWifiConfiguration {
 
     private String macAddress;
 
+    public static SharedWifiConfiguration createFromString(String serialization, String privateKey) {
+
+        // TODO: Implementation
+
+        return null;
+    }
+
     public String serialize(String publicKey) {
         StringBuilder sb = new StringBuilder();
 

@@ -18,6 +18,13 @@
     <string name="nav_groups">Gruppen</string>
     <string name="nav_help">Hilfe und Tipps</string>
 
+    <string name="nav_add_account">Konto hinzufügen</string>
+    <string name="nav_logout">Ausloggen</string>
+    <string name="nav_account_settings">Konto verwalten</string>
+
+    <string name="nav_noaccount_title">Nicht eingeloggt</string>
+    <string name="nav_noaccount_subtitle">Jetzt anmelden</string>
+
     <string name="sharedialog.title">§ teilen?</string>
     <string name="sharedialog.title.alreadyshared">§ weiterhin teilen?</string>
     <string name="sharedialog.notification.subtitle">Möchtest Du dieses WLAN-Netz teilen?</string>
