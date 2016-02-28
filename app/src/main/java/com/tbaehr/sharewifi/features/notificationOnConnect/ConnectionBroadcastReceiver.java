@@ -55,6 +55,9 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
                 // TODO: Complete implemenation
 
                 Intent openShareViewIntent = new Intent(context, ShareActivity.class);
+                openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, ssid);
+                openShareViewIntent.putExtra(ShareActivity.EXTRA_OPENED_OVER_NOTIFICATION, true);
+
                 PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), openShareViewIntent, 0);
 
                 NotificationCompat.Builder mBuilder =

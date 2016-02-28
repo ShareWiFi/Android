@@ -45,7 +45,7 @@ public class WiFiListFragment extends Fragment {
         View view = inflater.inflate(R.layout.content_wi_fi_list, container, false);
 
         // Some test data (must be removed later)
-        WiFiNetwork[] values = new WiFiNetwork[] {
+        final WiFiNetwork[] values = new WiFiNetwork[] {
                 new WiFiNetwork("guest-wifi", true, WiFiNetwork.SignalStrenght.PERFECT, true, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITHIN_GROUPS),
                 new WiFiNetwork("NeighborWiFi", true, WiFiNetwork.SignalStrenght.GOOD, false, WiFiNetwork.ShareStatus.UNKNOWN),
                 new WiFiNetwork("EatMyShorts", true, WiFiNetwork.SignalStrenght.LOW, false, WiFiNetwork.ShareStatus.UNKNOWN),
@@ -70,6 +70,7 @@ public class WiFiListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent openShareViewIntent = new Intent(getActivity(), ShareActivity.class);
+                openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, values[position].getSsid());
                 startActivity(openShareViewIntent);
             }
         });

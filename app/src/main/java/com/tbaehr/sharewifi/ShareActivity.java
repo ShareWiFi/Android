@@ -18,12 +18,12 @@
  */
 package com.tbaehr.sharewifi;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,13 +34,14 @@ import android.view.WindowManager;
 
 public class ShareActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME = "network_name";
+    public static final String EXTRA_NETWORKNAME = "network_name";
+    public static final String EXTRA_OPENED_OVER_NOTIFICATION = "opened_over_notification";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // set as fullscreen activity with translucent status
+        // Set as fullscreen activity with translucent status
         Window window = getWindow();
         window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
@@ -54,22 +55,33 @@ public class ShareActivity extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.share_dialog_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
-        // make back arrow white
+        // Make back arrow white or disable it if opened over notification
+        boolean openedOverNotification = getIntent().getBooleanExtra(EXTRA_OPENED_OVER_NOTIFICATION, false);
         final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-        backArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
-        getSupportActionBar().setHomeAsUpIndicator(backArrow);
+        if (openedOverNotification) {
+            backArrow.setVisible(false, false);
+            actionBar.setDisplayHomeAsUpEnabled(false);
+        } else {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            backArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+            getSupportActionBar().setHomeAsUpIndicator(backArrow);
+        }
 
         // TODO: Set title of this activity including the network name
         String title = getString(R.string.sharedialog_title);
         Intent intent = getIntent();
-        final String networkName = intent.getStringExtra(EXTRA_NAME);
-        title = title.replace("§", networkName != null ? networkName : "WLAN-Netz");
+        final String networkName = intent.getStringExtra(EXTRA_NETWORKNAME);
+        title = title.replace("§", networkName);
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.share_dialog_collapsing_toolbar);
         collapsingToolbar.setTitle(title);
+
+        // Delete notification
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(0);
 
     }
 
