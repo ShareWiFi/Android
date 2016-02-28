@@ -239,7 +239,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="sharedialog.option.do_not_share.desc" />
+                            android:text="@string/sharedialog.option.do_not_share.desc" />
 
                     </LinearLayout>
 
