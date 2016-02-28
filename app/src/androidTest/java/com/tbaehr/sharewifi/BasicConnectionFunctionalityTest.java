@@ -36,7 +36,7 @@ public class BasicConnectionFunctionalityTest {
 
     private final static String ssid1 = "guest-wifi";
 
-    private final static String passkey1 = "internet";
+    private final static String passkey1 = "#.2016.#";
 
     private WifiConfigurationHandler wifiConfigurationHandler;
 
