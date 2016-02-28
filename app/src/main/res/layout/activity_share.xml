@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/share_dialog_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -53,33 +54,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--<android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/card_margin"
-                android:layout_marginRight="@dimen/card_margin"
-                android:layout_marginTop="@dimen/card_margin_top">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="WLAN teilen?"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textStyle="bold"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>-->
-
             <android.support.v7.widget.CardView
+                android:id="@+id/share_dialog_card_globalshare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top">
@@ -91,7 +67,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/share_global"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginLeft="@dimen/card_margin"
@@ -113,6 +88,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
                             android:text="@string/sharedialog.option.worldwideshare.desc" />
 
                     </LinearLayout>
@@ -122,6 +98,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/share_dialog_card_groupshare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top">
@@ -133,7 +110,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/share_with_groups"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginLeft="@dimen/card_margin"
@@ -155,6 +131,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
                             android:text="@string/sharedialog.option.groupshare.desc" />
 
                     </LinearLayout>
@@ -164,6 +141,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/share_dialog_card_deviceshare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top" >
@@ -175,7 +153,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/share_with_devices"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginLeft="@dimen/card_margin"
@@ -197,6 +174,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
                             android:text="@string/sharedialog.option.deviceshare.desc" />
 
                     </LinearLayout>
@@ -206,6 +184,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/share_dialog_card_shareoff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top" >
@@ -217,7 +196,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/share_not"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginLeft="@dimen/card_margin"
@@ -239,6 +217,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
                             android:text="@string/sharedialog.option.do_not_share.desc" />
 
                     </LinearLayout>
@@ -246,6 +225,22 @@
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
+
+            <FrameLayout
+                android:id="@+id/share_dialog_never_show_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharedialog.option.neveraskagain"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_margin="16dp" />
+
+            </FrameLayout>
 
         </LinearLayout>
 

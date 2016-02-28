@@ -34,7 +34,8 @@
     <string name="sharedialog.option.do_not_share.desc">The login data are neither stored nor shared by ShareWiFi.</string>
     <string name="sharedialog.option.do_not_longer_share.title">NO, UNDO SHARING</string>
     <string name="sharedialog.option.do_not_longer_share.desc">The login data are deleted from all devices except this one.</string>
-    <string name="sharedialog.option.neveraskagain">Never show the share dialog again.</string>
+    <string name="sharedialog.option.neveraskagain">Never show the share dialog on new connect again.</string>
+    <string name="sharedialog.option.notifications_disabled">Share dialog on new connect is disabled.</string>
 
     <string name="networkstatus.connected">Connected</string>
     <string name="networkstatus.unknownnetwork">Unknown network.</string>

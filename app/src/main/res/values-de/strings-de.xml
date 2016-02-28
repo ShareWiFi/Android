@@ -34,7 +34,8 @@
     <string name="sharedialog.option.do_not_share.desc">Die Verbindungsdaten dieses WLAN-Netzes werden von der ShareWiFi-App weder geteilt noch gespeichert.</string>
     <string name="sharedialog.option.do_not_longer_share.title">NEIN, TEILEN RÜCKGÄNGIG MACHEN</string>
     <string name="sharedialog.option.do_not_longer_share.desc">Die Verbindungsdaten dieses WLAN-Netzes wird von alle Geräten außer diesem gelöscht.</string>
-    <string name="sharedialog.option.neveraskagain">Teilen-Dialog nicht mehr anzeigen.</string>
+    <string name="sharedialog.option.neveraskagain">Teilen-Dialog bei Verbinden mit neuem Netz nicht mehr anzeigen.</string>
+    <string name="sharedialog.option.notifications_disabled">Teilen-Benachrichtigung bei Verbinden mit neuem Netz deaktiviert.</string>
 
     <string name="networkstatus.connected">Verbunden</string>
     <string name="networkstatus.unknownnetwork">Unbekanntes Netz.</string>

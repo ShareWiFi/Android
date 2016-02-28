@@ -62,6 +62,16 @@ public class WiFiListActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        Snackbar.make(
+                findViewById(R.id.drawer_layout),
+                "Sorry, hier sind noch keine echten Netzwerke zu sehen. Kommt in Kürze.",
+                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {

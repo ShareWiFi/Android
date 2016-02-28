@@ -24,13 +24,16 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 public class ShareActivity extends AppCompatActivity {
 
@@ -68,7 +71,7 @@ public class ShareActivity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
 
-        // TODO: Set title of this activity including the network name
+        // Set title of this activity including the network name
         String title = getString(R.string.sharedialog_title);
         Intent intent = getIntent();
         final String networkName = intent.getStringExtra(EXTRA_NETWORKNAME);
@@ -82,6 +85,28 @@ public class ShareActivity extends AppCompatActivity {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(0);
+
+        // Set click listeners for cards
+        CardView    cardShareGlobal       = (CardView) findViewById(R.id.share_dialog_card_globalshare);
+        CardView    cardShareGroups       = (CardView) findViewById(R.id.share_dialog_card_groupshare);
+        CardView    cardShareDevices      = (CardView) findViewById(R.id.share_dialog_card_deviceshare);
+        CardView    cardShareOff          = (CardView) findViewById(R.id.share_dialog_card_shareoff);
+        FrameLayout disable_notifications = (FrameLayout) findViewById(R.id.share_dialog_never_show_again);
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(
+                        findViewById(R.id.share_dialog_coordinator_layout),
+                        "Sorry, noch nicht implementiert.",
+                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        };
+        cardShareGlobal.setOnClickListener(onClickListener);
+        cardShareGroups.setOnClickListener(onClickListener);
+        cardShareDevices.setOnClickListener(onClickListener);
+        cardShareOff.setOnClickListener(onClickListener);
+        disable_notifications.setOnClickListener(onClickListener);
 
     }
 
