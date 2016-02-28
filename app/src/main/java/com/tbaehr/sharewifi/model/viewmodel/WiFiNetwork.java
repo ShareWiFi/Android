@@ -66,21 +66,21 @@ public class WiFiNetwork {
 
     public String getShareStatusDescription() {
         String connectionStatusDescription = connected ? ShareWiFiApplication.getAppContext().getString(
-                R.string.connected)+". " : "";
+                R.string.networkstatus_connected)+". " : "";
         if (shareStatus == ShareStatus.UNKNOWN) {
-            return ShareWiFiApplication.getAppContext().getString(R.string.unknown_network);
+            return ShareWiFiApplication.getAppContext().getString(R.string.networkstatus_unknownnetwork);
         } else if (shareStatus == ShareStatus.NOT_SHARED) {
-            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.not_shared);
+            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_notshared);
         } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES) {
-            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharedByMe_mydevices);
+            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_sharedByMe_withmydevices);
         } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITHIN_GROUPS) {
-            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharedByMe_groups);
+            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_sharedByMe_withingroups);
         } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITH_EVERYONE) {
-            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharedByMe_everyone);
+            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_sharedByMe_witheveryone);
         } else if (shareStatus == ShareStatus.SHARED_WITH_ME_WITHIN_GROUPS) {
-            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharedWithMe_groups);
+            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_sharedWithMe_groups);
         } else if (shareStatus == ShareStatus.SHARED_WITH_ME_WITH_EVERYONE) {
-            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharedWithMe_everyone);
+            return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_sharedWithMe_everyone);
         } else {
             throw new RuntimeException("Non-handled share status "+shareStatus.name());
         }

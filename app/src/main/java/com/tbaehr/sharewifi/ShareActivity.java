@@ -51,23 +51,25 @@ public class ShareActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_share);
 
-        Intent intent = getIntent();
-        final String networkName = intent.getStringExtra(EXTRA_NAME);
-
         final Toolbar toolbar = (Toolbar) findViewById(R.id.share_dialog_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.share_dialog_collapsing_toolbar);
-        collapsingToolbar.setTitle("WLAN teilen?");
-
         // make back arrow white
         final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         backArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(backArrow);
+
+        // TODO: Set title of this activity including the network name
+        String title = getString(R.string.sharedialog_title);
+        Intent intent = getIntent();
+        final String networkName = intent.getStringExtra(EXTRA_NAME);
+        title = title.replace("§", networkName != null ? networkName : "WLAN-Netz");
+
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.share_dialog_collapsing_toolbar);
+        collapsingToolbar.setTitle(title);
 
     }
 

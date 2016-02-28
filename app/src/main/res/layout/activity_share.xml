@@ -106,14 +106,14 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="JA, WELTWEIT"
+                            android:text="@string/sharedialog.option.worldwideshare.title"
                             android:textColor="@color/colorBlack"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Dadurch kann sich jeder auf dieser Welt mit diesem WLAN-Netz verbinden." />
+                            android:text="@string/sharedialog.option.worldwideshare.desc" />
 
                     </LinearLayout>
 
@@ -149,13 +149,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
-                            android:text="JA, INNERHALB MEINER GRUPPEN"
+                            android:text="@string/sharedialog.option.groupshare.title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Dadurch können sich alle Mitglieder der ausgewählten Gruppen mit diesem WLAN-Netz verbinden." />
+                            android:text="@string/sharedialog.option.groupshare.desc" />
 
                     </LinearLayout>
 
@@ -190,14 +190,14 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="JA, MIT MEINEN GERÄTEN"
+                            android:text="@string/sharedialog.option.deviceshare.title"
                             android:textColor="@color/colorBlack"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Dadurch können sich alle Geräte verbinden, auf denen Du eingeloggt bist." />
+                            android:text="@string/sharedialog.option.deviceshare.desc" />
 
                     </LinearLayout>
 
@@ -232,14 +232,14 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="NEIN, NICHT TEILEN"
+                            android:text="@string/sharedialog.option.do_not_share.title"
                             android:textColor="@color/colorBlack"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Die Verbindungsdaten dieses WLAN-Netzes werden nicht von ShareWiFi gespeichert oder geteilt." />
+                            android:text="sharedialog.option.do_not_share.desc" />
 
                     </LinearLayout>
 

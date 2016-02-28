@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">ShareWiFi</string>
+
+    <string name="navigation_drawer_open">Öffne die Navigationsbar</string>
+    <string name="navigation_drawer_close">Schließe die Navigationsbar</string>
+
+    <string name="settings">Einstellungen</string>
+
+    <string name="nav_header_networks">WLAN-Netze</string>
+    <string name="nav_allnetworks">Alle Netze</string>
+    <string name="nav_sharedbyme">Von mir geteilt</string>
+    <string name="nav_sharedwithme">Mit mir geteilt</string>
+
+    <string name="nav_header_social">Sozial</string>
+    <string name="nav_contacts">Kontakte</string>
+    <string name="nav_invite">Freunde einladen</string>
+
+    <string name="nav_groups">Gruppen</string>
+    <string name="nav_help">Hilfe und Tipps</string>
+
+    <string name="sharedialog.title">§ teilen?</string>
+    <string name="sharedialog.title.alreadyshared">§ weiterhin teilen?</string>
+    <string name="sharedialog.notification.subtitle">Möchtest Du dieses WLAN-Netz teilen?</string>
+    <string name="sharedialog.notification.option.yes">Ja</string>
+    <string name="sharedialog.notification.option.no">Nein</string>
+
+    <string name="sharedialog.option.worldwideshare.title">JA, WELTWEIT</string>
+    <string name="sharedialog.option.worldwideshare.desc">Dadurch kann sich jeder auf dieser Welt mit diesem WLAN-Netz verbinden.</string>
+    <string name="sharedialog.option.groupshare.title">JA, INNERHALB AUSGEWÄHLTER GRUPPEN</string>
+    <string name="sharedialog.option.groupshare.desc">Dadurch können sich alle Mitglieder der ausgewählten Gruppen mit diesem WLAN-Netz verbinden.</string>
+    <string name="sharedialog.option.deviceshare.title">JA, MIT MEINEN GERÄTEN</string>
+    <string name="sharedialog.option.deviceshare.desc">Dadurch können sich alle Geräte mit diesem WLAN-Netz verbinden, auf denen Du eingeloggt bist.</string>
+    <string name="sharedialog.option.do_not_share.title">NEIN, NICHT TEILEN</string>
+    <string name="sharedialog.option.do_not_share.desc">Die Verbindungsdaten dieses WLAN-Netzes werden von der ShareWiFi-App weder geteilt noch gespeichert.</string>
+    <string name="sharedialog.option.do_not_longer_share.title">NEIN, TEILEN RÜCKGÄNGIG MACHEN</string>
+    <string name="sharedialog.option.do_not_longer_share.desc">Die Verbindungsdaten dieses WLAN-Netzes wird von alle Geräten außer diesem gelöscht.</string>
+    <string name="sharedialog.option.neveraskagain">Teilen-Dialog nicht mehr anzeigen.</string>
+
+    <string name="networkstatus.connected">Verbunden</string>
+    <string name="networkstatus.unknownnetwork">Unbekanntes Netz.</string>
+
+    <string name="sharestatus.notshared">Nicht geteilt.</string>
+    <string name="sharestatus.sharedByMe.withmydevices">Von mir geteilt mit meinen Geräten.</string>
+    <string name="sharestatus.sharedByMe.withingroups">Von mir geteilt mit ausgewählten Gruppen.</string>
+    <string name="sharestatus.sharedByMe.witheveryone">Von mir geteilt mit jedem.</string>
+    <string name="sharestatus.sharedWithMe.groups">Mit mir geteilt.</string>
+    <string name="sharestatus.sharedWithMe.everyone">Mir mir und jedem geteilt.</string>
+
+</resources>
