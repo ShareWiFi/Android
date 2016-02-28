@@ -30,7 +30,7 @@
     <string name="sharedialog.option.groupshare.desc">Then all members of carefully selected groups can connect with this Wi-Fi.</string>
     <string name="sharedialog.option.deviceshare.title">YES, WITH MY DEVICES</string>
     <string name="sharedialog.option.deviceshare.desc">Then all your devices where you are logged in can connect with this Wi-Fi.</string>
-    <string name="sharedialog.option.do_not_share.title">NO, DON'T SHARE</string>
+    <string name="sharedialog.option.do_not_share.title">NO, DO NOT SHARE</string>
     <string name="sharedialog.option.do_not_share.desc">The login data are neither stored nor shared by ShareWiFi.</string>
     <string name="sharedialog.option.do_not_longer_share.title">NO, UNDO SHARING</string>
     <string name="sharedialog.option.do_not_longer_share.desc">The login data are deleted from all devices except this one.</string>
