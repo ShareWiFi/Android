@@ -6,9 +6,15 @@ import com.tbaehr.sharewifi.ShareWiFiApplication;
 /**
  * Created by tbaehr on 21.02.16.
  */
-public class WiFiNetwork {
+public class WiFiNetwork implements Comparable<WiFiNetwork> {
 
-    public enum SignalStrenght {
+    @Override
+    public int compareTo(WiFiNetwork another) {
+        // TODO: Sort by signal strength
+        return 0;
+    }
+
+    public enum SignalStrength {
         NONE,
         LOW,
         MEDIUM,
@@ -39,29 +45,33 @@ public class WiFiNetwork {
 
     private ShareStatus shareStatus;
 
-    private SignalStrenght signalStrenght;
+    private SignalStrength signalStrength;
 
     private Quality quality;
 
-    public WiFiNetwork(String ssid, boolean encrypted, SignalStrenght signalStrenght, boolean connected, Quality quality, ShareStatus shareStatus) {
+    public WiFiNetwork(String ssid, boolean encrypted, SignalStrength signalStrength, boolean connected, Quality quality, ShareStatus shareStatus) {
         this.ssid = ssid;
         this.connected = connected;
         this.shareStatus = shareStatus;
-        this.signalStrenght = signalStrenght;
+        this.signalStrength = signalStrength;
         this.encrypted = encrypted;
         this.quality = quality;
     }
 
-    public WiFiNetwork(String ssid, boolean encrypted, SignalStrenght signalStrenght, boolean connected, ShareStatus shareStatus) {
+    public WiFiNetwork(String ssid, boolean encrypted, SignalStrength signalStrength, boolean connected, ShareStatus shareStatus) {
         this.ssid = ssid;
         this.connected = connected;
         this.shareStatus = shareStatus;
-        this.signalStrenght = signalStrenght;
+        this.signalStrength = signalStrength;
         this.encrypted = encrypted;
     }
 
     public String getSsid() {
         return ssid;
+    }
+
+    public ShareStatus getShareStatus() {
+        return shareStatus;
     }
 
     public String getShareStatusDescription() {
@@ -106,16 +116,16 @@ public class WiFiNetwork {
         }
     }
 
-    public int getSignalStrenghtIcon() {
-        if (signalStrenght == SignalStrenght.NONE) {
+    public int getSignalStrengthIcon() {
+        if (signalStrength == SignalStrength.NONE) {
             return R.drawable.ic_menu_signal_off;
-        } else if (signalStrenght == SignalStrenght.LOW) {
+        } else if (signalStrength == SignalStrength.LOW) {
             return R.drawable.ic_menu_signal_low;
-        } else if (signalStrenght == SignalStrenght.MEDIUM) {
+        } else if (signalStrength == SignalStrength.MEDIUM) {
             return R.drawable.ic_menu_signal_medium;
-        } else if (signalStrenght == SignalStrenght.GOOD) {
+        } else if (signalStrength == SignalStrength.GOOD) {
             return R.drawable.ic_menu_signal_good;
-        } else if (signalStrenght == SignalStrenght.PERFECT) {
+        } else if (signalStrength == SignalStrength.PERFECT) {
             return R.drawable.ic_menu_signal_perfect;
         } else {
             throw new RuntimeException("Non-handled share status "+shareStatus.name());

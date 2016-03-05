@@ -8,6 +8,8 @@ import android.content.Context;
  */
 public class ShareWiFiApplication extends Application {
 
+    public final static String[] blackList = new String[] {"Telekom"};
+
     private static Context context;
 
     public ShareWiFiApplication() {

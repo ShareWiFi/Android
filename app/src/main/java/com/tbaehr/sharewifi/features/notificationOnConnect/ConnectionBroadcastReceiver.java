@@ -18,19 +18,13 @@
  */
 package com.tbaehr.sharewifi.features.notificationOnConnect;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.support.v4.app.NotificationCompat;
 
-import com.tbaehr.sharewifi.R;
-import com.tbaehr.sharewifi.ShareActivity;
 import com.tbaehr.sharewifi.ShareWiFiApplication;
 
 /**
@@ -40,7 +34,6 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String action = intent.getAction();
         NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         if (info != null && info.isConnected() && info.isAvailable()) {
             // Retrieve network ssid and mac address
@@ -49,37 +42,24 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
             String ssid = wifiInfo.getSSID();
             String mac = wifiInfo.getMacAddress();
 
-            if (!ssid.equals("<unknown ssid>")) {
+            if (!ssid.equals("<unknown ssid>") || !contains(ShareWiFiApplication.blackList, ssid)) {
                 // Is the network already known (or is it a new one) ?
                 // If it is unknown then show notification (except the user disabled notifications)
-                // TODO: Complete implemenation
-
-                Intent openShareViewIntent = new Intent(context, ShareActivity.class);
-                openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, ssid);
-                openShareViewIntent.putExtra(ShareActivity.EXTRA_OPENED_OVER_NOTIFICATION, true);
-
-                PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), openShareViewIntent, 0);
-
-                NotificationCompat.Builder mBuilder =
-                        new NotificationCompat.Builder(ShareWiFiApplication.getAppContext())
-                                .setSmallIcon(R.drawable.ic_menu_shared)
-                                .setContentTitle(context.getString(R.string.sharedialog_title).replace("§", ssid))
-                                .setContentText(context.getString(R.string.sharedialog_notification_subtitle));
-                mBuilder.addAction(R.drawable.ic_dialog_yes, context.getString(R.string.sharedialog_notification_option_yes), pIntent);
-                mBuilder.addAction(R.drawable.ic_dialog_no, context.getString(R.string.sharedialog_notification_option_no), null);
-
-                Notification notification = mBuilder.build();
-
-                NotificationManager notificationManager =
-                        (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-
-                notificationManager.notify(0, notification);
+                // TODO: Finish implementation
+                NotificationBuilder.getInstance().showShareDialog(ssid);
             }
         } else {
-            NotificationManager notificationManager =
-                    (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-            notificationManager.cancel(0);
+            NotificationBuilder.getInstance().hideShareDialog();
         }
 
+    }
+
+    private boolean contains(String[] blacklist, String ssid) {
+        for (String s : blacklist) {
+            if (ssid.equals(s)) {
+                return true;
+            }
+        }
+        return  false;
     }
 }

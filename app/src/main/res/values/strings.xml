@@ -16,7 +16,7 @@
     <string name="nav_invite">Invite friends</string>
 
     <string name="nav_groups">Groups</string>
-    <string name="nav_help">Help</string>
+    <string name="nav_help">Questions and answers</string>
 
     <string name="nav_add_account">Add account</string>
     <string name="nav_logout">Logout</string>
@@ -45,8 +45,12 @@
     <string name="sharedialog.option.neveraskagain">Never show the share dialog on new connect again.</string>
     <string name="sharedialog.option.notifications_disabled">Share dialog on new connect is disabled.</string>
 
+    <string name="networklist.inrange">In Range</string>
+    <string name="networklist.outofrange">Out Of Range</string>
+
     <string name="networkstatus.connected">Connected</string>
     <string name="networkstatus.unknownnetwork">Unknown network.</string>
+    <string name="networkstatus.hidden_wifi">Hidden Wi-Fi network</string>
 
     <string name="sharestatus.notshared">Not shared.</string>
     <string name="sharestatus.sharedByMe.withmydevices">Shared by me with my devices.</string>

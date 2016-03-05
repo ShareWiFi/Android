@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.tbaehr.sharewifi.WiFiListActivity">
+    tools:context=".features.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            android:id="@+id/view">
+            android:theme="@style/AppTheme.AppBarOverlay" >
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -26,14 +26,11 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <fragment
-            android:id="@+id/wifiListFragment"
-            android:name="com.tbaehr.sharewifi.WiFiListFragment"
-            android:layout_weight="2"
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/item_detail_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout="@layout/content_wi_fi_list"
-            android:layout_below="@+id/view" />
+            android:layout_below="@+id/app_bar_layout" />
 
     </RelativeLayout>
 

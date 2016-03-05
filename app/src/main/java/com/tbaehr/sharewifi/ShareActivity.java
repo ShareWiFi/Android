@@ -53,7 +53,7 @@ public class ShareActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        setContentView(R.layout.activity_share);
+        setContentView(R.layout.sharedialog_activity);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.share_dialog_toolbar);
         setSupportActionBar(toolbar);

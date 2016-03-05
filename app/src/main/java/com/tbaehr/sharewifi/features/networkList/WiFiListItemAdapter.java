@@ -16,7 +16,7 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.tbaehr.sharewifi;
+package com.tbaehr.sharewifi.features.networkList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -26,10 +26,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tbaehr.sharewifi.R;
 import com.tbaehr.sharewifi.model.viewmodel.WiFiNetwork;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -41,7 +40,7 @@ public class WiFiListItemAdapter extends ArrayAdapter<WiFiNetwork> {
     private List<WiFiNetwork> listOfWiFiNetworks;
 
     public WiFiListItemAdapter(Context context, List<WiFiNetwork> wiFiNetworks) {
-        super(context, R.layout.list_wifi_network_item, wiFiNetworks);
+        super(context, R.layout.networklist_item, wiFiNetworks);
         /*for (int i = 0; i < objects.size(); ++i) {
             mIdMap.put(objects.get(i), i);
         }*/
@@ -54,7 +53,7 @@ public class WiFiListItemAdapter extends ArrayAdapter<WiFiNetwork> {
         // Get inflater which is able to create the list item
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        int itemLayoutId = R.layout.list_wifi_network_item;
+        int itemLayoutId = R.layout.networklist_item;
         View listItem = inflater.inflate(itemLayoutId, parent, false);
 
         // Find view objects
@@ -77,7 +76,7 @@ public class WiFiListItemAdapter extends ArrayAdapter<WiFiNetwork> {
         // Set values from view model item
         ssidTextView.setText(item.getSsid());
         statusTextView.setText(item.getShareStatusDescription());
-        networkStatusImageView.setImageResource(item.getSignalStrenghtIcon());
+        networkStatusImageView.setImageResource(item.getSignalStrengthIcon());
         if (item.isUnknownNetwork()) {
             shareStatusImageView.setVisibility(View.GONE);
         } else {

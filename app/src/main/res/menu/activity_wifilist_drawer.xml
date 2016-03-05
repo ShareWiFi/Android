@@ -23,10 +23,6 @@
                     android:id="@+id/nav_contacts"
                     android:icon="@drawable/ic_menu_contact"
                     android:title="@string/nav_contacts" />
-                <item
-                    android:id="@+id/nav_invite"
-                    android:icon="@drawable/ic_menu_invite"
-                    android:title="@string/nav_invite" />
             </group>
         </menu>
     </item>

@@ -16,7 +16,7 @@
     <string name="nav_invite">Freunde einladen</string>
 
     <string name="nav_groups">Gruppen</string>
-    <string name="nav_help">Hilfe und Tipps</string>
+    <string name="nav_help">Fragen und Antworten</string>
 
     <string name="nav_add_account">Konto hinzufügen</string>
     <string name="nav_logout">Ausloggen</string>
@@ -44,8 +44,12 @@
     <string name="sharedialog.option.neveraskagain">Teilen-Dialog bei Verbinden mit neuem Netz nicht mehr anzeigen.</string>
     <string name="sharedialog.option.notifications_disabled">Teilen-Benachrichtigung bei Verbinden mit neuem Netz deaktiviert.</string>
 
+    <string name="networklist.inrange">In Reichweite</string>
+    <string name="networklist.outofrange">Außer Reichweite</string>
+
     <string name="networkstatus.connected">Verbunden</string>
     <string name="networkstatus.unknownnetwork">Unbekanntes Netz.</string>
+    <string name="networkstatus.hidden_wifi">Verstecktes WLAN-Netz</string>
 
     <string name="sharestatus.notshared">Nicht geteilt.</string>
     <string name="sharestatus.sharedByMe.withmydevices">Von mir geteilt mit meinen Geräten.</string>

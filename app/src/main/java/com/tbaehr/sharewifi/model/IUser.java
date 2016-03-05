@@ -35,6 +35,11 @@ public interface IUser {
     String getMail();
 
     /**
+     * @return The file name of the user's avatar
+     */
+    String getAvatar();
+
+    /**
      * @return true if this user is a registered member
      */
     boolean isRegisteredMember();

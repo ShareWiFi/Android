@@ -16,7 +16,7 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.tbaehr.sharewifi.features.handleWifiConfigurations;
+package com.tbaehr.sharewifi.features;
 
 import android.content.Context;
 import android.net.wifi.ScanResult;
@@ -27,13 +27,14 @@ import android.util.Log;
 
 import com.tbaehr.sharewifi.ShareWiFiApplication;
 import com.tbaehr.sharewifi.model.SecurityMode;
+import com.tbaehr.sharewifi.model.viewmodel.WiFiNetwork;
 
 import java.util.List;
 
 /**
  * Created by tbaehr on 14.01.16.
  */
-public class WifiConfigurationHandler {
+public class WiFiHelper {
 
     private final static String TAG = "ShareWiFiCon";
 
@@ -43,7 +44,7 @@ public class WifiConfigurationHandler {
 
     private static String connectedSsidName;
 
-    public WifiConfigurationHandler() {
+    public WiFiHelper() {
         Context context = ShareWiFiApplication.getAppContext();
         wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         scanResultList = wifiManager.getScanResults();
@@ -54,7 +55,7 @@ public class WifiConfigurationHandler {
     }
 
     /**
-     * TODO: SSID is not unique!
+     * TODO: SSID is not unique! But MAC can change inside one network. Merge nearby networks with same SSID, e.g. "eduroam"?
      *
      * @param networkSSID
      */
@@ -165,7 +166,7 @@ public class WifiConfigurationHandler {
         return -1;
     }
 
-    public SecurityMode getScanResultSecurity(ScanResult scanResult) {
+    public static SecurityMode getScanResultSecurity(ScanResult scanResult) {
 
         final String cap = scanResult.capabilities;
         final SecurityMode[] securityModes = { SecurityMode.WEP, SecurityMode.PSK, SecurityMode.EAP };
@@ -177,6 +178,36 @@ public class WifiConfigurationHandler {
         }
 
         return SecurityMode.OPEN;
+    }
+
+    public static WiFiNetwork.SignalStrength getSignalStrength(ScanResult scanResult) {
+        // TODO: Implementation
+        // The detected signal level in dBm, also known as the RSSI.
+        if (scanResult.level < -50) {
+            return WiFiNetwork.SignalStrength.PERFECT;
+        } else if (scanResult.level < -60) {
+            return WiFiNetwork.SignalStrength.GOOD;
+        } else if (scanResult.level < -70) {
+            return WiFiNetwork.SignalStrength.MEDIUM;
+        }  else {
+            return WiFiNetwork.SignalStrength.LOW;
+        }
+    }
+
+    public static WiFiNetwork.Quality getQuality(ScanResult scanResult) {
+        // TODO: Estimate quality, e.g. network speed
+        return WiFiNetwork.Quality.GOOD;
+    }
+
+    public static boolean isConnectedWith(ScanResult scanResult) {
+        WifiManager wifiManager = (WifiManager) ShareWiFiApplication.getAppContext().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        String ssid = wifiInfo.getSSID();
+        if (!ssid.isEmpty()) {
+            ssid = ssid.substring(1,ssid.length()-1);
+        }
+
+        return ssid.equals(scanResult.SSID);
     }
 
 }

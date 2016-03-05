@@ -16,23 +16,25 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.tbaehr.sharewifi;
+package com.tbaehr.sharewifi.features;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-public class WiFiListActivity extends AppCompatActivity
+import com.tbaehr.sharewifi.R;
+import com.tbaehr.sharewifi.features.networkList.NetworkListFragment;
+
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static boolean accountPageOpened = false;
@@ -40,7 +42,7 @@ public class WiFiListActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wifilist);
+        setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -74,16 +76,11 @@ public class WiFiListActivity extends AppCompatActivity
             }
         });
 
-    }
+        // Fragment configuration
+        NetworkListFragment networkTabHostFragment = new NetworkListFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.item_detail_container, networkTabHostFragment).commit();
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Snackbar.make(
-                findViewById(R.id.activity_main_drawer_layout),
-                "Sorry, hier sind noch keine echten Netzwerke zu sehen. Kommt in Kürze.",
-                Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 
     @Override
@@ -159,8 +156,6 @@ public class WiFiListActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_contacts) {
             tempTesterMessage = "Sorry, die Kontaktverwaltung gibt's noch nicht. Dauert noch.";
-        } else if (id == R.id.nav_invite) {
-            tempTesterMessage = "Sorry, Du kannst leider noch niemanden einladen. Dauert noch.";
         } else if (id == R.id.nav_groups) {
             tempTesterMessage = "Sorry, die Gruppenverwaltung gibt's nocht nicht. Dauert noch.";
         } else if (id == R.id.nav_settings) {
@@ -175,9 +170,11 @@ public class WiFiListActivity extends AppCompatActivity
             tempTesterMessage = "Sorry, die Account-Verwaltung ist noch nicht fertig. Dauert noch...";
         }
 
-        Snackbar.make(findViewById(R.id.activity_main_drawer_layout),
-                tempTesterMessage,
-                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        if (!tempTesterMessage.isEmpty()) {
+            Snackbar.make(findViewById(R.id.activity_main_drawer_layout),
+                    tempTesterMessage,
+                    Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
