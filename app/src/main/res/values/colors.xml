@@ -5,4 +5,6 @@
     <color name="colorAccent">#2196f3</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+    <color name="backgroundOfNonSelectedItem">#eeeeee</color>
+    <color name="backgroundOfSelectedItem">#992196f3</color>
 </resources>

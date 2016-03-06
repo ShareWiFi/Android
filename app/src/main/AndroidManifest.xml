@@ -26,7 +26,7 @@
         </activity>
 
         <activity
-            android:name=".ShareActivity"
+            android:name=".features.shareDialog.ShareActivity"
             android:theme="@style/AppTheme.NoActionBarLight" >
         </activity>
 

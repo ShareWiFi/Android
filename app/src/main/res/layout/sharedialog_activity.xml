@@ -208,6 +208,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/share_dialog_card_shareoff_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.option.do_not_share.title"
@@ -215,6 +216,7 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                         <TextView
+                            android:id="@+id/share_dialog_card_shareoff_desc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="6dp"

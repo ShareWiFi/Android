@@ -26,8 +26,8 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import com.tbaehr.sharewifi.R;
-import com.tbaehr.sharewifi.ShareActivity;
 import com.tbaehr.sharewifi.ShareWiFiApplication;
+import com.tbaehr.sharewifi.features.shareDialog.ShareActivity;
 
 /**
  * Created by tbaehr on 05.03.16.

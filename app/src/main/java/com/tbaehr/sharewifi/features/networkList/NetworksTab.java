@@ -17,7 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tbaehr.sharewifi.R;
-import com.tbaehr.sharewifi.ShareActivity;
+import com.tbaehr.sharewifi.features.shareDialog.ShareActivity;
 import com.tbaehr.sharewifi.model.viewmodel.WiFiNetwork;
 
 import java.util.List;
@@ -54,13 +54,25 @@ public class NetworksTab extends Fragment {
                 if (!inRangeNetworks) {
                     openShareDialog(position);
                 } else {
-                    if (adapter.getItem(position).isUnknownNetwork()) {
+                    WiFiNetwork network = adapter.getItem(position);
+                    if (network.isUnknownNetwork()) {
                         // TODO: Open Connect Dialog
                         Snackbar.make(view,
-                                "Hierüber kannst Du in Kürze Dich mit einem WLAN-Netz verbinden.",
+                                "Hierüber kannst Du Dich in Kürze mit einem WLAN-Netz verbinden.",
                                 Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                    } else {
+                    } else if (network.isSharedByMe() || network.getShareStatus().equals(WiFiNetwork.ShareStatus.NOT_SHARED)) {
                         openShareDialog(position);
+                    } else {
+                        // TODO: Show share info dialog
+                        String alphaTesterMessage;
+                        if (network.getShareStatus().equals(WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE)) {
+                            alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und jedem auf der Welt geteilt.";
+                        } else {
+                            alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und weiteren Gruppenmitgliedern geteilt.";
+                        }
+                        Snackbar.make(view,
+                                alphaTesterMessage,
+                                Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     }
                 }
             }
@@ -68,6 +80,7 @@ public class NetworksTab extends Fragment {
             private void openShareDialog(int position) {
                 Intent openShareViewIntent = new Intent(getActivity(), ShareActivity.class);
                 openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, adapter.getItem(position).getSsid());
+                openShareViewIntent.putExtra(ShareActivity.EXTRA_SELECTED_SHARE_OPTION, adapter.getItem(position).getShareStatus().toInteger());
                 startActivity(openShareViewIntent);
             }
         });

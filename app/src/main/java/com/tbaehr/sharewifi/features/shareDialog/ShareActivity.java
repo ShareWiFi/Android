@@ -16,7 +16,7 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.tbaehr.sharewifi;
+package com.tbaehr.sharewifi.features.shareDialog;
 
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -34,11 +34,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+
+import com.tbaehr.sharewifi.R;
 
 public class ShareActivity extends AppCompatActivity {
 
     public static final String EXTRA_NETWORKNAME = "network_name";
     public static final String EXTRA_OPENED_OVER_NOTIFICATION = "opened_over_notification";
+    public static final String EXTRA_SELECTED_SHARE_OPTION = "selected_share_option";
+
+    private CardView[] cards = new CardView[4];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,27 +93,109 @@ public class ShareActivity extends AppCompatActivity {
         notificationManager.cancel(0);
 
         // Set click listeners for cards
-        CardView    cardShareGlobal       = (CardView) findViewById(R.id.share_dialog_card_globalshare);
-        CardView    cardShareGroups       = (CardView) findViewById(R.id.share_dialog_card_groupshare);
-        CardView    cardShareDevices      = (CardView) findViewById(R.id.share_dialog_card_deviceshare);
-        CardView    cardShareOff          = (CardView) findViewById(R.id.share_dialog_card_shareoff);
-        FrameLayout disable_notifications = (FrameLayout) findViewById(R.id.share_dialog_never_show_again);
+        cards[0] = (CardView) findViewById(R.id.share_dialog_card_globalshare);
+        cards[1] = (CardView) findViewById(R.id.share_dialog_card_groupshare);
+        cards[2] = (CardView) findViewById(R.id.share_dialog_card_deviceshare);
+        cards[3] = (CardView) findViewById(R.id.share_dialog_card_shareoff);
+        final FrameLayout disable_notifications = (FrameLayout) findViewById(R.id.share_dialog_never_show_again);
 
-        View.OnClickListener onClickListener = new View.OnClickListener() {
+        View.OnClickListener globalShareClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(
-                        findViewById(R.id.share_dialog_coordinator_layout),
-                        "Sorry, noch nicht implementiert.",
-                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                globalShare();
+                setSelected(0);
             }
         };
-        cardShareGlobal.setOnClickListener(onClickListener);
-        cardShareGroups.setOnClickListener(onClickListener);
-        cardShareDevices.setOnClickListener(onClickListener);
-        cardShareOff.setOnClickListener(onClickListener);
-        disable_notifications.setOnClickListener(onClickListener);
+        cards[0].setOnClickListener(globalShareClickListener);
 
+        View.OnClickListener groupShareClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                groupShare();
+                setSelected(1);
+            }
+        };
+        cards[1].setOnClickListener(groupShareClickListener);
+
+        View.OnClickListener deviceShareClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deviceShare();
+                setSelected(2);
+            }
+        };
+        cards[2].setOnClickListener(deviceShareClickListener);
+
+        View.OnClickListener noShareClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                noShare();
+                setSelected(3);
+            }
+        };
+        cards[3].setOnClickListener(noShareClickListener);
+
+        View.OnClickListener disableNotificationsClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disableNotifications();
+            }
+        };
+        disable_notifications.setOnClickListener(disableNotificationsClickListener);
+
+        int selectedShareOptionId = getIntent().getIntExtra(EXTRA_SELECTED_SHARE_OPTION, -1);
+        setSelected(selectedShareOptionId);
+    }
+
+    private void setSelected(int cardId) {
+        for (int i = 0; i<cards.length; i++) {
+            if (i == cardId) {
+                cards[i].setBackgroundColor(getResources().getColor(R.color.backgroundOfSelectedItem));
+            } else {
+                cards[i].setBackgroundColor(getResources().getColor(R.color.backgroundOfNonSelectedItem));
+            }
+
+            if (cardId >= 0 && cardId != 3) {
+                TextView title = (TextView) findViewById(R.id.share_dialog_card_shareoff_title);
+                title.setText(R.string.sharedialog_option_do_not_longer_share_title);
+
+                TextView desc  = (TextView) findViewById(R.id.share_dialog_card_shareoff_desc);
+                desc.setText(R.string.sharedialog_option_do_not_longer_share_desc);
+            }
+        }
+    }
+
+    private void globalShare() {
+        Snackbar.make(
+                findViewById(R.id.share_dialog_coordinator_layout),
+                "Sorry, weltweites Teilen ist noch nicht implementiert.",
+                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    }
+
+    private void groupShare() {
+        Snackbar.make(
+                findViewById(R.id.share_dialog_coordinator_layout),
+                "Sorry, Teilen mit Gruppen ist noch nicht implementiert.",
+                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    }
+
+    private void deviceShare() {
+        Snackbar.make(
+                findViewById(R.id.share_dialog_coordinator_layout),
+                "Sorry, Teilen mit Deinen Geräten ist noch nicht implementiert.",
+                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    }
+
+    private void noShare() {
+        // TODO: Store the share option
+        finish();
+    }
+
+    private void disableNotifications() {
+        Snackbar.make(
+                findViewById(R.id.share_dialog_coordinator_layout),
+                "Benachrichtigungen können aktuell noch nicht deaktiviert werden.",
+                Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 
     @Override

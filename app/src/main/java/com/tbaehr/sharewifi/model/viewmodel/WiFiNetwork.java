@@ -36,7 +36,18 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
         SHARED_BY_ME_WITHIN_GROUPS,
         SHARED_WITH_ME_WITHIN_GROUPS,
         SHARED_BY_ME_WITH_EVERYONE,
-        SHARED_WITH_ME_WITH_EVERYONE
+        SHARED_WITH_ME_WITH_EVERYONE;
+
+        public Integer toInteger() {
+            switch (this) {
+                case UNKNOWN: return -1;
+                case SHARED_BY_ME_WITH_EVERYONE: return 0;
+                case SHARED_BY_ME_WITHIN_GROUPS: return 1;
+                case SHARED_BY_ME_WITH_MY_DEVICES: return 2;
+                case NOT_SHARED: return 3;
+                default: return -1;
+            }
+        }
     }
 
     private boolean connected;
@@ -103,6 +114,12 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
 
     public ShareStatus getShareStatus() {
         return shareStatus;
+    }
+
+    public boolean isSharedByMe() {
+        return shareStatus.equals(ShareStatus.SHARED_BY_ME_WITH_EVERYONE) ||
+                shareStatus.equals(ShareStatus.SHARED_BY_ME_WITHIN_GROUPS) ||
+                shareStatus.equals(ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES);
     }
 
     public String getDescription() {
