@@ -75,7 +75,7 @@ public class WiFiListItemAdapter extends ArrayAdapter<WiFiNetwork> {
 
         // Set values from view model item
         ssidTextView.setText(item.getSsid());
-        statusTextView.setText(item.getShareStatusDescription());
+        statusTextView.setText(item.getDescription());
         networkStatusImageView.setImageResource(item.getSignalStrengthIcon());
         if (item.isUnknownNetwork()) {
             shareStatusImageView.setVisibility(View.GONE);

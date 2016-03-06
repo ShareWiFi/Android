@@ -1,6 +1,10 @@
 package com.tbaehr.sharewifi.features.networkList;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -29,26 +33,21 @@ public class NetworksTab extends Fragment {
 
     private boolean inRangeNetworks;
 
+    private BroadcastReceiver wifiStateChangedListener;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate this tab
         View view = inflater.inflate(R.layout.networklist_tab_content, container, false);
 
         // Retrieve UI model
-        List<WiFiNetwork> networks;
         inRangeNetworks = getArguments().getBoolean(BUNDLE_EXTRA_IN_RANGE, true);
-        if (inRangeNetworks) {
-            networks = (new WiFiListGrabber()).getNetworksInRange();
-        } else {
-            networks = (new WiFiListGrabber()).getNetworksOutOfRange();
-        }
+        List<WiFiNetwork> networks = getNetworks();
 
-        // Setup view
+        // Setup list view
         final ArrayAdapter<WiFiNetwork> adapter = new WiFiListItemAdapter(getActivity(), networks);
-
         wiFiNetList = (ListView) view.findViewById(R.id.networklist_listView);
         wiFiNetList.setAdapter(adapter);
-
         wiFiNetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -74,6 +73,45 @@ public class NetworksTab extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        wifiStateChangedListener = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                ArrayAdapter<WiFiNetwork> adapter = (ArrayAdapter<WiFiNetwork>) wiFiNetList.getAdapter();
+                adapter.clear();
+                adapter.addAll(getNetworks());
+            }
+        };
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        intentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        intentFilter.addAction(WifiManager.RSSI_CHANGED_ACTION);
+        intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        getActivity().registerReceiver(wifiStateChangedListener, intentFilter);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        getActivity().unregisterReceiver(wifiStateChangedListener);
+    }
+
+    private List<WiFiNetwork> getNetworks() {
+        List<WiFiNetwork> networks;
+        if (inRangeNetworks) {
+            networks = (new WiFiListGrabber()).getNetworksInRange();
+        } else {
+            networks = (new WiFiListGrabber()).getNetworksOutOfRange();
+        }
+
+        return networks;
     }
 
     @Override

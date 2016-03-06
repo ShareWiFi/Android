@@ -5,9 +5,7 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
-import com.tbaehr.sharewifi.R;
 import com.tbaehr.sharewifi.ShareWiFiApplication;
-import com.tbaehr.sharewifi.model.SecurityMode;
 import com.tbaehr.sharewifi.model.viewmodel.WiFiNetwork;
 
 import java.util.ArrayList;
@@ -15,11 +13,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.tbaehr.sharewifi.features.WiFiHelper.getQuality;
-import static com.tbaehr.sharewifi.features.WiFiHelper.getScanResultSecurity;
-import static com.tbaehr.sharewifi.features.WiFiHelper.getSignalStrength;
-import static com.tbaehr.sharewifi.features.WiFiHelper.isConnectedWith;
 
 /**
  * Created by tbaehr on 05.03.16.
@@ -42,19 +35,12 @@ public class WiFiListGrabber {
 
         for (ScanResult scanResult : scanResultList) {
             String ssid = scanResult.SSID != null ? scanResult.SSID : scanResult.BSSID;
-            if (ssid.equals("")) {
-                // TODO: There can be more than one hidden Wi-Fi
-                ssid = ShareWiFiApplication.getAppContext().getString(R.string.networkstatus_hidden_wifi);
-            }
-            boolean encrypted = getScanResultSecurity(scanResult).equals(SecurityMode.OPEN) ? false : true;
-            WiFiNetwork.SignalStrength signalStrength = getSignalStrength(scanResult);
-            boolean connected = isConnectedWith(scanResult);
-            WiFiNetwork.Quality quality = getQuality(scanResult);
 
+            // TODO: There can be more than one hidden Wi-Fi
             WiFiNetwork knownNetwork = knownNetworks.get(ssid);
             WiFiNetwork.ShareStatus shareStatus =  knownNetwork == null ? WiFiNetwork.ShareStatus.UNKNOWN : knownNetwork.getShareStatus();
 
-            WiFiNetwork wiFiNetwork = new WiFiNetwork(ssid, encrypted, signalStrength, connected, quality, shareStatus);
+            WiFiNetwork wiFiNetwork = new WiFiNetwork(scanResult, shareStatus);
             networkMap.put(ssid, wiFiNetwork);
         }
 
@@ -74,7 +60,7 @@ public class WiFiListGrabber {
         final WiFiNetwork[] values = new WiFiNetwork[] {
                 new WiFiNetwork("guest-wifi", true, WiFiNetwork.SignalStrength.NONE, true, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITHIN_GROUPS),
                 new WiFiNetwork("WiFiAtWork", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES),
-                new WiFiNetwork("FamilyRocks", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),
+                new WiFiNetwork("FamilyRocks", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITHIN_GROUPS),
                 new WiFiNetwork("Free-WiFi", false, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.BAD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),
                 new WiFiNetwork("Saturn-Kunden", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),
                 new WiFiNetwork("TopSecretWiFi", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.NOT_SHARED),

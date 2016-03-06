@@ -181,13 +181,15 @@ public class WiFiHelper {
     }
 
     public static WiFiNetwork.SignalStrength getSignalStrength(ScanResult scanResult) {
-        // TODO: Implementation
         // The detected signal level in dBm, also known as the RSSI.
-        if (scanResult.level < -50) {
+        // strength is oriented on this:
+        // https://support.metageek.com/hc/en-us/articles/201955754-Acceptable-Wi-Fi-Signal-Strengths
+        // https://support.bluesound.com/hc/en-us/articles/201940663-What-should-my-Wireless-Signal-Strength-be-for-best-performance-
+        if (scanResult.level > -67) {
             return WiFiNetwork.SignalStrength.PERFECT;
-        } else if (scanResult.level < -60) {
+        } else if (scanResult.level > -70) {
             return WiFiNetwork.SignalStrength.GOOD;
-        } else if (scanResult.level < -70) {
+        } else if (scanResult.level > -80) {
             return WiFiNetwork.SignalStrength.MEDIUM;
         }  else {
             return WiFiNetwork.SignalStrength.LOW;
@@ -196,7 +198,13 @@ public class WiFiHelper {
 
     public static WiFiNetwork.Quality getQuality(ScanResult scanResult) {
         // TODO: Estimate quality, e.g. network speed
+        // Use scanResult to identify the network
         return WiFiNetwork.Quality.GOOD;
+    }
+
+    public static boolean isWiFiEnabled() {
+        WifiManager wifiManager = (WifiManager) ShareWiFiApplication.getAppContext().getSystemService(Context.WIFI_SERVICE);
+        return wifiManager.isWifiEnabled();
     }
 
     public static boolean isConnectedWith(ScanResult scanResult) {

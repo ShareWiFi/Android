@@ -1,25 +1,27 @@
 package com.tbaehr.sharewifi.model.viewmodel;
 
+import android.net.wifi.ScanResult;
+
 import com.tbaehr.sharewifi.R;
 import com.tbaehr.sharewifi.ShareWiFiApplication;
+import com.tbaehr.sharewifi.model.SecurityMode;
+
+import static com.tbaehr.sharewifi.features.WiFiHelper.getQuality;
+import static com.tbaehr.sharewifi.features.WiFiHelper.getScanResultSecurity;
+import static com.tbaehr.sharewifi.features.WiFiHelper.getSignalStrength;
+import static com.tbaehr.sharewifi.features.WiFiHelper.isConnectedWith;
 
 /**
  * Created by tbaehr on 21.02.16.
  */
 public class WiFiNetwork implements Comparable<WiFiNetwork> {
 
-    @Override
-    public int compareTo(WiFiNetwork another) {
-        // TODO: Sort by signal strength
-        return 0;
-    }
-
     public enum SignalStrength {
         NONE,
         LOW,
         MEDIUM,
         GOOD,
-        PERFECT
+        PERFECT;
     }
 
     public enum Quality {
@@ -47,7 +49,23 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
 
     private SignalStrength signalStrength;
 
+    private int signalLevel;
+
     private Quality quality;
+
+    public WiFiNetwork(ScanResult scanResult, ShareStatus shareStatus) {
+        ssid = scanResult.SSID != null ? scanResult.SSID : scanResult.BSSID;
+        if (ssid.equals("")) {
+            ssid = ShareWiFiApplication.getAppContext().getString(R.string.networkstatus_hidden_wifi);
+        }
+        encrypted = getScanResultSecurity(scanResult).equals(SecurityMode.OPEN) ? false : true;
+        signalStrength = getSignalStrength(scanResult);
+        signalLevel = scanResult.level;
+        connected = isConnectedWith(scanResult);
+        quality = getQuality(scanResult);
+
+        this.shareStatus = shareStatus;
+    }
 
     public WiFiNetwork(String ssid, boolean encrypted, SignalStrength signalStrength, boolean connected, Quality quality, ShareStatus shareStatus) {
         this.ssid = ssid;
@@ -66,6 +84,19 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
         this.encrypted = encrypted;
     }
 
+    @Override
+    public int compareTo(WiFiNetwork another) {
+        if (connected) {
+            return -1;
+        }
+
+        if (another.connected) {
+            return 1;
+        }
+
+        return (new Integer(another.signalLevel)).compareTo((new Integer(signalLevel)));
+    }
+
     public String getSsid() {
         return ssid;
     }
@@ -74,7 +105,7 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
         return shareStatus;
     }
 
-    public String getShareStatusDescription() {
+    public String getDescription() {
         String connectionStatusDescription = connected ? ShareWiFiApplication.getAppContext().getString(
                 R.string.networkstatus_connected)+". " : "";
         if (shareStatus == ShareStatus.UNKNOWN) {
