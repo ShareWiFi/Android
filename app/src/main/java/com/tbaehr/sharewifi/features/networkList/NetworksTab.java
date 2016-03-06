@@ -51,29 +51,25 @@ public class NetworksTab extends Fragment {
         wiFiNetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (!inRangeNetworks) {
+                WiFiNetwork network = adapter.getItem(position);
+                if (network.isUnknownNetwork()) {
+                    // TODO: Open Connect Dialog
+                    Snackbar.make(view,
+                            "Hierüber kannst Du Dich in Kürze mit einem WLAN-Netz verbinden.",
+                            Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                } else if (network.isSharedByMe() || network.getShareStatus().equals(WiFiNetwork.ShareStatus.NOT_SHARED)) {
                     openShareDialog(position);
                 } else {
-                    WiFiNetwork network = adapter.getItem(position);
-                    if (network.isUnknownNetwork()) {
-                        // TODO: Open Connect Dialog
-                        Snackbar.make(view,
-                                "Hierüber kannst Du Dich in Kürze mit einem WLAN-Netz verbinden.",
-                                Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                    } else if (network.isSharedByMe() || network.getShareStatus().equals(WiFiNetwork.ShareStatus.NOT_SHARED)) {
-                        openShareDialog(position);
+                    // TODO: Show share info dialog
+                    String alphaTesterMessage;
+                    if (network.getShareStatus().equals(WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE)) {
+                        alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und jedem auf der Welt geteilt.";
                     } else {
-                        // TODO: Show share info dialog
-                        String alphaTesterMessage;
-                        if (network.getShareStatus().equals(WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE)) {
-                            alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und jedem auf der Welt geteilt.";
-                        } else {
-                            alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und weiteren Gruppenmitgliedern geteilt.";
-                        }
-                        Snackbar.make(view,
-                                alphaTesterMessage,
-                                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und weiteren Gruppenmitgliedern geteilt.";
                     }
+                    Snackbar.make(view,
+                            alphaTesterMessage,
+                            Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
             }
 

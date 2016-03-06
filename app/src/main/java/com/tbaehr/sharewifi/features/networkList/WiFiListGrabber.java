@@ -58,7 +58,7 @@ public class WiFiListGrabber {
 
         // dummy implementation - must be removed....
         final WiFiNetwork[] values = new WiFiNetwork[] {
-                new WiFiNetwork("guest-wifi", true, WiFiNetwork.SignalStrength.NONE, true, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITHIN_GROUPS),
+                new WiFiNetwork("guest-wifi", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITHIN_GROUPS),
                 new WiFiNetwork("WiFiAtWork", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES),
                 new WiFiNetwork("FamilyRocks", true, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.GOOD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITHIN_GROUPS),
                 new WiFiNetwork("Free-WiFi", false, WiFiNetwork.SignalStrength.NONE, false, WiFiNetwork.Quality.BAD, WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE),

@@ -56,6 +56,6 @@
     <string name="sharestatus.sharedByMe.withingroups">Von mir geteilt mit ausgewählten Gruppen.</string>
     <string name="sharestatus.sharedByMe.witheveryone">Von mir geteilt mit jedem.</string>
     <string name="sharestatus.sharedWithMe.groups">Mit mir geteilt.</string>
-    <string name="sharestatus.sharedWithMe.everyone">Mir mir und jedem geteilt.</string>
+    <string name="sharestatus.sharedWithMe.everyone">Weltweit geteilt.</string>
 
 </resources>

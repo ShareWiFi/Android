@@ -57,6 +57,6 @@
     <string name="sharestatus.sharedByMe.withingroups">Shared by me within groups.</string>
     <string name="sharestatus.sharedByMe.witheveryone">Shared by me with everyone.</string>
     <string name="sharestatus.sharedWithMe.groups">Shared with me.</string>
-    <string name="sharestatus.sharedWithMe.everyone">Shared with me and everyone.</string>
+    <string name="sharestatus.sharedWithMe.everyone">Shared with everyone.</string>
 
 </resources>
