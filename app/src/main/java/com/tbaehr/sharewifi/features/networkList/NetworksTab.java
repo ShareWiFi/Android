@@ -1,5 +1,6 @@
 package com.tbaehr.sharewifi.features.networkList;
 
+import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -58,14 +59,14 @@ public class NetworksTab extends Fragment {
                             "Hierüber kannst Du Dich in Kürze mit einem WLAN-Netz verbinden.",
                             Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 } else if (network.isSharedByMe() || network.getShareStatus().equals(WiFiNetwork.ShareStatus.NOT_SHARED)) {
-                    openShareDialog(position);
+                    openShareDialog(position, view);
                 } else {
                     // TODO: Show share info dialog
                     String alphaTesterMessage;
                     if (network.getShareStatus().equals(WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE)) {
-                        alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und jedem auf der Welt geteilt.";
+                        alphaTesterMessage = "Dieses Netzwerk wurde mit Dir und jedem auf der Welt geteilt.";
                     } else {
-                        alphaTesterMessage = "Dieses Netzwerk wurden mit Dir und weiteren Gruppenmitgliedern geteilt.";
+                        alphaTesterMessage = "Dieses Netzwerk wurde mit Dir und weiteren Gruppenmitgliedern geteilt.";
                     }
                     Snackbar.make(view,
                             alphaTesterMessage,
@@ -73,11 +74,17 @@ public class NetworksTab extends Fragment {
                 }
             }
 
-            private void openShareDialog(int position) {
+            private void openShareDialog(int position, View view) {
+                final View myView = view.findViewById(R.id.network_item_sharestatus);
+                int startX = myView.getWidth()/2;
+                int startY = myView.getHeight()/2;
+                ActivityOptions options = ActivityOptions.makeScaleUpAnimation(
+                        myView, startX, startY, myView.getWidth(), myView.getHeight());
+
                 Intent openShareViewIntent = new Intent(getActivity(), ShareActivity.class);
                 openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, adapter.getItem(position).getSsid());
                 openShareViewIntent.putExtra(ShareActivity.EXTRA_SELECTED_SHARE_OPTION, adapter.getItem(position).getShareStatus().toInteger());
-                startActivity(openShareViewIntent);
+                startActivity(openShareViewIntent, options.toBundle());
             }
         });
 

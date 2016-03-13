@@ -33,14 +33,14 @@
 
     <string name="sharedialog.option.worldwideshare.title">JA, WELTWEIT</string>
     <string name="sharedialog.option.worldwideshare.desc">Dadurch kann sich jeder auf dieser Welt mit diesem WLAN-Netz verbinden.</string>
-    <string name="sharedialog.option.groupshare.title">JA, INNERHALB AUSGEWÄHLTER GRUPPEN</string>
-    <string name="sharedialog.option.groupshare.desc">Dadurch können sich alle Mitglieder der ausgewählten Gruppen mit diesem WLAN-Netz verbinden.</string>
+    <string name="sharedialog.option.groupshare.title">JA, MIT AUSGEWÄHLTEN KONTAKTEN</string>
+    <string name="sharedialog.option.groupshare.desc">Dadurch können sich alle Mitglieder der ausgewählten Kontaktliste mit diesem WLAN-Netz verbinden.</string>
     <string name="sharedialog.option.deviceshare.title">JA, MIT MEINEN GERÄTEN</string>
     <string name="sharedialog.option.deviceshare.desc">Dadurch können sich alle Geräte mit diesem WLAN-Netz verbinden, auf denen Du eingeloggt bist.</string>
     <string name="sharedialog.option.do_not_share.title">NEIN, NICHT TEILEN</string>
     <string name="sharedialog.option.do_not_share.desc">Die Verbindungsdaten dieses WLAN-Netzes werden von der ShareWiFi-App weder geteilt noch gespeichert.</string>
     <string name="sharedialog.option.do_not_longer_share.title">NEIN, TEILEN RÜCKGÄNGIG MACHEN</string>
-    <string name="sharedialog.option.do_not_longer_share.desc">Die Verbindungsdaten dieses WLAN-Netzes wird von alle Geräten außer diesem gelöscht.</string>
+    <string name="sharedialog.option.do_not_longer_share.desc">Die Verbindungsdaten dieses WLAN-Netzes wird von allen Geräten außer diesem gelöscht.</string>
     <string name="sharedialog.option.neveraskagain">Teilen-Dialog bei Verbinden mit neuem Netz nicht mehr anzeigen.</string>
     <string name="sharedialog.option.notifications_disabled">Teilen-Benachrichtigung bei Verbinden mit neuem Netz deaktiviert.</string>
 

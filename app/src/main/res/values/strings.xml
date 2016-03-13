@@ -34,8 +34,8 @@
 
     <string name="sharedialog.option.worldwideshare.title">YES, WITH EVERYONE IN THE WORLD</string>
     <string name="sharedialog.option.worldwideshare.desc">Then everyone in the world can connect with this Wi-Fi.</string>
-    <string name="sharedialog.option.groupshare.title">YES, WITH SELECTED GROUP MEMBERS</string>
-    <string name="sharedialog.option.groupshare.desc">Then all members of carefully selected groups can connect with this Wi-Fi.</string>
+    <string name="sharedialog.option.groupshare.title">YES, WITH SELECTED CONTACTS</string>
+    <string name="sharedialog.option.groupshare.desc">Then all members of selected contact lists can connect with this Wi-Fi.</string>
     <string name="sharedialog.option.deviceshare.title">YES, WITH MY DEVICES</string>
     <string name="sharedialog.option.deviceshare.desc">Then all your devices where you are logged in can connect with this Wi-Fi.</string>
     <string name="sharedialog.option.do_not_share.title">NO, DO NOT SHARE</string>
