@@ -25,8 +25,8 @@
     <string name="nav_noaccount_title">Nicht eingeloggt</string>
     <string name="nav_noaccount_subtitle">Jetzt anmelden</string>
 
-    <string name="sharedialog.title">§ teilen?</string>
-    <string name="sharedialog.title.alreadyshared">§ weiterhin teilen?</string>
+    <string name="sharedialog.title">%1$s teilen?</string>
+    <string name="sharedialog.title.alreadyshared">%1$s weiterhin teilen?</string>
     <string name="sharedialog.notification.subtitle">Möchtest Du dieses WLAN-Netz teilen?</string>
     <string name="sharedialog.notification.option.yes">Ja</string>
     <string name="sharedialog.notification.option.no">Nein</string>

@@ -26,8 +26,8 @@
     <string name="nav_noaccount_subtitle">Enter your credentials</string>
 
 
-    <string name="sharedialog.title">Share §?</string>
-    <string name="sharedialog.title.alreadyshared">Continue sharing §?</string>
+    <string name="sharedialog.title">Share %1$s?</string>
+    <string name="sharedialog.title.alreadyshared">Continue sharing %1$s?</string>
     <string name="sharedialog.notification.subtitle">Do you want to share this Wi-Fi network?</string>
     <string name="sharedialog.notification.option.yes">Yes</string>
     <string name="sharedialog.notification.option.no">Nope</string>

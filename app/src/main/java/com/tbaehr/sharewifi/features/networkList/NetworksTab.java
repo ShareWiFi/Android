@@ -75,16 +75,27 @@ public class NetworksTab extends Fragment {
             }
 
             private void openShareDialog(int position, View view) {
-                final View myView = view.findViewById(R.id.network_item_sharestatus);
-                int startX = myView.getWidth()/2;
-                int startY = myView.getHeight()/2;
-                ActivityOptions options = ActivityOptions.makeScaleUpAnimation(
-                        myView, startX, startY, myView.getWidth(), myView.getHeight());
-
-                Intent openShareViewIntent = new Intent(getActivity(), ShareActivity.class);
+                final View shareIconView = view.findViewById(R.id.network_item_sharestatus);
+                final ActivityOptions options = setupAcitivityOptions(shareIconView);
+                final Intent openShareViewIntent = new Intent(getActivity(), ShareActivity.class);
                 openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, adapter.getItem(position).getSsid());
                 openShareViewIntent.putExtra(ShareActivity.EXTRA_SELECTED_SHARE_OPTION, adapter.getItem(position).getShareStatus().toInteger());
-                startActivity(openShareViewIntent, options.toBundle());
+                if (options != null) {
+                    startActivity(openShareViewIntent, options.toBundle());
+                } else {
+                    startActivity(openShareViewIntent);
+                }
+            }
+
+            private ActivityOptions setupAcitivityOptions(View view) {
+                int startX = view.getWidth()/2;
+                int startY = view.getHeight()/2;
+                ActivityOptions options = ActivityOptions.makeScaleUpAnimation(
+                        view, startX, startY, view.getWidth(), view.getHeight());
+                //@TargetApi(21)
+                //ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "sharedImage");
+
+                return options;
             }
         });
 

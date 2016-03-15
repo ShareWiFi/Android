@@ -19,9 +19,9 @@
 package com.tbaehr.sharewifi.features.shareDialog;
 
 import android.app.NotificationManager;
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
@@ -67,21 +67,30 @@ public class ShareActivity extends AppCompatActivity {
 
         // Make back arrow white or disable it if opened over notification
         boolean openedOverNotification = getIntent().getBooleanExtra(EXTRA_OPENED_OVER_NOTIFICATION, false);
-        final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+        final Drawable backArrow;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            backArrow = getDrawable(R.drawable.abc_ic_ab_back_material);
+        } else {
+            backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+        }
         if (openedOverNotification) {
             backArrow.setVisible(false, false);
             actionBar.setDisplayHomeAsUpEnabled(false);
         } else {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            backArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+            int color;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                color = getColor(R.color.colorWhite);
+            } else {
+                color = getResources().getColor(R.color.colorWhite);
+            }
+            backArrow.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
 
         // Set title of this activity including the network name
-        String title = getString(R.string.sharedialog_title);
-        Intent intent = getIntent();
-        final String networkName = intent.getStringExtra(EXTRA_NETWORKNAME);
-        title = title.replace("§", networkName);
+        final String networkName = getIntent().getStringExtra(EXTRA_NETWORKNAME);
+        String title = getString(R.string.sharedialog_title, networkName);
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.share_dialog_collapsing_toolbar);

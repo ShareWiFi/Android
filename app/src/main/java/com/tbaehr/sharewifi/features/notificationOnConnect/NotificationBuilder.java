@@ -58,7 +58,7 @@ public class NotificationBuilder {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(ShareWiFiApplication.getAppContext())
                         .setSmallIcon(R.drawable.ic_menu_shared)
-                        .setContentTitle(context.getString(R.string.sharedialog_title).replace("§", ssid))
+                        .setContentTitle(context.getString(R.string.sharedialog_title, ssid))
                         .setContentText(context.getString(R.string.sharedialog_notification_subtitle));
         mBuilder.addAction(R.drawable.ic_dialog_yes, context.getString(R.string.sharedialog_notification_option_yes), pIntent);
         mBuilder.addAction(R.drawable.ic_dialog_no, context.getString(R.string.sharedialog_notification_option_no), null);
