@@ -34,6 +34,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tbaehr.sharewifi.R;
@@ -64,6 +65,7 @@ public class ShareActivity extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.share_dialog_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+        ImageView closeButton = (ImageView) findViewById(R.id.share_dialog_close_button);
 
         // Make back arrow white or disable it if opened over notification
         boolean openedOverNotification = getIntent().getBooleanExtra(EXTRA_OPENED_OVER_NOTIFICATION, false);
@@ -76,8 +78,16 @@ public class ShareActivity extends AppCompatActivity {
         if (openedOverNotification) {
             backArrow.setVisible(false, false);
             actionBar.setDisplayHomeAsUpEnabled(false);
+            closeButton.setVisibility(View.VISIBLE);
+            closeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: Not implemented yet
+                }
+            });
         } else {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            closeButton.setVisibility(View.GONE);
             int color;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 color = getColor(R.color.colorWhite);

@@ -37,7 +37,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_scrollFlags="scroll|enterAlways"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin" >
+
+                <ImageView
+                    android:id="@+id/share_dialog_close_button"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="right"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:src="@drawable/ic_dialog_no_large"/>
+
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
