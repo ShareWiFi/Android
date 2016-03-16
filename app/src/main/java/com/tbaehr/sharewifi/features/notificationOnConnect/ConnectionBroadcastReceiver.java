@@ -34,24 +34,41 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        // Edge Case 1: NetworkInfo not available || Not connected
         NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
-        if (info != null && info.isConnected() && info.isAvailable()) {
-            // Retrieve network ssid and mac address
-            WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            String ssid = wifiInfo.getSSID();
-            String mac = wifiInfo.getMacAddress();
-
-            if (!ssid.equals("<unknown ssid>") || !contains(ShareWiFiApplication.blackList, ssid)) {
-                // Is the network already known (or is it a new one) ?
-                // If it is unknown then show notification (except the user disabled notifications)
-                // TODO: Finish implementation
-                NotificationBuilder.getInstance().showShareDialog(ssid);
-            }
-        } else {
+        if (info == null || !info.isConnected() || !info.isAvailable()) {
             NotificationBuilder.getInstance().hideShareDialog();
+            return;
         }
 
+        // Edge Case 2: Internet connection not available
+        // TODO: Internet check
+        if (false) {
+            NotificationBuilder.getInstance().hideShareDialog();
+            return;
+        }
+
+        // Edge case 3: Known network || Network in blackList
+        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        String ssid = wifiInfo.getSSID();
+//        String mac = wifiInfo.getMacAddress();
+        if (onBlacklist(ssid) || isKnownNetwork(ssid)) { // TODO: needed? ssid.equals("<unknown ssid>")
+            NotificationBuilder.getInstance().hideShareDialog();
+            return;
+        }
+
+        // Show the share dialog notification
+        NotificationBuilder.getInstance().showShareDialog(ssid);
+
+    }
+
+    private boolean isKnownNetwork(String ssid) {
+        return false;
+    }
+
+    private boolean onBlacklist(String ssid) {
+        return contains(ShareWiFiApplication.blackList, ssid);
     }
 
     private boolean contains(String[] blacklist, String ssid) {
