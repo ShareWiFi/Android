@@ -18,7 +18,6 @@
  */
 package com.tbaehr.sharewifi.features.shareDialog;
 
-import android.app.NotificationManager;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -38,6 +37,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tbaehr.sharewifi.R;
+import com.tbaehr.sharewifi.features.notificationOnConnect.NotificationBuilder;
 
 public class ShareActivity extends AppCompatActivity {
 
@@ -50,8 +50,16 @@ public class ShareActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setAsFullScreenActivity();
+        configureToolbar();
+        NotificationBuilder.getInstance().hideShareDialog();
+        configureCards();
+    }
 
-        // Set as fullscreen activity with translucent status
+    /**
+     * Set as fullscreen activity with translucent status
+     */
+    private void setAsFullScreenActivity() {
         Window window = getWindow();
         window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
@@ -61,11 +69,27 @@ public class ShareActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         setContentView(R.layout.sharedialog_activity);
+    }
 
+    /**
+     * Set the toolbar. This includes...
+     * - the title of the collapsing toolbar
+     * - show/hide the back arrow button and click listener
+     * - show/hide the close button and click listener
+     */
+    private void configureToolbar() {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.share_dialog_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         ImageView closeButton = (ImageView) findViewById(R.id.share_dialog_close_button);
+
+        // Set title of this activity including the network name
+        final String networkName = getIntent().getStringExtra(EXTRA_NETWORKNAME);
+        String title = getString(R.string.sharedialog_title, networkName);
+
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.share_dialog_collapsing_toolbar);
+        collapsingToolbar.setTitle(title);
 
         // Make back arrow white or disable it if opened over notification
         boolean openedOverNotification = getIntent().getBooleanExtra(EXTRA_OPENED_OVER_NOTIFICATION, false);
@@ -97,21 +121,14 @@ public class ShareActivity extends AppCompatActivity {
             backArrow.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
+    }
 
-        // Set title of this activity including the network name
-        final String networkName = getIntent().getStringExtra(EXTRA_NETWORKNAME);
-        String title = getString(R.string.sharedialog_title, networkName);
-
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.share_dialog_collapsing_toolbar);
-        collapsingToolbar.setTitle(title);
-
-        // Delete notification
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.cancel(0);
-
-        // Set click listeners for cards
+    /**
+     * Configure the CardViews.
+     * These represent the UI for sharing/not sharing a network.
+     * This method also initializes the corresponding click listeners.
+     */
+    private void configureCards() {
         cards[0] = (CardView) findViewById(R.id.share_dialog_card_globalshare);
         cards[1] = (CardView) findViewById(R.id.share_dialog_card_groupshare);
         cards[2] = (CardView) findViewById(R.id.share_dialog_card_deviceshare);
@@ -122,7 +139,7 @@ public class ShareActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 globalShare();
-                setSelected(0);
+                setSelectedCard(0);
             }
         };
         cards[0].setOnClickListener(globalShareClickListener);
@@ -131,7 +148,7 @@ public class ShareActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 groupShare();
-                setSelected(1);
+                setSelectedCard(1);
             }
         };
         cards[1].setOnClickListener(groupShareClickListener);
@@ -140,7 +157,7 @@ public class ShareActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deviceShare();
-                setSelected(2);
+                setSelectedCard(2);
             }
         };
         cards[2].setOnClickListener(deviceShareClickListener);
@@ -149,7 +166,7 @@ public class ShareActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 noShare();
-                setSelected(3);
+                setSelectedCard(3);
             }
         };
         cards[3].setOnClickListener(noShareClickListener);
@@ -163,10 +180,10 @@ public class ShareActivity extends AppCompatActivity {
         disable_notifications.setOnClickListener(disableNotificationsClickListener);
 
         int selectedShareOptionId = getIntent().getIntExtra(EXTRA_SELECTED_SHARE_OPTION, -1);
-        setSelected(selectedShareOptionId);
+        setSelectedCard(selectedShareOptionId);
     }
 
-    private void setSelected(int cardId) {
+    private void setSelectedCard(int cardId) {
         for (int i = 0; i<cards.length; i++) {
             if (i == cardId) {
                 cards[i].setBackgroundColor(getResources().getColor(R.color.backgroundOfSelectedItem));
