@@ -53,7 +53,7 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         String ssid = wifiInfo.getSSID();
 //        String mac = wifiInfo.getMacAddress();
-        if (onBlacklist(ssid) || isKnownNetwork(ssid)) { // TODO: needed? ssid.equals("<unknown ssid>")
+        if (onBlacklist(ssid) || isKnownNetwork(ssid)) {
             NotificationBuilder.getInstance().hideShareDialog();
             return;
         }
