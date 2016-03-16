@@ -71,15 +71,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top">
 
-                <LinearLayout
-                    style="@style/Widget.CardContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <LinearLayout style="@style/Widget.CardContent">
 
                     <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
+                        android:layout_width="@dimen/card_drawable_size"
+                        android:layout_height="@dimen/card_drawable_size"
                         android:layout_marginLeft="@dimen/card_margin"
                         android:layout_marginRight="@dimen/card_margin"
                         android:src="@drawable/ic_menu_shared_with_all" />
@@ -114,15 +110,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top">
 
-                <LinearLayout
-                    style="@style/Widget.CardContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <LinearLayout style="@style/Widget.CardContent">
 
                     <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
+                        android:layout_width="@dimen/card_drawable_size"
+                        android:layout_height="@dimen/card_drawable_size"
                         android:layout_marginLeft="@dimen/card_margin"
                         android:layout_marginRight="@dimen/card_margin"
                         android:src="@drawable/ic_menu_shared_with_groups" />
@@ -157,15 +149,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top" >
 
-                <LinearLayout
-                    style="@style/Widget.CardContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <LinearLayout style="@style/Widget.CardContent">
 
                     <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
+                        android:layout_width="@dimen/card_drawable_size"
+                        android:layout_height="@dimen/card_drawable_size"
                         android:layout_marginLeft="@dimen/card_margin"
                         android:layout_marginRight="@dimen/card_margin"
                         android:src="@drawable/ic_menu_shared_with_devices" />
@@ -200,15 +188,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top" >
 
-                <LinearLayout
-                    style="@style/Widget.CardContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <LinearLayout style="@style/Widget.CardContent">
 
                     <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
+                        android:layout_width="@dimen/card_drawable_size"
+                        android:layout_height="@dimen/card_drawable_size"
                         android:layout_marginLeft="@dimen/card_margin"
                         android:layout_marginRight="@dimen/card_margin"
                         android:src="@drawable/ic_menu_share_off" />

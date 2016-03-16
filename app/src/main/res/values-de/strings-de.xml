@@ -44,6 +44,30 @@
     <string name="sharedialog.option.neveraskagain">Teilen-Dialog bei Verbinden mit neuem Netz nicht mehr anzeigen.</string>
     <string name="sharedialog.option.notifications_disabled">Teilen-Benachrichtigung bei Verbinden mit neuem Netz deaktiviert.</string>
 
+    <string name="sharedialog.info.card_share.title">GETEILT MIT %1$s</string>
+    <string name="sharedialog.info.card_share.title_everyone">\ JEDEM</string>
+    <string name="sharedialog.info.card_share.title_all_contacts">\ ALL MEINEN KONTAKTEN</string>
+    <string name="sharedialog.info.card_share.title_my_devices">\ MEINEN GERÄTEN</string>
+    <string name="sharedialog.info.card_share.subtitle_line1_by">Von %1$s.</string>
+    <string name="sharedialog.info_card.share.subtitle_line2_who">%2$s können sich mit diesem Netz verbinden.</string>
+    <string name="sharedialog.info_card.share.subtitle_line2_who_my_devices">Alle Geräte auf denen ich eingeloggt bin\ </string>
+
+    <string name="sharedialog.info_card.network.signal_strength">Signalstärke</string>
+    <string name="sharedialog.info_card.network.signal_strength.perfect">Hervorragender Empfang</string>
+    <string name="sharedialog.info_card.network.signal_strength.good">Guter Empfang</string>
+    <string name="sharedialog.info_card.network.signal_strength.medium">Ausreichender Empfang</string>
+    <string name="sharedialog.info_card.network.signal_strength.poor">Schlechter Empfang</string>
+    <string name="sharedialog.info_card.network.signal_strength.desc">~%1$s dBm</string>
+    <string name="sharedialog.info_card.network.security.secure">Hohe Sicherheit</string>
+    <string name="sharedialog.info_card.network.security.secure.wpa2">WPA2-verschlüsselt</string>
+    <string name="sharedialog.info_card.network.security.poor">Geringe Sicherheit</string>
+    <string name="sharedialog.info_card.network.security.poor.wep">WEP-verschlüsselt</string>
+    <string name="sharedialog.info_card.network.security.dangerous">Keine Sicherheit</string>
+    <string name="sharedialog.info_card.network.security.dangerous.not_encrypted">Nicht verschlüsselt, Experten können sehen, was Du tust.</string>
+    <string name="sharedialog.info_card.network.internet_speed.fast">Schnelles Internet</string>
+    <string name="sharedialog.info_card.network.internet_speed.slow">Lahmes Internet</string>
+    <string name="sharedialog.info_card.network.internet_speed.desc">~%1$f MBit/s</string>
+
     <string name="networklist.inrange">In Reichweite</string>
     <string name="networklist.outofrange">Außer Reichweite</string>
 

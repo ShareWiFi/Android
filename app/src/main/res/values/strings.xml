@@ -45,6 +45,31 @@
     <string name="sharedialog.option.neveraskagain">Never show the share dialog on new connect again.</string>
     <string name="sharedialog.option.notifications_disabled">Share dialog on new connect is disabled.</string>
 
+    <string name="sharedialog.info.card_share.title">SHARED WITH %1$s</string>
+    <string name="sharedialog.info.card_share.title_everyone">\ EVERYONE</string>
+    <string name="sharedialog.info.card_share.title_all_contacts">\ ALL MY CONTACTS</string>
+    <string name="sharedialog.info.card_share.title_my_devices">\ MY DEVICES</string>
+    <string name="sharedialog.info.card_share.subtitle_line1_by">By %1$s.</string>
+    <string name="sharedialog.info_card.share.subtitle_line2_who">%2$s can connect with this Wi-Fi.</string>
+    <string name="sharedialog.info_card.share.subtitle_line2_who_my_devices">All those devices where I\&apos;m logged in\ </string>
+
+    <string name="sharedialog.info_card.network.signal_strength">Signal strength</string>
+    <string name="sharedialog.info_card.network.signal_strength.perfect">Excellent signal strength</string>
+    <string name="sharedialog.info_card.network.signal_strength.good">Good signal strength</string>
+    <string name="sharedialog.info_card.network.signal_strength.medium">Medium signal strength</string>
+    <string name="sharedialog.info_card.network.signal_strength.poor">Poor signal strength</string>
+    <string name="sharedialog.info_card.network.signal_strength.desc">~%1$s dBm</string>
+    <string name="sharedialog.info_card.network.security.secure">High security</string>
+    <string name="sharedialog.info_card.network.security.secure.wpa2">WPA2-encrypted</string>
+    <string name="sharedialog.info_card.network.security.poor">Poor security</string>
+    <string name="sharedialog.info_card.network.security.poor.wep">WEP-encrypted</string>
+    <string name="sharedialog.info_card.network.security.dangerous">No security</string>
+    <string name="sharedialog.info_card.network.security.dangerous.not_encrypted">Not encrypted, it is simple for experts to see what you\&apos;re doing.</string>
+    <string name="sharedialog.info_card.network.internet_speed.fast">Fast internet</string>
+    <string name="sharedialog.info_card.network.internet_speed.slow">Slow internet</string>
+    <string name="sharedialog.info_card.network.internet_speed.desc">~%1$f Mbps</string>
+
+    
     <string name="networklist.inrange">In Range</string>
     <string name="networklist.outofrange">Out Of Range</string>
 
