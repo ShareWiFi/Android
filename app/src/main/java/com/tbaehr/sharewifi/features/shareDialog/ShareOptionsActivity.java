@@ -25,13 +25,10 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,36 +36,21 @@ import android.widget.TextView;
 import com.tbaehr.sharewifi.R;
 import com.tbaehr.sharewifi.features.notificationOnConnect.NotificationBuilder;
 
-public class ShareActivity extends AppCompatActivity {
+public class ShareOptionsActivity extends AbstractShareActivity {
 
-    public static final String EXTRA_NETWORKNAME = "network_name";
     public static final String EXTRA_OPENED_OVER_NOTIFICATION = "opened_over_notification";
-    public static final String EXTRA_SELECTED_SHARE_OPTION = "selected_share_option";
 
     private CardView[] cards = new CardView[4];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setAsFullScreenActivity();
+
+        setContentView(R.layout.sharedialog_options_activity);
+
         configureToolbar();
         NotificationBuilder.getInstance().hideShareDialog();
         configureCards();
-    }
-
-    /**
-     * Set as fullscreen activity with translucent status
-     */
-    private void setAsFullScreenActivity() {
-        Window window = getWindow();
-        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-
-        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-        setContentView(R.layout.sharedialog_options_activity);
     }
 
     /**
@@ -107,6 +89,7 @@ public class ShareActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     // TODO: Not implemented yet
+                    finish();
                 }
             });
         } else {

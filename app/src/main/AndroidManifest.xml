@@ -27,8 +27,13 @@
         </activity>
 
         <activity
-            android:name=".features.shareDialog.ShareActivity"
+            android:name=".features.shareDialog.ShareOptionsActivity"
             android:theme="@style/AppTheme.NoActionBarLight" >
+        </activity>
+
+        <activity
+            android:name=".features.shareDialog.ShareInfoActivity"
+            android:theme="@style/AppTheme.NoActionBarLight">
         </activity>
 
         <receiver android:name="com.tbaehr.sharewifi.features.notificationOnConnect.ConnectionBroadcastReceiver" >

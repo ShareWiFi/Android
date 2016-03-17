@@ -18,7 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tbaehr.sharewifi.R;
-import com.tbaehr.sharewifi.features.shareDialog.ShareActivity;
+import com.tbaehr.sharewifi.features.shareDialog.ShareInfoActivity;
 import com.tbaehr.sharewifi.model.viewmodel.WiFiNetwork;
 
 import java.util.List;
@@ -53,33 +53,23 @@ public class NetworksTab extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 WiFiNetwork network = adapter.getItem(position);
+                WiFiNetwork.ShareStatus shareStatus = network.getShareStatus();
                 if (network.isUnknownNetwork()) {
                     // TODO: Open Connect Dialog
                     Snackbar.make(view,
                             "Hierüber kannst Du Dich in Kürze mit einem WLAN-Netz verbinden.",
                             Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                } else if (network.isSharedByMe() || network.getShareStatus().equals(WiFiNetwork.ShareStatus.NOT_SHARED)) {
-                    openShareDialog(position, view);
                 } else {
-                    // TODO: Show share info dialog
-                    String alphaTesterMessage;
-                    if (network.getShareStatus().equals(WiFiNetwork.ShareStatus.SHARED_WITH_ME_WITH_EVERYONE)) {
-                        alphaTesterMessage = "Dieses Netzwerk wurde mit Dir und jedem auf der Welt geteilt.";
-                    } else {
-                        alphaTesterMessage = "Dieses Netzwerk wurde mit Dir und weiteren Gruppenmitgliedern geteilt.";
-                    }
-                    Snackbar.make(view,
-                            alphaTesterMessage,
-                            Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    openShareInfoDialog(position, view);
                 }
             }
 
-            private void openShareDialog(int position, View view) {
+            private void openShareInfoDialog(int position, View view) {
                 final View shareIconView = view.findViewById(R.id.network_item_sharestatus);
                 final ActivityOptions options = setupAcitivityOptions(shareIconView);
-                final Intent openShareViewIntent = new Intent(getActivity(), ShareActivity.class);
-                openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, adapter.getItem(position).getSsid());
-                openShareViewIntent.putExtra(ShareActivity.EXTRA_SELECTED_SHARE_OPTION, adapter.getItem(position).getShareStatus().toInteger());
+                final Intent openShareViewIntent = new Intent(getActivity(), ShareInfoActivity.class);
+                openShareViewIntent.putExtra(ShareInfoActivity.EXTRA_NETWORKNAME, adapter.getItem(position).getSsid());
+                openShareViewIntent.putExtra(ShareInfoActivity.EXTRA_SELECTED_SHARE_OPTION, adapter.getItem(position).getShareStatus().toInteger());
                 if (options != null) {
                     startActivity(openShareViewIntent, options.toBundle());
                 } else {

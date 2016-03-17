@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
     android:id="@+id/share_dialog_info_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -103,7 +104,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/share_dialog_card_groupshare"
+                android:id="@+id/share_dialog_info_card_network"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_margin_top">
@@ -195,5 +196,17 @@
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/share_dialog_info_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_fab_edit"
+        fab:fab_colorNormal="@color/app_primary"
+        fab:fab_colorPressed="@color/app_primary_pressed"
+        fab:fab_colorRipple="@color/app_ripple"/>
 
 </android.support.design.widget.CoordinatorLayout>

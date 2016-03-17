@@ -40,13 +40,38 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
 
         public Integer toInteger() {
             switch (this) {
-                case UNKNOWN: return -1;
                 case SHARED_BY_ME_WITH_EVERYONE: return 0;
                 case SHARED_BY_ME_WITHIN_GROUPS: return 1;
                 case SHARED_BY_ME_WITH_MY_DEVICES: return 2;
-                case NOT_SHARED: return 3;
+                case SHARED_WITH_ME_WITH_EVERYONE: return 3;
+                case SHARED_WITH_ME_WITHIN_GROUPS: return 4;
+                case NOT_SHARED: return 5;
+                case UNKNOWN: return 6;
                 default: return -1;
             }
+        }
+
+        public static ShareStatus fromInteger(Integer integer) {
+            switch (integer) {
+                case 0: return SHARED_BY_ME_WITH_EVERYONE;
+                case 1: return SHARED_BY_ME_WITHIN_GROUPS;
+                case 2: return SHARED_BY_ME_WITH_MY_DEVICES;
+                case 3: return SHARED_WITH_ME_WITH_EVERYONE;
+                case 4: return SHARED_WITH_ME_WITHIN_GROUPS;
+                case 5: return NOT_SHARED;
+                case 6: return UNKNOWN;
+                default: throw new IllegalArgumentException("Integer "+integer+" is not a valid share status ID.");
+            }
+        }
+
+        public boolean isShared() {
+            return !(this.equals(UNKNOWN) || this.equals(NOT_SHARED));
+        }
+
+        public boolean isSharedByMe() {
+            return this.equals(ShareStatus.SHARED_BY_ME_WITH_EVERYONE) ||
+                    this.equals(ShareStatus.SHARED_BY_ME_WITHIN_GROUPS) ||
+                    this.equals(ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES);
         }
     }
 
@@ -114,12 +139,6 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
 
     public ShareStatus getShareStatus() {
         return shareStatus;
-    }
-
-    public boolean isSharedByMe() {
-        return shareStatus.equals(ShareStatus.SHARED_BY_ME_WITH_EVERYONE) ||
-                shareStatus.equals(ShareStatus.SHARED_BY_ME_WITHIN_GROUPS) ||
-                shareStatus.equals(ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES);
     }
 
     public String getDescription() {

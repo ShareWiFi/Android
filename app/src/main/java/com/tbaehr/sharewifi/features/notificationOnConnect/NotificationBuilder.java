@@ -27,7 +27,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.tbaehr.sharewifi.R;
 import com.tbaehr.sharewifi.ShareWiFiApplication;
-import com.tbaehr.sharewifi.features.shareDialog.ShareActivity;
+import com.tbaehr.sharewifi.features.shareDialog.ShareOptionsActivity;
 
 /**
  * Created by tbaehr on 05.03.16.
@@ -49,9 +49,9 @@ public class NotificationBuilder {
     public void showShareDialog(String ssid) {
         Context context = ShareWiFiApplication.getAppContext();
 
-        Intent openShareViewIntent = new Intent(context, ShareActivity.class);
-        openShareViewIntent.putExtra(ShareActivity.EXTRA_NETWORKNAME, ssid);
-        openShareViewIntent.putExtra(ShareActivity.EXTRA_OPENED_OVER_NOTIFICATION, true);
+        Intent openShareViewIntent = new Intent(context, ShareOptionsActivity.class);
+        openShareViewIntent.putExtra(ShareOptionsActivity.EXTRA_NETWORKNAME, ssid);
+        openShareViewIntent.putExtra(ShareOptionsActivity.EXTRA_OPENED_OVER_NOTIFICATION, true);
 
         PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), openShareViewIntent, 0);
 
