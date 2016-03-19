@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:id="@+id/share_dialog_info_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -197,16 +197,51 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/share_dialog_info_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        android:src="@drawable/ic_fab_edit"
-        fab:fab_colorNormal="@color/app_primary"
-        fab:fab_colorPressed="@color/app_primary_pressed"
-        fab:fab_colorRipple="@color/app_ripple"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/share_dialog_info_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_singleLine="false"
+            fab:menu_labels_maxLines="2"
+            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_fab_label="Nichts ändern">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/share_dialog_info_fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fab_edit"
+                fab:fab_size="mini"
+                fab:fab_label="Nicht mit diesem Netz verbinden" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/share_dialog_info_fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fab_edit"
+                fab:fab_size="mini"
+                fab:fab_label="Nicht verbinden mit Netzen von %1$s" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/share_dialog_info_fab3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fab_edit"
+                fab:fab_size="mini"
+                fab:fab_label="Missbrauch melden" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -30,7 +30,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.tbaehr.sharewifi.R;
 
 public class ShareInfoActivity extends AbstractShareActivity {
@@ -66,9 +66,9 @@ public class ShareInfoActivity extends AbstractShareActivity {
         // Make back arrow white or disable it if opened over notification
         final Drawable backArrow;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            backArrow = getDrawable(R.drawable.abc_ic_ab_back_material);
+            backArrow = getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         } else {
-            backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+            backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         }
         actionBar.setDisplayHomeAsUpEnabled(true);
         int color;
@@ -82,7 +82,7 @@ public class ShareInfoActivity extends AbstractShareActivity {
     }
 
     private void configureFab() {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.share_dialog_info_fab);
+        FloatingActionMenu fab = (FloatingActionMenu) findViewById(R.id.share_dialog_info_menu);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +90,7 @@ public class ShareInfoActivity extends AbstractShareActivity {
                         findViewById(R.id.share_dialog_info_coordinator_layout),
                         "Sorry, Teilen mit Deinen Geräten ist noch nicht implementiert.",
                         Snackbar.LENGTH_LONG).setAction("Action", null).show();*/
-                openShareInfoDialog();
+                //openShareInfoDialog();
             }
         });
     }

@@ -77,9 +77,9 @@ public class ShareOptionsActivity extends AbstractShareActivity {
         boolean openedOverNotification = getIntent().getBooleanExtra(EXTRA_OPENED_OVER_NOTIFICATION, false);
         final Drawable backArrow;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            backArrow = getDrawable(R.drawable.abc_ic_ab_back_material);
+            backArrow = getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         } else {
-            backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+            backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         }
         if (openedOverNotification) {
             backArrow.setVisible(false, false);
