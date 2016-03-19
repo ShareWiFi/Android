@@ -24,6 +24,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.tbaehr.sharewifi.R;
 
@@ -83,17 +85,36 @@ public class ShareInfoActivity extends AbstractShareActivity {
     }
 
     private void configureFab() {
-        FloatingActionMenu fab = (FloatingActionMenu) findViewById(R.id.share_dialog_info_menu);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*Snackbar.make(
-                        findViewById(R.id.share_dialog_info_coordinator_layout),
-                        "Sorry, Teilen mit Deinen Geräten ist noch nicht implementiert.",
-                        Snackbar.LENGTH_LONG).setAction("Action", null).show();*/
-                //openShareInfoDialog();
-            }
-        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.share_dialog_info_fab);
+        FloatingActionMenu fam = (FloatingActionMenu) findViewById(R.id.share_dialog_info_menu);
+
+        if (mShareStatus.isSharedByMe() || !mShareStatus.isShared()) {
+            fam.setVisibility(View.GONE);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openShareInfoDialog();
+                }
+            });
+        } else {
+            fab.setVisibility(View.GONE);
+            FloatingActionButton fab1 = (FloatingActionButton) findViewById(R.id.share_dialog_info_fab1);
+            FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.share_dialog_info_fab2);
+            FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.share_dialog_info_fab3);
+
+            View.OnClickListener listener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Snackbar.make(
+                            findViewById(R.id.share_dialog_info_coordinator_layout),
+                            "Sorry, das kommt erst noch.",
+                            Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
+            };
+            fab1.setOnClickListener(listener);
+            fab2.setOnClickListener(listener);
+            fab3.setOnClickListener(listener);
+        }
     }
 
     /**
@@ -118,7 +139,11 @@ public class ShareInfoActivity extends AbstractShareActivity {
             if (mShareStatus.isSharedWithEveryone()) {
                 shareTitle = getString(R.string.sharedialog_info_card_share_title_everyone);
             } else if (mShareStatus.isSharedWithinGroups()) {
-                shareTitle = getString(R.string.sharedialog_info_card_share_title_all_contacts);
+                // TODO: Implementation: Distinguish between all contacts and some
+                shareTitle = getString(R.string.sharedialog_info_card_share_title_selected_contacts);
+                if (mShareStatus.isSharedByMe()) {
+                    //shareTitle = getString(R.string.sharedialog_info_card_share_title_all_contacts);
+                }
             } else if (mShareStatus.isSharedWithMyDevices()) {
                 shareTitle = getString(R.string.sharedialog_info_card_share_title_my_devices);
             } else {
@@ -162,12 +187,28 @@ public class ShareInfoActivity extends AbstractShareActivity {
         }
 
         // set signal strength
+        TextView signalStrengthTitle = (TextView) findViewById(R.id.share_dialog_card_network_signal_strength_title);
+        int perfect = R.string.sharedialog_info_card_network_signal_strength_perfect;
+        int good = R.string.sharedialog_info_card_network_signal_strength_good;
+        int medium = R.string.sharedialog_info_card_network_signal_strength_medium;
+        int poor = R.string.sharedialog_info_card_network_signal_strength_poor;
+        TextView signalStrengthDesc = (TextView) findViewById(R.id.share_dialog_card_network_signal_strength_desc);
         // TODO
 
         // set security
+        TextView securityTitle = (TextView) findViewById(R.id.share_dialog_card_network_security_title);
+        int highSec = R.string.sharedialog_info_card_network_security_secure;
+        int poorSec = R.string.sharedialog_info_card_network_security_poor;
+        int noSecur = R.string.sharedialog_info_card_network_security_dangerous;
+        TextView securityDesc = (TextView) findViewById(R.id.share_dialog_card_network_security_desc);
+        int highSecDesc = R.string.sharedialog_info_card_network_security_secure_wpa2;
+        int poorSecDesc = R.string.sharedialog_info_card_network_security_poor_wep;
+        int noSecurDesc = R.string.sharedialog_info_card_network_security_dangerous_not_encrypted;
         // TODO
 
         // set speed
+        TextView speedTitle = (TextView) findViewById(R.id.share_dialog_card_network_speed_title);
+        TextView speedDesc = (TextView) findViewById(R.id.share_dialog_card_network_speed_desc);
         // TODO
     }
 

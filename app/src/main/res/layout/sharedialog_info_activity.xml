@@ -120,20 +120,20 @@
                         android:layout_marginBottom="@dimen/card_margin" >
 
                         <ImageView
-                            android:id="@+id/network_item_networkstatus"
+                            android:id="@+id/share_dialog_card_netowrk_icon_networkstatus"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
                             android:src="@drawable/ic_menu_signal_perfect" />
 
                         <ImageView
-                            android:id="@+id/network_item_encrypted"
+                            android:id="@+id/share_dialog_card_netowrk_icon_encrypted"
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_marginTop="36dp"
                             android:src="@drawable/ic_menu_locked" />
 
                         <ImageView
-                            android:id="@+id/network_item_quality"
+                            android:id="@+id/share_dialog_card_network_icon_quality"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginTop="36dp"
@@ -149,6 +149,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/share_dialog_card_network_signal_strength_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.info_card.network.signal_strength.good"
@@ -156,12 +157,14 @@
                             android:textColor="@color/colorBlack" />
 
                         <TextView
+                            android:id="@+id/share_dialog_card_network_signal_strength_desc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/card_margin"
                             android:text="@string/sharedialog.info_card.network.signal_strength.desc" />
 
                         <TextView
+                            android:id="@+id/share_dialog_card_network_security_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.info_card.network.security.secure"
@@ -169,12 +172,14 @@
                             android:textColor="@color/colorBlack" />
 
                         <TextView
+                            android:id="@+id/share_dialog_card_network_security_desc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/card_margin"
                             android:text="@string/sharedialog.info_card.network.security.secure.wpa2" />
 
                         <TextView
+                            android:id="@+id/share_dialog_card_network_speed_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.info_card.network.internet_speed.fast"
@@ -182,6 +187,7 @@
                             android:textColor="@color/colorBlack" />
 
                         <TextView
+                            android:id="@+id/share_dialog_card_network_speed_desc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/card_margin"
@@ -214,7 +220,7 @@
             fab:menu_labels_singleLine="false"
             fab:menu_labels_maxLines="2"
             fab:menu_backgroundColor="#ccffffff"
-            fab:menu_fab_label="Nichts ändern">
+            fab:menu_fab_label="@string/sharedialog.info.action.do_nothing">
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/share_dialog_info_fab1"
@@ -222,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_fab_edit"
                 fab:fab_size="mini"
-                fab:fab_label="Nicht mit diesem Netz verbinden" />
+                fab:fab_label="@string/sharedialog.info.action.remove_network" />
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/share_dialog_info_fab2"
@@ -230,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_fab_edit"
                 fab:fab_size="mini"
-                fab:fab_label="Nicht verbinden mit Netzen von %1$s" />
+                fab:fab_label="@string/sharedialog.info.action.put_user_on_spam" />
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/share_dialog_info_fab3"
@@ -238,9 +244,21 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_fab_edit"
                 fab:fab_size="mini"
-                fab:fab_label="Missbrauch melden" />
+                fab:fab_label="@string/sharedialog.info.action.abuse" />
 
         </com.github.clans.fab.FloatingActionMenu>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/share_dialog_info_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_fab_edit"
+            fab:fab_size="normal"
+            fab:fab_label="Missbrauch melden" />
 
     </RelativeLayout>
 

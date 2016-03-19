@@ -47,6 +47,7 @@
     <string name="sharedialog.info.card_share.title">GETEILT MIT %1$s</string>
     <string name="sharedialog.info.card_share.title_everyone">\ JEDEM</string>
     <string name="sharedialog.info.card_share.title_all_contacts">\ ALL MEINEN KONTAKTEN</string>
+    <string name="sharedialog.info.card_share.title_selected_contacts">\ AUSGEWÄHLTEN KONTAKTEN</string>
     <string name="sharedialog.info.card_share.title_my_devices">\ MEINEN GERÄTEN</string>
     <string name="sharedialog.info.card_share.title_not_shared">NICHT GETEILT</string>
     <string name="sharedialog.info.card_share.subtitle_line1_by">Von %1$s.</string>
@@ -72,6 +73,11 @@
     <string name="sharedialog.info_card.network.internet_speed.fast">Schnelles Internet</string>
     <string name="sharedialog.info_card.network.internet_speed.slow">Lahmes Internet</string>
     <string name="sharedialog.info_card.network.internet_speed.desc">~%1$f MBit/s</string>
+
+    <string name="sharedialog.info.action.do_nothing">Nichts ändern</string>
+    <string name="sharedialog.info.action.remove_network">Nicht mit diesem Netz verbinden</string>
+    <string name="sharedialog.info.action.put_user_on_spam">Nicht verbinden mit Netzen von %1$s</string>
+    <string name="sharedialog.info.action.abuse">Missbrauch melden</string>
 
     <string name="networklist.inrange">In Reichweite</string>
     <string name="networklist.outofrange">Außer Reichweite</string>
