@@ -43,9 +43,9 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
                 case SHARED_BY_ME_WITH_EVERYONE: return 0;
                 case SHARED_BY_ME_WITHIN_GROUPS: return 1;
                 case SHARED_BY_ME_WITH_MY_DEVICES: return 2;
-                case SHARED_WITH_ME_WITH_EVERYONE: return 3;
-                case SHARED_WITH_ME_WITHIN_GROUPS: return 4;
-                case NOT_SHARED: return 5;
+                case NOT_SHARED: return 3;
+                case SHARED_WITH_ME_WITH_EVERYONE: return 4;
+                case SHARED_WITH_ME_WITHIN_GROUPS: return 5;
                 case UNKNOWN: return 6;
                 default: return -1;
             }
@@ -56,9 +56,9 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
                 case 0: return SHARED_BY_ME_WITH_EVERYONE;
                 case 1: return SHARED_BY_ME_WITHIN_GROUPS;
                 case 2: return SHARED_BY_ME_WITH_MY_DEVICES;
-                case 3: return SHARED_WITH_ME_WITH_EVERYONE;
-                case 4: return SHARED_WITH_ME_WITHIN_GROUPS;
-                case 5: return NOT_SHARED;
+                case 3: return NOT_SHARED;
+                case 4: return SHARED_WITH_ME_WITH_EVERYONE;
+                case 5: return SHARED_WITH_ME_WITHIN_GROUPS;
                 case 6: return UNKNOWN;
                 default: throw new IllegalArgumentException("Integer "+integer+" is not a valid share status ID.");
             }

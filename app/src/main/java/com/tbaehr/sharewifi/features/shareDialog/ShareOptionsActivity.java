@@ -167,6 +167,9 @@ public class ShareOptionsActivity extends AbstractShareActivity {
     }
 
     private void setSelectedCard(int cardId) {
+        if (cardId == -1 || cardId > cards.length)
+            return;
+
         for (int i = 0; i<cards.length; i++) {
             if (i == cardId) {
                 cards[i].setBackgroundColor(getResources().getColor(R.color.backgroundOfSelectedItem));
