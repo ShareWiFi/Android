@@ -25,10 +25,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.clans.fab.FloatingActionMenu;
 import com.tbaehr.sharewifi.R;
@@ -100,9 +101,74 @@ public class ShareInfoActivity extends AbstractShareActivity {
      * These represent the UI for share and network info.
      */
     private void configureCards() {
-        // TODO: Implementation
-        CardView card0 = (CardView) findViewById(R.id.share_dialog_info_card_about_share);
-        CardView card1 = (CardView) findViewById(R.id.share_dialog_info_card_network);
+        // set share image
+        ImageView shareImage = (ImageView) findViewById(R.id.share_dialog_info_card_drawable);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            shareImage.setImageDrawable(getDrawable(mShareStatus.getDrawable()));
+        } else {
+            shareImage.setImageDrawable(getResources().getDrawable(mShareStatus.getDrawable()));
+        }
+
+        // set title
+        TextView shareHeadline = (TextView) findViewById(R.id.share_dialog_info_card_title);
+        String shareTitle;
+        if (!mShareStatus.isShared()) {
+            shareHeadline.setText(R.string.sharedialog_info_card_share_title_not_shared);
+        } else {
+            if (mShareStatus.isSharedWithEveryone()) {
+                shareTitle = getString(R.string.sharedialog_info_card_share_title_everyone);
+            } else if (mShareStatus.isSharedWithinGroups()) {
+                shareTitle = getString(R.string.sharedialog_info_card_share_title_all_contacts);
+            } else if (mShareStatus.isSharedWithMyDevices()) {
+                shareTitle = getString(R.string.sharedialog_info_card_share_title_my_devices);
+            } else {
+                shareTitle = getString(R.string.sharedialog_info_card_share_title_not_shared);
+            }
+            shareHeadline.setText(getString(R.string.sharedialog_info_card_share_title, shareTitle));
+        }
+
+        // set subtitle (line 1)
+        TextView shareLine1 = (TextView) findViewById(R.id.share_dialog_info_card_subtitle_line1);
+        if (mShareStatus.isShared()) {
+            String sharer;
+            if (mShareStatus.isSharedByMe()) {
+                sharer = getString(R.string.sharedialog_info_card_share_subtitle_line1_by_me);
+            } else {
+                // TODO: Implementation: Insert the person's name who shared this network
+                sharer = "Max Mustermann";
+            }
+            shareLine1.setText(getString(R.string.sharedialog_info_card_share_subtitle_line1_by, sharer));
+        } else {
+            shareLine1.setVisibility(View.GONE);
+        }
+
+        // set subtitle (line 2)
+        TextView shareLine2 = (TextView) findViewById(R.id.share_dialog_info_card_subtitle_line2);
+        if (mShareStatus.isShared()) {
+            String whom;
+            if (mShareStatus.isSharedWithMyDevices()) {
+                whom = getString(R.string.sharedialog_info_card_share_subtitle_line2_whom_my_devices);
+            } else if (mShareStatus.isSharedWithinGroups() && mShareStatus.isSharedByMe()){
+                // TODO: Implementation: List all group names
+                whom = "Familie, Freunde und Arbeitskollegen";
+            } else if (mShareStatus.isSharedWithEveryone()) {
+                whom = getString(R.string.sharedialog_info_card_share_subtitle_line2_whom_all);
+            } else {
+                whom = getString(R.string.sharedialog_info_card_share_subtitle_line2_whom_contacts);
+            }
+            shareLine2.setText(getString(R.string.sharedialog_info_card_share_subtitle_line2_whom, whom));
+        } else {
+            shareLine2.setText(getString(R.string.sharedialog_info_card_share_subtitle_line2_whom_nobody));
+        }
+
+        // set signal strength
+        // TODO
+
+        // set security
+        // TODO
+
+        // set speed
+        // TODO
     }
 
     @Override

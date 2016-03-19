@@ -80,7 +80,7 @@ public class WiFiListItemAdapter extends ArrayAdapter<WiFiNetwork> {
         if (item.isUnknownNetwork()) {
             shareStatusImageView.setVisibility(View.GONE);
         } else {
-            shareStatusImageView.setImageResource(item.getShareStatusIcon());
+            shareStatusImageView.setImageResource(item.getShareStatus().getDrawable());
         }
         encryptedImageView.setVisibility(item.isEncrypted() ? View.VISIBLE : View.GONE);
         if (item.isQualityBad()) {

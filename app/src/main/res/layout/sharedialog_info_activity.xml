@@ -95,7 +95,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/card_margin"
-                            android:text="@string/sharedialog.info_card.share.subtitle_line2_who" />
+                            android:text="@string/sharedialog_info_card_share_subtitle_line2_whom" />
 
                     </LinearLayout>
 

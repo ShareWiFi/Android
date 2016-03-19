@@ -48,9 +48,14 @@
     <string name="sharedialog.info.card_share.title_everyone">\ JEDEM</string>
     <string name="sharedialog.info.card_share.title_all_contacts">\ ALL MEINEN KONTAKTEN</string>
     <string name="sharedialog.info.card_share.title_my_devices">\ MEINEN GERÄTEN</string>
+    <string name="sharedialog.info.card_share.title_not_shared">NICHT GETEILT</string>
     <string name="sharedialog.info.card_share.subtitle_line1_by">Von %1$s.</string>
-    <string name="sharedialog.info_card.share.subtitle_line2_who">%2$s können sich mit diesem Netz verbinden.</string>
-    <string name="sharedialog.info_card.share.subtitle_line2_who_my_devices">Alle Geräte auf denen ich eingeloggt bin\ </string>
+    <string name="sharedialog.info.card_share.subtitle_line1_by_me">mir</string>
+    <string name="sharedialog_info_card_share_subtitle_line2_whom">%1$s können sich mit diesem Netz verbinden.</string>
+    <string name="sharedialog.info.card_share.subtitle_line2_whom_all">Alle</string>
+    <string name="sharedialog.info.card_share.subtitle_line2_whom_contacts">Nur ausgewählte Kontakte</string>
+    <string name="sharedialog.info_card.share.subtitle_line2_whom_my_devices">Alle Geräte auf denen ich eingeloggt bin</string>
+    <string name="sharedialog.info.card_share.subtitle_line2_whom_nobody">Niemand erhält von ShareWiFi die Verbindungsdaten.</string>
 
     <string name="sharedialog.info_card.network.signal_strength">Signalstärke</string>
     <string name="sharedialog.info_card.network.signal_strength.perfect">Hervorragender Empfang</string>

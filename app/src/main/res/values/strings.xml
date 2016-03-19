@@ -49,9 +49,14 @@
     <string name="sharedialog.info.card_share.title_everyone">\ EVERYONE</string>
     <string name="sharedialog.info.card_share.title_all_contacts">\ ALL MY CONTACTS</string>
     <string name="sharedialog.info.card_share.title_my_devices">\ MY DEVICES</string>
+    <string name="sharedialog.info.card_share.title_not_shared">NOT SHARED</string>
     <string name="sharedialog.info.card_share.subtitle_line1_by">By %1$s.</string>
-    <string name="sharedialog.info_card.share.subtitle_line2_who">%2$s can connect with this Wi-Fi.</string>
-    <string name="sharedialog.info_card.share.subtitle_line2_who_my_devices">All those devices where I\&apos;m logged in\ </string>
+    <string name="sharedialog.info.card_share.subtitle_line1_by_me">me</string>
+    <string name="sharedialog_info_card_share_subtitle_line2_whom">%1$s can connect with this Wi-Fi.</string>
+    <string name="sharedialog.info.card_share.subtitle_line2_whom_all">All</string>
+    <string name="sharedialog.info.card_share.subtitle_line2_whom_contacts">Only selected contacts </string>
+    <string name="sharedialog.info_card.share.subtitle_line2_whom_my_devices">All those devices where I\&apos;m logged in</string>
+    <string name="sharedialog.info.card_share.subtitle_line2_whom_nobody">Nobody is receiving credentials from ShareWifi.</string>
 
     <string name="sharedialog.info_card.network.signal_strength">Signal strength</string>
     <string name="sharedialog.info_card.network.signal_strength.perfect">Excellent signal strength</string>

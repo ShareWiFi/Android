@@ -73,6 +73,31 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
                     this.equals(ShareStatus.SHARED_BY_ME_WITHIN_GROUPS) ||
                     this.equals(ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES);
         }
+
+        public boolean isSharedWithEveryone() {
+            return this.equals(SHARED_BY_ME_WITH_EVERYONE) || this.equals(SHARED_WITH_ME_WITH_EVERYONE);
+        }
+
+        public boolean isSharedWithinGroups() {
+            return this.equals(SHARED_BY_ME_WITHIN_GROUPS) || this.equals(SHARED_WITH_ME_WITHIN_GROUPS);
+        }
+
+        public boolean isSharedWithMyDevices() {
+            return this.equals(SHARED_BY_ME_WITH_MY_DEVICES);
+        }
+
+        public int getDrawable() {
+            switch (this) {
+                case SHARED_BY_ME_WITH_EVERYONE: return R.drawable.ic_menu_shared_with_all;
+                case SHARED_BY_ME_WITHIN_GROUPS: return R.drawable.ic_menu_shared_with_groups;
+                case SHARED_BY_ME_WITH_MY_DEVICES: return R.drawable.ic_menu_shared_with_devices;
+                case SHARED_WITH_ME_WITH_EVERYONE: return R.drawable.ic_menu_downloaded_blue;
+                case SHARED_WITH_ME_WITHIN_GROUPS: return R.drawable.ic_menu_downloaded_orange;
+                case NOT_SHARED: return R.drawable.ic_menu_share_off;
+                case UNKNOWN: return -1;
+                default: return -1;
+            }
+        }
     }
 
     private boolean connected;
@@ -158,26 +183,6 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
             return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_sharedWithMe_groups);
         } else if (shareStatus == ShareStatus.SHARED_WITH_ME_WITH_EVERYONE) {
             return connectionStatusDescription + ShareWiFiApplication.getAppContext().getString(R.string.sharestatus_sharedWithMe_everyone);
-        } else {
-            throw new RuntimeException("Non-handled share status "+shareStatus.name());
-        }
-    }
-
-    public int getShareStatusIcon() {
-        if (shareStatus == ShareStatus.UNKNOWN) {
-            throw new RuntimeException("Cannot return a share icon for a unknown network");
-        } else if (shareStatus == ShareStatus.NOT_SHARED) {
-            return R.drawable.ic_menu_share_off;
-        } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITH_MY_DEVICES) {
-            return R.drawable.ic_menu_shared_with_devices;
-        } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITHIN_GROUPS) {
-            return R.drawable.ic_menu_shared_with_groups;
-        } else if (shareStatus == ShareStatus.SHARED_BY_ME_WITH_EVERYONE) {
-            return R.drawable.ic_menu_shared_with_all;
-        } else if (shareStatus == ShareStatus.SHARED_WITH_ME_WITHIN_GROUPS) {
-            return R.drawable.ic_menu_downloaded_blue;
-        } else if (shareStatus == ShareStatus.SHARED_WITH_ME_WITH_EVERYONE) {
-            return R.drawable.ic_menu_downloaded_orange;
         } else {
             throw new RuntimeException("Non-handled share status "+shareStatus.name());
         }
