@@ -51,7 +51,7 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
         // Edge case 3: Known network || Network in blackList
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        String ssid = wifiInfo.getSSID();
+        String ssid = wifiInfo.getSSID().replace("\"", "");
 //        String mac = wifiInfo.getMacAddress();
         if (onBlacklist(ssid) || isKnownNetwork(ssid)) {
             NotificationBuilder.getInstance().hideShareDialog();

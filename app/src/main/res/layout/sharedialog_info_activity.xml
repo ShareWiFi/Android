@@ -19,8 +19,9 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="@dimen/activity_horizontal_margin"
+            app:expandedTitleMarginStart="@dimen/activity_horizontal_margin"
+            app:expandedTitleTextAppearance="@style/AppTheme.TextAppearance.ExpandedTitle"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -115,9 +116,9 @@
                         android:id="@+id/listitem_container"
                         android:layout_width="@dimen/card_drawable_size"
                         android:layout_height="@dimen/card_drawable_size"
-                        android:layout_marginTop="@dimen/card_margin"
+                        android:layout_marginBottom="@dimen/card_margin"
                         android:layout_marginLeft="@dimen/card_margin"
-                        android:layout_marginBottom="@dimen/card_margin" >
+                        android:layout_marginTop="@dimen/card_margin" >
 
                         <ImageView
                             android:id="@+id/share_dialog_card_netowrk_icon_networkstatus"
@@ -136,8 +137,8 @@
                             android:id="@+id/share_dialog_card_network_icon_quality"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginTop="36dp"
                             android:layout_gravity="end"
+                            android:layout_marginTop="36dp"
                             android:src="@drawable/ic_quality_bad" />
 
                     </FrameLayout>
@@ -145,8 +146,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/card_margin"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/card_margin">
 
                         <TextView
                             android:id="@+id/share_dialog_card_network_signal_strength_title"
@@ -213,38 +214,38 @@
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
-            fab:menu_labels_ellipsize="end"
-            fab:menu_labels_singleLine="false"
-            fab:menu_labels_maxLines="2"
+            android:paddingRight="10dp"
             fab:menu_backgroundColor="#ccffffff"
-            fab:menu_fab_label="@string/sharedialog.info.action.do_nothing">
+            fab:menu_fab_label="@string/sharedialog.info.action.do_nothing"
+            fab:menu_labels_ellipsize="end"
+            fab:menu_labels_maxLines="2"
+            fab:menu_labels_singleLine="false">
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/share_dialog_info_fab1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_fab_edit"
-                fab:fab_size="mini"
-                fab:fab_label="@string/sharedialog.info.action.remove_network" />
+                android:src="@drawable/ic_fab_block_network_24dp"
+                fab:fab_label="@string/sharedialog.info.action.remove_network"
+                fab:fab_size="mini" />
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/share_dialog_info_fab2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_fab_edit"
-                fab:fab_size="mini"
-                fab:fab_label="@string/sharedialog.info.action.put_user_on_spam" />
+                android:src="@drawable/ic_fab_block_network_24dp"
+                fab:fab_label="@string/sharedialog.info.action.put_user_on_spam"
+                fab:fab_size="mini" />
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/share_dialog_info_fab3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_fab_edit"
-                fab:fab_size="mini"
-                fab:fab_label="@string/sharedialog.info.action.abuse" />
+                android:src="@drawable/ic_fab_report_abuse_24dp"
+                fab:fab_label="@string/sharedialog.info.action.abuse"
+                fab:fab_size="mini" />
 
         </com.github.clans.fab.FloatingActionMenu>
 
@@ -254,11 +255,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
             android:src="@drawable/ic_fab_edit"
-            fab:fab_size="normal"
-            fab:fab_label="Missbrauch melden" />
+            fab:fab_label="Missbrauch melden"
+            fab:fab_size="normal" />
 
     </RelativeLayout>
 
