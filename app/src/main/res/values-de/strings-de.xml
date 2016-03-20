@@ -4,7 +4,12 @@
     <string name="navigation_drawer_open">Öffne die Navigationsbar</string>
     <string name="navigation_drawer_close">Schließe die Navigationsbar</string>
 
-    <string name="settings">Einstellungen</string>
+    <!-- 1:1 translations -->
+
+    <string name="_settings">Einstellungen</string>
+    <string name="_continue">Fortsetzen</string>
+    <string name="_no">Nein</string>
+    <string name="_yes">Ja</string>
 
     <string name="nav_header_networks">WLAN-Netze</string>
     <string name="nav_allnetworks">Alle Netze</string>
@@ -28,8 +33,6 @@
     <string name="sharedialog.title">%1$s teilen?</string>
     <string name="sharedialog.title.alreadyshared">%1$s weiterhin teilen?</string>
     <string name="sharedialog.notification.subtitle">Möchtest Du dieses WLAN-Netz teilen?</string>
-    <string name="sharedialog.notification.option.yes">Ja</string>
-    <string name="sharedialog.notification.option.no">Nein</string>
 
     <string name="sharedialog.option.worldwideshare.title">JA, WELTWEIT</string>
     <string name="sharedialog.option.worldwideshare.desc">Dadurch kann sich jeder auf dieser Welt mit diesem WLAN-Netz verbinden.</string>
@@ -93,4 +96,6 @@
     <string name="sharestatus.sharedWithMe.groups">Mit mir geteilt.</string>
     <string name="sharestatus.sharedWithMe.everyone">Weltweit geteilt.</string>
 
+    <string name="network.dialog.title">ShareWifi verlassen um Verbindung herzustellen?</string>
+    <string name="network.dialog.message">"Um Dich mit \"%1$s\" zu verbinden muss ShareWiFi leider verlassen werden. Wähle anschließend erneut \"%1$s\" aus. Möchtest Du fortsetzen?"</string>sssss
 </resources>

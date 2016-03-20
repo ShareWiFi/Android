@@ -1,8 +1,10 @@
 package com.tbaehr.sharewifi.features.networkList;
 
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
@@ -55,10 +57,23 @@ public class NetworksTab extends Fragment {
                 WiFiNetwork network = adapter.getItem(position);
                 WiFiNetwork.ShareStatus shareStatus = network.getShareStatus();
                 if (network.isUnknownNetwork()) {
-                    // TODO: Open Connect Dialog
-                    Snackbar.make(view,
-                            "Hierüber kannst Du Dich in Kürze mit einem WLAN-Netz verbinden.",
-                            Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    // TODO: Implement Connect Dialog
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle(R.string.network_dialog_title)
+                            .setMessage(getString(R.string.network_dialog_message, network.getSsid()))
+                            .setPositiveButton(R.string._continue, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent openConnectDialog = new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK);
+                            startActivity(openConnectDialog);
+                        }
+                    })
+                    .setNegativeButton(R.string._no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    }).setIcon(android.R.drawable.ic_dialog_alert).show();
                 } else {
                     openShareInfoDialog(position, view);
                 }
