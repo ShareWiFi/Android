@@ -1,5 +1,10 @@
 package com.tbaehr.sharewifi.features.groupManagement;
 
+import com.tbaehr.sharewifi.model.viewmodel.ContactListItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tbaehr on 27.03.16.
  */
@@ -19,14 +24,23 @@ public class ContactsGrabber {
         return mContactsGrabber;
     }
 
-    public String[] getContactListNames() {
+    public List<ContactListItem> getContactListNames() {
         // TODO: Implementation
-        return new String[] {"Familie", "Freunde", "Arbeitskollegen"};
+        ArrayList<ContactListItem> items = new ArrayList<>();
+        items.add(new ContactListItem("Familie", false));
+        items.add(new ContactListItem("Freunde", false));
+        items.add(new ContactListItem("Arbeits-\nkollegen", false));
+        return items;
     }
 
-    public String[] getContactNames() {
+    public List<ContactListItem> getContactNames() {
         // TODO: Implementation
-        return new String[] {"Lisa Lustig", "Max Mustermann", "Norbert Normalbürger", "Olav Olsen"};
+        ArrayList<ContactListItem> items = new ArrayList<>();
+        items.add(new ContactListItem("Lisa Lustig", true));
+        items.add(new ContactListItem("Max Mustermann", true));
+        items.add(new ContactListItem("Norbert Normalbürger", true));
+        items.add(new ContactListItem("Olav Olsen", true));
+        return items;
     }
 
 }

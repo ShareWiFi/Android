@@ -37,6 +37,7 @@ import android.widget.TextView;
 
 import com.tbaehr.sharewifi.R;
 import com.tbaehr.sharewifi.features.notificationOnConnect.NotificationBuilder;
+import com.tbaehr.sharewifi.model.viewmodel.ContactListItem;
 
 public class ShareOptionsActivity extends AbstractShareActivity {
 
@@ -194,7 +195,8 @@ public class ShareOptionsActivity extends AbstractShareActivity {
     }
 
     private void groupShare() {
-        new AlertDialog.Builder(ShareOptionsActivity.this)
+        GroupShareDialogContentView contentView = new GroupShareDialogContentView(this);
+        final AlertDialog dialog = new AlertDialog.Builder(ShareOptionsActivity.this)
                 .setIcon(R.drawable.ic_menu_share)
                 .setTitle(getString(R.string.sharedialog_option_groupshare_dialog_headtitle, mNetworkName))
                 .setNegativeButton(
@@ -216,8 +218,16 @@ public class ShareOptionsActivity extends AbstractShareActivity {
                                         Snackbar.LENGTH_LONG).setAction("Action", null).show();
                             }
                         })
-                .setView(new GroupShareDialogContentView(this))
+                .setView(contentView)
                 .show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+        contentView.setOnClickListener(new OnContactItemClickListener() {
+            @Override
+            public void onClick(ContactListItem clickedItem) {
+                // TODO: Check whether the user entered a valid state for a group share
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+            }
+        });
     }
 
     private void deviceShare() {

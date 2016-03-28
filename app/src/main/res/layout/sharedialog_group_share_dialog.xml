@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/group_share_dialog_recycler_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/group_share_dialog_title_contactlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/sharedialog.option.groupshare.title_contactlist"/>
-
-    <ListView
-        android:id="@+id/group_share_dialog_contactlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/group_share_dialog_title_singlecontacts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/sharedialog.option.groupshare.title_single_contacts"/>
-
-    <ListView
-        android:id="@+id/group_share_dialog_singlecontacts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+    android:layout_height="match_parent"
+    android:scrollbars="vertical" />

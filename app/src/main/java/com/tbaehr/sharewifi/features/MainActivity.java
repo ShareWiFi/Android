@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         final NavigationView navigationView = (NavigationView) findViewById(R.id.activity_main_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // set OnClickListener for the manage account icon
+        // set OnContactItemClickListener for the manage account icon
         final View header = navigationView.getHeaderView(0);
         FrameLayout manageAccountFrameLayout = (FrameLayout) header.findViewById(R.id.navbar_header_manage_account_frame_layout);
         manageAccountFrameLayout.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnContactItemClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.activity_main_nav_view);
 
         FrameLayout manageAccountFrameLayout = (FrameLayout) navigationView.getHeaderView(R.id.navbar_header_manage_account_frame_layout);
-        manageAccountFrameLayout.setOnClickListener(new View.OnClickListener() {
+        manageAccountFrameLayout.setOnClickListener(new View.OnContactItemClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(findViewById(R.id.activity_main_drawer_layout),
