@@ -60,18 +60,17 @@ public class NotificationBuilder {
 
         PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), openShareViewIntent, 0);
 
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(ShareWiFiApplication.getAppContext())
-                        .setSmallIcon(R.drawable.ic_menu_shared)
-                        .setContentTitle(context.getString(R.string.sharedialog_title, ssid))
-                        .setContentText(context.getString(R.string.sharedialog_notification_subtitle))
-                        .setContentIntent(pIntent)
-                        .setAutoCancel(true);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ShareWiFiApplication.getAppContext());
+        mBuilder.setSmallIcon(R.drawable.ic_menu_shared);
+        mBuilder.setContentTitle(context.getString(R.string.sharedialog_title, ssid));
+        mBuilder.setContentText(context.getString(R.string.sharedialog_notification_subtitle));
+        mBuilder.setContentIntent(pIntent);
+        mBuilder.setAutoCancel(true);
 
         Notification notification = mBuilder.build();
 
         NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0, notification);
     }
@@ -80,7 +79,7 @@ public class NotificationBuilder {
         Context context = ShareWiFiApplication.getAppContext();
 
         NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(0);
     }
 

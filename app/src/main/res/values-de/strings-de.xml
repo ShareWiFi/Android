@@ -8,6 +8,7 @@
 
     <string name="_settings">Einstellungen</string>
     <string name="_continue">Fortsetzen</string>
+    <string name="_cancel">Abbrechen</string>
     <string name="_no">Nein</string>
     <string name="_yes">Ja</string>
 
@@ -46,6 +47,11 @@
     <string name="sharedialog.option.do_not_longer_share.desc">Die Verbindungsdaten dieses WLAN-Netzes wird von allen Geräten außer diesem gelöscht.</string>
     <string name="sharedialog.option.neveraskagain">Teilen-Dialog bei Verbinden mit neuem Netz nicht mehr anzeigen.</string>
     <string name="sharedialog.option.notifications_disabled">Teilen-Benachrichtigung bei Verbinden mit neuem Netz deaktiviert.</string>
+
+    <string name="sharedialog.option.groupshare.dialog.headtitle">Mit wem möchtest Du %1$s teilen?</string>
+    <string name="sharedialog.option.groupshare.title_contactlist">Kontaktlisten</string>
+    <string name="sharedialog.option.groupshare.option_all_contacts">All meinen Kontakten</string>
+    <string name="sharedialog.option.groupshare.title_single_contacts">Einzelkontakte</string>
 
     <string name="sharedialog.info.card_share.title">GETEILT MIT %1$s</string>
     <string name="sharedialog.info.card_share.title_everyone">\ JEDEM</string>

@@ -18,6 +18,7 @@
  */
 package com.tbaehr.sharewifi.features.shareDialog;
 
+import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -25,6 +26,7 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -122,7 +124,6 @@ public class ShareOptionsActivity extends AbstractShareActivity {
             @Override
             public void onClick(View v) {
                 globalShare();
-                setSelectedCard(0);
             }
         };
         cards[0].setOnClickListener(globalShareClickListener);
@@ -131,7 +132,6 @@ public class ShareOptionsActivity extends AbstractShareActivity {
             @Override
             public void onClick(View v) {
                 groupShare();
-                setSelectedCard(1);
             }
         };
         cards[1].setOnClickListener(groupShareClickListener);
@@ -140,7 +140,6 @@ public class ShareOptionsActivity extends AbstractShareActivity {
             @Override
             public void onClick(View v) {
                 deviceShare();
-                setSelectedCard(2);
             }
         };
         cards[2].setOnClickListener(deviceShareClickListener);
@@ -149,7 +148,6 @@ public class ShareOptionsActivity extends AbstractShareActivity {
             @Override
             public void onClick(View v) {
                 noShare();
-                setSelectedCard(3);
             }
         };
         cards[3].setOnClickListener(noShareClickListener);
@@ -188,6 +186,7 @@ public class ShareOptionsActivity extends AbstractShareActivity {
     }
 
     private void globalShare() {
+        //setSelectedCard(0);
         Snackbar.make(
                 findViewById(R.id.share_dialog_coordinator_layout),
                 "Sorry, weltweites Teilen ist noch nicht implementiert.",
@@ -195,13 +194,34 @@ public class ShareOptionsActivity extends AbstractShareActivity {
     }
 
     private void groupShare() {
-        Snackbar.make(
-                findViewById(R.id.share_dialog_coordinator_layout),
-                "Sorry, Teilen mit Gruppen ist noch nicht implementiert.",
-                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        new AlertDialog.Builder(ShareOptionsActivity.this)
+                .setIcon(R.drawable.ic_menu_share)
+                .setTitle(getString(R.string.sharedialog_option_groupshare_dialog_headtitle, mNetworkName))
+                .setNegativeButton(
+                        R.string._cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                .setPositiveButton(
+                        R.string._continue,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setSelectedCard(1);
+                                Snackbar.make(
+                                        findViewById(R.id.share_dialog_coordinator_layout),
+                                        "Sorry, Teilen mit Gruppen ist noch nicht implementiert.",
+                                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                            }
+                        })
+                .setView(new GroupShareDialogContentView(this))
+                .show();
     }
 
     private void deviceShare() {
+        //setSelectedCard(2);
         Snackbar.make(
                 findViewById(R.id.share_dialog_coordinator_layout),
                 "Sorry, Teilen mit Deinen Geräten ist noch nicht implementiert.",
@@ -210,6 +230,7 @@ public class ShareOptionsActivity extends AbstractShareActivity {
 
     private void noShare() {
         // TODO: Store the share option
+        setSelectedCard(3);
         finish();
     }
 
@@ -218,6 +239,25 @@ public class ShareOptionsActivity extends AbstractShareActivity {
                 findViewById(R.id.share_dialog_coordinator_layout),
                 "Benachrichtigungen können aktuell noch nicht deaktiviert werden.",
                 Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    }
+
+    private void showAgbDialog(String strName) {
+        // TODO: Implemenation
+        AlertDialog.Builder builder = new AlertDialog.Builder(
+                ShareOptionsActivity.this);
+        builder.setMessage(strName);
+        builder.setTitle("AGB-Hinweis");
+        builder.setPositiveButton(
+                "Einverstanden",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(
+                            DialogInterface dialog,
+                            int which) {
+                        dialog.dismiss();
+                    }
+                });
+        builder.show();
     }
 
     @Override
