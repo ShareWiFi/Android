@@ -61,7 +61,7 @@ public class GroupShareDialogContentView extends LinearLayout {
         initializeContentView();
     }
 
-    // TODO: Retrieve share status (if already specified by the user)
+    // TODO: Retrieve previous share status (if already specified by the user)
     // TODO: Provide share status specified inside this view
 
 
