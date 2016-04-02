@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ShareWiFi</string>
 
+    <string name="agb">...</string>
+
     <string name="navigation_drawer_open">Öffne die Navigationsbar</string>
     <string name="navigation_drawer_close">Schließe die Navigationsbar</string>
 
