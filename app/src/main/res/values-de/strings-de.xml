@@ -6,11 +6,7 @@
 
     <!-- 1:1 translations -->
 
-    <string name="_settings">Einstellungen</string>
     <string name="_continue">Fortsetzen</string>
-    <string name="_cancel">Abbrechen</string>
-    <string name="_no">Nein</string>
-    <string name="_yes">Ja</string>
 
     <string name="nav_header_networks">WLAN-Netze</string>
     <string name="nav_allnetworks">Alle Netze</string>
@@ -18,10 +14,8 @@
     <string name="nav_sharedwithme">Mit mir geteilt</string>
 
     <string name="nav_header_social">Sozial</string>
-    <string name="nav_contacts">Kontakte</string>
     <string name="nav_invite">Freunde einladen</string>
 
-    <string name="nav_groups">Gruppen</string>
     <string name="nav_help">Fragen und Antworten</string>
 
     <string name="nav_add_account">Konto hinzufügen</string>

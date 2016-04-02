@@ -156,8 +156,6 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_contacts) {
             tempTesterMessage = "Sorry, die Kontaktverwaltung gibt's noch nicht. Dauert noch.";
-        } else if (id == R.id.nav_groups) {
-            tempTesterMessage = "Sorry, die Gruppenverwaltung gibt's nocht nicht. Dauert noch.";
         } else if (id == R.id.nav_settings) {
             tempTesterMessage = "Sorry, die Einstellungs-Seite gibt's noch nicht. Dauert noch.";
         } else if (id == R.id.nav_help) {
