@@ -100,9 +100,9 @@ public class ShareOptionsActivity extends AbstractShareActivity {
             closeButton.setVisibility(View.GONE);
             int color;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                color = getColor(R.color.colorWhite);
+                color = getColor(R.color.white);
             } else {
-                color = getResources().getColor(R.color.colorWhite);
+                color = getResources().getColor(R.color.white);
             }
             backArrow.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
@@ -171,9 +171,9 @@ public class ShareOptionsActivity extends AbstractShareActivity {
 
         for (int i = 0; i<cards.length; i++) {
             if (i == cardId) {
-                cards[i].setBackgroundColor(getResources().getColor(R.color.backgroundOfSelectedItem));
+                cards[i].setBackgroundColor(getResources().getColor(R.color.blueTransparent));
             } else {
-                cards[i].setBackgroundColor(getResources().getColor(R.color.backgroundOfNonSelectedItem));
+                cards[i].setBackgroundColor(getResources().getColor(R.color.lightGrey));
             }
 
             if (cardId >= 0 && cardId != 3) {

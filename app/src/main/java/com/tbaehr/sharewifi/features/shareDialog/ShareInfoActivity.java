@@ -76,9 +76,9 @@ public class ShareInfoActivity extends AbstractShareActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         int color;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            color = getColor(R.color.colorWhite);
+            color = getColor(R.color.white);
         } else {
-            color = getResources().getColor(R.color.colorWhite);
+            color = getResources().getColor(R.color.white);
         }
         backArrow.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(backArrow);

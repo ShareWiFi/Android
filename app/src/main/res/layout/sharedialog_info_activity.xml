@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.option.worldwideshare.title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/share_dialog_info_card_subtitle_line1"
@@ -155,7 +155,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.info_card.network.signal_strength.good"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/share_dialog_card_network_signal_strength_desc"
@@ -170,7 +170,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.info_card.network.security.secure"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/share_dialog_card_network_security_desc"
@@ -185,7 +185,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.info_card.network.internet_speed.fast"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/share_dialog_card_network_speed_desc"

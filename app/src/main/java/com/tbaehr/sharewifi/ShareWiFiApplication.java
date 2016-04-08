@@ -8,7 +8,7 @@ import android.content.Context;
  */
 public class ShareWiFiApplication extends Application {
 
-    public final static String[] blackList = new String[] {"\"Telekom\"", "\"Telekom_Fon\""};
+    public final static String[] blackList = new String[] {"Telekom", "Telekom_Fon"};
 
     private static Context context;
 

@@ -68,7 +68,7 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
     }
 
     private boolean onBlacklist(String ssid) {
-        return contains(ShareWiFiApplication.blackList, ssid);
+        return contains(ShareWiFiApplication.blackList, ssid.replace("\"",""));
     }
 
     private boolean contains(String[] blacklist, String ssid) {

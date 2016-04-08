@@ -90,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.option.worldwideshare.title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -129,7 +129,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.option.groupshare.title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -168,7 +168,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.option.deviceshare.title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -208,7 +208,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/sharedialog.option.do_not_share.title"
                             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/share_dialog_card_shareoff_desc"
@@ -234,7 +234,7 @@
                     android:layout_gravity="right|center_vertical"
                     android:layout_margin="@dimen/activity_horizontal_margin"
                     android:text="@string/sharedialog.option.neveraskagain"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/blue"
                     android:textStyle="bold" />
 
             </FrameLayout>

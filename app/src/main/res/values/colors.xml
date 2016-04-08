@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2196f3</color>
-    <color name="colorPrimaryDark">#2196f3</color>
-    <color name="colorAccent">#2196f3</color>
-    <color name="colorWhite">#ffffff</color>
-    <color name="colorBlack">#000000</color>
-    <color name="backgroundOfNonSelectedItem">#eeeeee</color>
-    <color name="backgroundOfSelectedItem">#992196f3</color>
+    <color name="blue">#2196f3</color>
+    <color name="blueTransparent">#992196f3</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="lightGrey">#eeeeee</color>
 </resources>
