@@ -28,20 +28,20 @@ public class InfoTour extends AppIntro2 {
 
         // Instead of fragments, you can also use our default slide
         // Just set a title, description, background and image. AppIntro will do the rest.
-        String title = "Hallo";
-        String description = "Schön, dass Du die Alpha-Version von ShareWiFi installiert hast.";
+        String title = getString(R.string.infotour_slide1_hallo);
+        String description = getString(R.string.infotour_slide1_text);
         addSlide(AppIntroFragment.newInstance(title, description, R.drawable.share_wifi_logo, android.R.color.transparent));
 
-        title = "Mit mir geteilt";
-        description = "Über ShareWiFi können andere mit Dir WLAN-Einwahldaten teilen. ShareWiFi verbindet Dein Gerät automatisch, wenn das Netzwerk in Reichweite ist.";
+        title = getString(R.string.infotour_slide2_title);
+        description = getString(R.string.infotour_slide2_text);
         addSlide(AppIntroFragment.newInstance(title, description, R.drawable.ic_menu_downloaded_white, android.R.color.transparent));
 
-        title = "Von mir geteilt";
-        description = "Über ShareWiFi kannst Du auch mit anderen WLAN-Einwahldaten teilen. Das WLAN-Passwort bleibt unsichtbar. Du kannst das Teilen jederzeit rückgängig machen.";
+        title = getString(R.string.infotour_slide3_title);
+        description = getString(R.string.infotour_slide3_text);
         addSlide(AppIntroFragment.newInstance(title, description, R.drawable.ic_menu_shared_white, android.R.color.transparent));
 
-        title = "Hinweis zum\nAlpha-Status";
-        description = "Aktuell kannst Du Dir nur Teile der Oberfläche anschauen. Das Teilen ist noch nicht möglich. Über Updates erhälst Du nach und nach die vollständige Funktionalität.";
+        title = getString(R.string.infotour_slide4_title);
+        description = getString(R.string.infotour_slide4_text);
         addSlide(AppIntroFragment.newInstance(title, description, R.drawable.under_construction_400, android.R.color.transparent));
 
         // OPTIONAL METHODS

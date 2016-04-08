@@ -18,6 +18,16 @@
     <string name="_done">Done</string>
     <string name="_contacts">Contacts</string>
 
+    <!-- Info Tour -->
+    <string name="infotour_slide1_hallo">Hello</string>
+    <string name="infotour_slide1_text">Thank you for installing ShareWiFi Alpha.</string>
+    <string name="infotour_slide2_title">Shared with you</string>
+    <string name="infotour_slide2_text">ShareWiFi enables you to share Wi-Fi credentials. The app connects your device automatically.</string>
+    <string name="infotour_slide3_title">Shared by you</string>
+    <string name="infotour_slide3_text">You can also share Wi-Fi credentials with others. The key keeps invisible. You can always undo the share.</string>
+    <string name="infotour_slide4_title">Infos about alpha status</string>
+    <string name="infotour_slide4_text">Currently this app is only a UI preview. You cannot share something until now. Updates will bring the full functionality step by step.</string>
+
     <string name="nav_header_networks">Networks</string>
     <string name="nav_allnetworks">All networks</string>
     <string name="nav_sharedbyme">Shared by me</string>

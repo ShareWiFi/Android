@@ -8,12 +8,26 @@
 
     <!-- 1:1 translations -->
 
+    <string name="_cancel">@android:string/cancel</string>
+    <string name="_no">@android:string/no</string>
+    <string name="_yes">@android:string/yes</string>
     <string name="_settings">Settings</string>
     <string name="_continue">Fortsetzen</string>
     <string name="_accept">Zustimmen</string>
     <string name="_decline">Ablehnen</string>
     <string name="_done">Fertig</string>
     <string name="_contacts">Kontakte</string>
+
+    <!-- Info Tour -->
+    <string name="infotour_slide1_hallo">Hallo</string>
+    <string name="infotour_slide1_text">Schön, dass Du die Alpha-Version von ShareWiFi installiert hast.</string>
+    <string name="infotour_slide2_title">Mit mir geteilt</string>
+    <string name="infotour_slide2_text">Über ShareWiFi können andere mit Dir WLAN-Zugangsdaten teilen. ShareWiFi verbindet Dein Gerät automatisch, wenn das Netzwerk in Reichweite ist.</string>
+    <string name="infotour_slide3_title">Von mir geteilt</string>
+    <string name="infotour_slide3_text">Über ShareWiFi kannst Du auch mit anderen Zugangsdaten teilen. Das Passwort bleibt dennoch unsichtbar. Du kannst das Teilen jederzeit rückgängig machen.</string>
+    <string name="infotour_slide4_title">Hinweis zum\nAlpha-Status</string>
+    <string name="infotour_slide4_text">Aktuell kannst Du Dir nur Teile der Oberfläche anschauen. Das Teilen ist noch nicht möglich. Über Updates erhälst Du nach und nach die vollständige Funktionalität.</string>
+
 
     <string name="nav_header_networks">WLAN-Netze</string>
     <string name="nav_allnetworks">Alle Netze</string>
