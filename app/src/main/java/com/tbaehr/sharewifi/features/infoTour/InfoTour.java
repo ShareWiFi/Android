@@ -30,11 +30,19 @@ public class InfoTour extends AppIntro2 {
         // Just set a title, description, background and image. AppIntro will do the rest.
         String title = "Hallo";
         String description = "Schön, dass Du die Alpha-Version von ShareWiFi installiert hast.";
-        addSlide(AppIntroFragment.newInstance(title, description, R.mipmap.ic_launcher, android.R.color.transparent));
+        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.share_wifi_logo, android.R.color.transparent));
+
+        title = "Mit mir geteilt";
+        description = "Über ShareWiFi können andere mit Dir WLAN-Einwahldaten teilen. ShareWiFi verbindet Dein Gerät automatisch, wenn das Netzwerk in Reichweite ist.";
+        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.ic_menu_downloaded_white, android.R.color.transparent));
+
+        title = "Von mir geteilt";
+        description = "Über ShareWiFi kannst Du auch mit anderen WLAN-Einwahldaten teilen. Das WLAN-Passwort bleibt unsichtbar. Du kannst das Teilen jederzeit rückgängig machen.";
+        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.ic_menu_shared_white, android.R.color.transparent));
 
         title = "Hinweis zum\nAlpha-Status";
-        description = "ShareWiFi für Android ist aktuell noch in einer sehr frühen Entwicklungsphase. Du kannst aktuell Dir nur die Oberfläche anschauen, die Teilen-Funktionalität ist leider noch nicht fertig. Über Updates erhälst Du jedoch nach und nach die vollständige Funktionalität.";
-        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.sharefoodtoekans, android.R.color.transparent));
+        description = "Aktuell kannst Du Dir nur Teile der Oberfläche anschauen. Das Teilen ist noch nicht möglich. Über Updates erhälst Du nach und nach die vollständige Funktionalität.";
+        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.under_construction_400, android.R.color.transparent));
 
         // OPTIONAL METHODS
         // Override bar/separator color.
