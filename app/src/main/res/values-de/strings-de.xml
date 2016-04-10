@@ -2,6 +2,9 @@
     <string name="app_name">ShareWiFi</string>
 
     <string name="agb">...</string>
+    <string name="accept_agb1">Ich akzeptiere die</string>
+    <string name="accept_agb2">Nutzungsbedingugen</string>
+
 
     <string name="navigation_drawer_open">Öffne die Navigationsbar</string>
     <string name="navigation_drawer_close">Schließe die Navigationsbar</string>
@@ -17,6 +20,8 @@
     <string name="_decline">Ablehnen</string>
     <string name="_done">Fertig</string>
     <string name="_contacts">Kontakte</string>
+    <string name="_login">Einloggen</string>
+    <string name="_logout">Ausloggen</string>
 
     <!-- Info Tour -->
     <string name="infotour_slide1_hallo">Hallo</string>
@@ -25,9 +30,16 @@
     <string name="infotour_slide2_text">Über ShareWiFi können andere mit Dir WLAN-Zugangsdaten teilen. ShareWiFi verbindet Dein Gerät automatisch, wenn das Netzwerk in Reichweite ist.</string>
     <string name="infotour_slide3_title">Von mir geteilt</string>
     <string name="infotour_slide3_text">Über ShareWiFi kannst Du auch mit anderen Zugangsdaten teilen. Das Passwort bleibt dennoch unsichtbar. Du kannst das Teilen jederzeit rückgängig machen.</string>
-    <string name="infotour_slide4_title">Hinweis zum\nAlpha-Status</string>
-    <string name="infotour_slide4_text">Aktuell kannst Du Dir nur Teile der Oberfläche anschauen. Das Teilen ist noch nicht möglich. Über Updates erhälst Du nach und nach die vollständige Funktionalität.</string>
+    <string name="infotour_slide4_title">Teile ganz nach\nDeinen Wünschen</string>
+    <string name="infotour_slide5_title">Hinweis zum\nAlpha-Status</string>
+    <string name="infotour_slide5_text">Aktuell kannst Du Dir nur Teile der Oberfläche anschauen. Das Teilen ist noch nicht möglich. Über Updates erhälst Du nach und nach die vollständige Funktionalität.</string>
+    <string name="infotour_slide6_title">Jetzt anmelden</string>
+    <string name="infotour_slide6_user_name">Benutzername</string>
+    <string name="infotour_slide6_password">Passwort</string>
+    <string name="infotour_slide6_password_forgotten">Passwort vergessen</string>
+    <string name="infotour_slide6_register">Jetzt registrieren</string>
 
+    <string name="login_info_required">Für die Nutzung von ShareWiFi ist ein Login erforderlich. Nur so können andere Nutzer etwas mit Dir teilen.</string>
 
     <string name="nav_header_networks">WLAN-Netze</string>
     <string name="nav_allnetworks">Alle Netze</string>
@@ -50,11 +62,14 @@
     <string name="sharedialog.title.alreadyshared">%1$s weiterhin teilen?</string>
     <string name="sharedialog.notification.subtitle">Möchtest Du dieses WLAN-Netz teilen?</string>
 
-    <string name="sharedialog.option.worldwideshare.title">JA, WELTWEIT</string>
+    <string name="sharedialog.option.worldwideshare.title">JA, MIT JEDEM</string>
+    <string name="sharedialog.option.worldwideshare.title2">MIT JEDEM</string>
     <string name="sharedialog.option.worldwideshare.desc">Dadurch kann sich jeder auf dieser Welt mit diesem WLAN-Netz verbinden.</string>
     <string name="sharedialog.option.groupshare.title">JA, MIT AUSGEWÄHLTEN KONTAKTEN</string>
+    <string name="sharedialog.option.groupshare.title2">MIT AUSGEWÄHLTEN KONTAKTEN</string>
     <string name="sharedialog.option.groupshare.desc">Dadurch können sich alle Mitglieder der ausgewählten Kontaktliste mit diesem WLAN-Netz verbinden.</string>
     <string name="sharedialog.option.deviceshare.title">JA, MIT MEINEN GERÄTEN</string>
+    <string name="sharedialog.option.deviceshare.title2">MIT MEINEN GERÄTEN</string>
     <string name="sharedialog.option.deviceshare.desc">Dadurch können sich alle Geräte mit diesem WLAN-Netz verbinden, auf denen Du eingeloggt bist.</string>
     <string name="sharedialog.option.do_not_share.title">NEIN, NICHT TEILEN</string>
     <string name="sharedialog.option.do_not_share.desc">Die Verbindungsdaten dieses WLAN-Netzes werden von der ShareWiFi-App weder geteilt noch gespeichert.</string>

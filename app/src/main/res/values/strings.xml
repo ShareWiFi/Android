@@ -2,6 +2,8 @@
     <string name="app_name">ShareWiFi</string>
 
     <string name="agb">...</string>
+    <string name="accept_agb1">I accept the</string>
+    <string name="accept_agb2">terms of usage</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -17,6 +19,8 @@
     <string name="_decline">Decline</string>
     <string name="_done">Done</string>
     <string name="_contacts">Contacts</string>
+    <string name="_login">Login</string>
+    <string name="_logout">Logout</string>
 
     <!-- Info Tour -->
     <string name="infotour_slide1_hallo">Hello</string>
@@ -25,8 +29,16 @@
     <string name="infotour_slide2_text">ShareWiFi enables you to share Wi-Fi credentials. The app connects your device automatically.</string>
     <string name="infotour_slide3_title">Shared by you</string>
     <string name="infotour_slide3_text">You can also share Wi-Fi credentials with others. The key keeps invisible. You can always undo the share.</string>
-    <string name="infotour_slide4_title">Infos about alpha status</string>
-    <string name="infotour_slide4_text">Currently this app is only a UI preview. You cannot share something until now. Updates will bring the full functionality step by step.</string>
+    <string name="infotour_slide4_title">Select your desired\nshare option</string>
+    <string name="infotour_slide5_title">Infos about alpha status</string>
+    <string name="infotour_slide5_text">Currently this app is only a UI preview. You cannot share something until now. Updates will bring the full functionality step by step.</string>
+    <string name="infotour_slide6_title">Login now</string>
+    <string name="infotour_slide6_user_name">User name</string>
+    <string name="infotour_slide6_password">Password</string>
+    <string name="infotour_slide6_password_forgotten">Password forgotten</string>
+    <string name="infotour_slide6_register">Register now</string>
+
+    <string name="login_info_required">You must login to use ShareWiFi. This allows other users to share something with you.</string>
 
     <string name="nav_header_networks">Networks</string>
     <string name="nav_allnetworks">All networks</string>
@@ -50,11 +62,14 @@
     <string name="sharedialog.title.alreadyshared">Continue sharing %1$s?</string>
     <string name="sharedialog.notification.subtitle">Do you want to share this Wi-Fi network?</string>
 
-    <string name="sharedialog.option.worldwideshare.title">YES, WITH EVERYONE IN THE WORLD</string>
+    <string name="sharedialog.option.worldwideshare.title">YES, WITH EVERYONE</string>
+    <string name="sharedialog.option.worldwideshare.title2">WITH EVERYONE</string>
     <string name="sharedialog.option.worldwideshare.desc">Then everyone in the world can connect with this Wi-Fi.</string>
     <string name="sharedialog.option.groupshare.title">YES, WITH SELECTED CONTACTS</string>
+    <string name="sharedialog.option.groupshare.title2">WITH SELECTED CONTACTS</string>
     <string name="sharedialog.option.groupshare.desc">Then all members of selected contact lists can connect with this Wi-Fi.</string>
     <string name="sharedialog.option.deviceshare.title">YES, WITH MY DEVICES</string>
+    <string name="sharedialog.option.deviceshare.title2">WITH MY DEVICES</string>
     <string name="sharedialog.option.deviceshare.desc">Then all your devices where you are logged in can connect with this Wi-Fi.</string>
     <string name="sharedialog.option.do_not_share.title">NO, DO NOT SHARE</string>
     <string name="sharedialog.option.do_not_share.desc">The login data are neither stored nor shared by ShareWiFi.</string>
