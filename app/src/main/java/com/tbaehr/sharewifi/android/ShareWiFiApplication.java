@@ -8,7 +8,14 @@ import android.content.Context;
  */
 public class ShareWiFiApplication extends Application {
 
-    public final static String[] blackList = new String[] {"Telekom", "Telekom_Fon"};
+    /**
+     * These hotspot networks does not need Wi-Fi credentials.
+     * Some Telekom customers might have access to the Internet
+     * but sharing them does not help anyone. Both networks are
+     * managed by the Telekom "Online Manager". Hence, ShareWiFi
+     * ignores them.
+     */
+    public final static String[] unsharableNetworks = new String[] {"Telekom", "Telekom_FON"};
 
     private static Context context;
 

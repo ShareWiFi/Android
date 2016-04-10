@@ -48,12 +48,12 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
             return;
         }
 
-        // Edge case 3: Known network || Network in blackList
+        // Edge case 3: Known network || Network in unsharableNetworks
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         String ssid = wifiInfo.getSSID().replace("\"", "");
 //        String mac = wifiInfo.getMacAddress();
-        if (onBlacklist(ssid) || isKnownNetwork(ssid)) {
+        if (isShareable(ssid) || isKnownNetwork(ssid)) {
             NotificationBuilder.getInstance().hideShareDialog();
             return;
         }
@@ -67,8 +67,8 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
         return false;
     }
 
-    private boolean onBlacklist(String ssid) {
-        return contains(ShareWiFiApplication.blackList, ssid.replace("\"",""));
+    private boolean isShareable(String ssid) {
+        return contains(ShareWiFiApplication.unsharableNetworks, ssid.replace("\"",""));
     }
 
     private boolean contains(String[] blacklist, String ssid) {
