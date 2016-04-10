@@ -21,7 +21,7 @@ public class InfoLoginFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mTitle = getContext().getString(R.string.infotour_slide4_title);
+        mTitle = getContext().getString(R.string.infotour_slide6_title);
     }
 
     @Nullable
