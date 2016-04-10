@@ -34,11 +34,11 @@ public class InfoTour extends AppIntro2 {
 
         title = getString(R.string.infotour_slide2_title);
         description = getString(R.string.infotour_slide2_text);
-        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.ic_menu_downloaded_white, android.R.color.transparent));
+        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.info_shared_with_me, android.R.color.transparent));
 
         title = getString(R.string.infotour_slide3_title);
         description = getString(R.string.infotour_slide3_text);
-        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.ic_menu_shared_white, android.R.color.transparent));
+        addSlide(AppIntroFragment.newInstance(title, description, R.drawable.info_shared_by_me, android.R.color.transparent));
 
         title = getString(R.string.infotour_slide4_title);
         description = getString(R.string.infotour_slide4_text);
