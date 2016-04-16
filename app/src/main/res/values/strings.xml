@@ -37,6 +37,8 @@
     <string name="infotour_slide6_password">Password</string>
     <string name="infotour_slide6_password_forgotten">Password forgotten</string>
     <string name="infotour_slide6_register">Register now</string>
+    <string name="infotour_skip_title">Skip info tour?</string>
+    <string name="infotour_skip_message">The info tour explains how ShareWiFi works.</string>
 
     <string name="login_info_required">You must login to use ShareWiFi. This allows other users to share something with you.</string>
 
