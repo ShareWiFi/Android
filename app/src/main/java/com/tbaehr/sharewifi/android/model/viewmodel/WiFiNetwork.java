@@ -88,11 +88,11 @@ public class WiFiNetwork implements Comparable<WiFiNetwork> {
 
         public int getDrawable() {
             switch (this) {
-                case SHARED_BY_ME_WITH_EVERYONE: return R.drawable.ic_menu_shared_with_all;
-                case SHARED_BY_ME_WITHIN_GROUPS: return R.drawable.ic_menu_shared_with_groups;
-                case SHARED_BY_ME_WITH_MY_DEVICES: return R.drawable.ic_menu_shared_with_devices;
-                case SHARED_WITH_ME_WITH_EVERYONE: return R.drawable.ic_menu_downloaded_orange;
-                case SHARED_WITH_ME_WITHIN_GROUPS: return R.drawable.ic_menu_downloaded_blue;
+                case SHARED_BY_ME_WITH_EVERYONE: return R.drawable.shared_by_me_orange;
+                case SHARED_BY_ME_WITHIN_GROUPS: return R.drawable.shared_by_me_blue;
+                case SHARED_BY_ME_WITH_MY_DEVICES: return R.drawable.shared_by_me_green;
+                case SHARED_WITH_ME_WITH_EVERYONE: return R.drawable.shared_with_me_orange;
+                case SHARED_WITH_ME_WITHIN_GROUPS: return R.drawable.shared_with_me_blue;
                 case NOT_SHARED: return R.drawable.ic_menu_share_off;
                 case UNKNOWN: return -1;
                 default: return -1;

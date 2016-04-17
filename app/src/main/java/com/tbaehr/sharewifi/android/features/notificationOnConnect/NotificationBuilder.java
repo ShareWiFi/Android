@@ -24,6 +24,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.view.View;
 
 import com.tbaehr.sharewifi.android.R;
 import com.tbaehr.sharewifi.android.ShareWiFiApplication;
@@ -35,16 +36,18 @@ import com.tbaehr.sharewifi.android.model.viewmodel.WiFiNetwork;
  */
 public class NotificationBuilder {
 
-    private static NotificationBuilder notificationBuilder;
+    private static NotificationBuilder mNotificationBuilder;
+
+    private static Notification mNotification;
 
     private NotificationBuilder() {}
 
     public static NotificationBuilder getInstance() {
-        if (notificationBuilder == null) {
-            notificationBuilder = new NotificationBuilder();
+        if (mNotificationBuilder == null) {
+            mNotificationBuilder = new NotificationBuilder();
         }
 
-        return notificationBuilder;
+        return mNotificationBuilder;
     }
 
     public void showShareDialog(String ssid) {
@@ -61,26 +64,29 @@ public class NotificationBuilder {
         PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), openShareViewIntent, 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ShareWiFiApplication.getAppContext());
-        mBuilder.setSmallIcon(R.drawable.ic_menu_shared);
+        mBuilder.setSmallIcon(R.drawable.shared_by_me_light_gray);
         mBuilder.setContentTitle(context.getString(R.string.sharedialog_title, ssid));
         mBuilder.setContentText(context.getString(R.string.sharedialog_notification_subtitle));
         mBuilder.setContentIntent(pIntent);
         mBuilder.setAutoCancel(true);
 
-        Notification notification = mBuilder.build();
+        mNotification = mBuilder.build();
 
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0, notification);
+        notificationManager.notify(0, mNotification);
     }
 
     public void hideShareDialog() {
         Context context = ShareWiFiApplication.getAppContext();
 
-        NotificationManager notificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(0);
+        if (mNotification != null && mNotification.visibility == View.VISIBLE) {
+            NotificationManager notificationManager =
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(0);
+            mNotification = null;
+        }
     }
 
 }
