@@ -26,11 +26,16 @@
     <!-- Info Tour -->
     <string name="infotour_slide1_hallo">Hallo</string>
     <string name="infotour_slide1_text">Schön, dass Du die Alpha-Version von ShareWiFi installiert hast.</string>
+
     <string name="infotour_slide2_title">Mit mir geteilt</string>
     <string name="infotour_slide2_text">Über ShareWiFi können andere mit Dir WLAN-Zugangsdaten teilen. ShareWiFi verbindet Dein Gerät automatisch, wenn das Netzwerk in Reichweite ist.</string>
+
     <string name="infotour_slide3_title">Von mir geteilt</string>
-    <string name="infotour_slide3_text">Über ShareWiFi kannst Du auch mit anderen Zugangsdaten teilen. Das Passwort bleibt dennoch unsichtbar. Du kannst das Teilen jederzeit rückgängig machen.</string>
+    <string name="infotour_slide3_text">Über ShareWiFi kannst Du auch mit anderen Zugangsdaten teilen. Das Passwort bleibt dennoch unsichtbar.</string>
+
     <string name="infotour_slide4_title">Teile ganz nach\nDeinen Wünschen</string>
+    <string name="infotour_slide4_undo">Du kannst das Teilen jederzeit rückgängig machen.</string>
+
     <string name="infotour_slide5_title">Hinweis zum\nAlpha-Status</string>
     <string name="infotour_slide5_text">Aktuell kannst Du Dir nur Teile der Oberfläche anschauen. Das Teilen ist noch nicht möglich. Über Updates erhälst Du nach und nach die vollständige Funktionalität.</string>
     <string name="infotour_slide6_title">Jetzt anmelden</string>
