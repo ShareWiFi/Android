@@ -37,6 +37,7 @@ import android.widget.TextView;
 
 import com.tbaehr.sharewifi.android.R;
 import com.tbaehr.sharewifi.android.features.notificationOnConnect.NotificationBuilder;
+import com.tbaehr.sharewifi.android.model.ShareWiFiSettings;
 import com.tbaehr.sharewifi.android.model.viewmodel.ContactListItem;
 
 public class ShareOptionsActivity extends AbstractShareActivity {
@@ -45,15 +46,20 @@ public class ShareOptionsActivity extends AbstractShareActivity {
 
     private CardView[] cards = new CardView[4];
 
+    private ShareWiFiSettings mSettings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.sharedialog_options_activity);
 
+        mSettings = new ShareWiFiSettings(this);
+
         configureToolbar();
         NotificationBuilder.getInstance().hideShareDialog();
         configureCards();
+        updateNotificationTextView();
     }
 
     /**
@@ -156,7 +162,7 @@ public class ShareOptionsActivity extends AbstractShareActivity {
         View.OnClickListener disableNotificationsClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                disableNotifications();
+                toggleNotificationsEnabled();
             }
         };
         disable_notifications.setOnClickListener(disableNotificationsClickListener);
@@ -244,11 +250,17 @@ public class ShareOptionsActivity extends AbstractShareActivity {
         finish();
     }
 
-    private void disableNotifications() {
-        Snackbar.make(
-                findViewById(R.id.share_dialog_coordinator_layout),
-                "Benachrichtigungen können aktuell noch nicht deaktiviert werden.",
-                Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    private void toggleNotificationsEnabled() {
+        boolean enabled = mSettings.isNotificationsEnabled();
+        mSettings.setNotificationsEnabled(!enabled);
+        updateNotificationTextView();
+    }
+
+    private void updateNotificationTextView() {
+        TextView notificationTextView = (TextView) findViewById(R.id.share_dialog_notifications_enabled);
+        notificationTextView.setText(mSettings.isNotificationsEnabled() ?
+                R.string.sharedialog_option_neveraskagain :
+                R.string.sharedialog_option_notifications_disabled);
     }
 
     private void showAgbDialog(String strName) {

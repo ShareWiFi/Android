@@ -83,8 +83,8 @@
     <string name="sharedialog.option.do_not_share.desc">The login data are neither stored nor shared by ShareWiFi.</string>
     <string name="sharedialog.option.do_not_longer_share.title">NO, UNDO SHARING</string>
     <string name="sharedialog.option.do_not_longer_share.desc">The login data are deleted from all devices except this one.</string>
-    <string name="sharedialog.option.neveraskagain">Never show the share dialog on new connect again.</string>
-    <string name="sharedialog.option.notifications_disabled">Share dialog on new connect is disabled.</string>
+    <string name="sharedialog.option.neveraskagain">The share notification on new connect is enabled. Disable?</string>
+    <string name="sharedialog.option.notifications_disabled">The share notification on new connect is disabled. Enable?</string>
 
     <string name="sharedialog.option.groupshare.dialog.headtitle">With whom do you want to share %1$s?</string>
     <string name="sharedialog.option.groupshare.title_contactlist">Contact lists</string>

@@ -26,41 +26,46 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
 import com.tbaehr.sharewifi.android.ShareWiFiApplication;
+import com.tbaehr.sharewifi.android.model.ShareWiFiSettings;
 
 /**
  * Created by tbaehr on 14.02.16.
  */
 public class ConnectionBroadcastReceiver extends BroadcastReceiver {
 
+    private Context mContext;
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        // Edge Case 1: NetworkInfo not available || Not connected
-        NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
-        if (info == null || !info.isConnected() || !info.isAvailable()) {
-            NotificationBuilder.getInstance().hideShareDialog();
+        mContext = context;
+
+        // Edge Case 1: User has disabled notifications
+        if (!isNotificationEnabled()) {
             return;
         }
 
-        // Edge Case 2: Internet connection not available
-        // TODO: Internet check
-        if (false) {
-            NotificationBuilder.getInstance().hideShareDialog();
+        // Edge Case 2: NetworkInfo not available || Not connected
+        NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+        if (info == null || !info.isConnected() || !info.isAvailable()) {
             return;
         }
 
         // Edge case 3: Known network || Network in unsharableNetworks
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        String ssid = wifiInfo.getSSID().replace("\"", "");
+        final String ssid = wifiInfo.getSSID().replace("\"", "");
 //        String mac = wifiInfo.getMacAddress();
-        if (isShareable(ssid) || isKnownNetwork(ssid)) {
-            NotificationBuilder.getInstance().hideShareDialog();
+        if (ssid.equals("<unknown ssid>") || isShareable(ssid) || isKnownNetwork(ssid)) {
             return;
         }
 
-        // Show the share dialog notification
+        // Internet connection is available -> show share dialog notification
+        // TODO: Implementation
         NotificationBuilder.getInstance().showShareDialog(ssid);
+    }
 
+    private boolean isNotificationEnabled() {
+        return new ShareWiFiSettings(mContext).isNotificationsEnabled();
     }
 
     private boolean isKnownNetwork(String ssid) {

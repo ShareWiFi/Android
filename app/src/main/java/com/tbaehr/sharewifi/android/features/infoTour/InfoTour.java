@@ -11,6 +11,7 @@ import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.tbaehr.sharewifi.android.R;
 import com.tbaehr.sharewifi.android.features.MainActivity;
+import com.tbaehr.sharewifi.android.model.ShareWiFiSettings;
 
 /**
  * Created by tbaehr on 05.04.16.
@@ -19,9 +20,17 @@ public class InfoTour extends AppIntro2 {
 
     private FrameLayout mBackgroundFrame;
 
+    private ShareWiFiSettings mSettings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mSettings = new ShareWiFiSettings(this);
+
+        if (mSettings.isInfoTourCompleted()) {
+            leaveInfotour();
+        }
 
         mBackgroundFrame = (FrameLayout) findViewById(R.id.background);
         mBackgroundFrame.setBackgroundColor(getResources().getColor(R.color.blue));
@@ -51,8 +60,9 @@ public class InfoTour extends AppIntro2 {
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
 
-        Intent nextActivity = new Intent(this, MainActivity.class);
-        startActivity(nextActivity);
+        mSettings.setInfoTourCompleted();
+
+        leaveInfotour();
     }
 
     @Override
@@ -65,8 +75,7 @@ public class InfoTour extends AppIntro2 {
                 .setPositiveButton(R.string._continue, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent nextActivity = new Intent(InfoTour.this, MainActivity.class);
-                        startActivity(nextActivity);
+                        leaveInfotour();
                     }
                 })
                 .setNegativeButton(R.string._no, new DialogInterface.OnClickListener() {
@@ -75,6 +84,11 @@ public class InfoTour extends AppIntro2 {
                         // do nothing
                     }
                 }).show();
+    }
+
+    private void leaveInfotour() {
+        Intent nextActivity = new Intent(InfoTour.this, MainActivity.class);
+        startActivity(nextActivity);
     }
 
 }
