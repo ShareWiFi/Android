@@ -39,6 +39,7 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        final NotificationBuilder notificationBuilder = NotificationBuilder.getInstance();
         mContext = context;
 
         // Edge Case 1: User has disabled notifications
@@ -49,6 +50,7 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
         // Edge Case 2: NetworkInfo not available || Not connected
         NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
         if (info == null || !info.isConnected() || !info.isAvailable()) {
+            notificationBuilder.hideShareDialog();
             return;
         }
 
@@ -66,7 +68,7 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
             @Override
             public void run() {
                 if (new InternetChecker().isInternetAvailable()) {
-                    NotificationBuilder.getInstance().showShareDialog(ssid);
+                    notificationBuilder.showShareDialog(ssid);
                 }
             }
         });
