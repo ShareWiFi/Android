@@ -24,8 +24,10 @@ import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 
 import com.tbaehr.sharewifi.android.ShareWiFiApplication;
+import com.tbaehr.sharewifi.android.features.internetCheck.InternetChecker;
 import com.tbaehr.sharewifi.android.model.ShareWiFiSettings;
 
 /**
@@ -60,8 +62,14 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
         }
 
         // Internet connection is available -> show share dialog notification
-        // TODO: Implementation
-        NotificationBuilder.getInstance().showShareDialog(ssid);
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (new InternetChecker().isInternetAvailable()) {
+                    NotificationBuilder.getInstance().showShareDialog(ssid);
+                }
+            }
+        });
     }
 
     private boolean isNotificationEnabled() {
