@@ -13,8 +13,8 @@ import java.util.Locale;
 public class InternetChecker {
 
     // for method isPingCommandSuccessful
-    private static final int PING_COUNT = 3;
-    private static final int PING_TIMEOUT_IN_SECONDS = 30;
+    private static final int PING_COUNT = 2;
+    private static final int PING_TIMEOUT_IN_SECONDS = 10;
     private static final String PING_COMMAND = String.format(Locale.getDefault(), "ping -c %d -W %d 8.8.8.8", PING_COUNT, PING_TIMEOUT_IN_SECONDS);
     private static final int EXIT_CODE_SUCCESS = 0;
     private static final int EXIT_CODE_NO_REPLY = 1;
@@ -22,7 +22,7 @@ public class InternetChecker {
 
     // for backup method canReachGoogle()
     private static final String PING_URL = "http://www.google.com";
-    private static final int TIME_OUT_DURATION_IN_MILLIS = 30000;
+    public static final int TIME_OUT_DURATION_IN_MILLIS = 10000;
 
     /**
      * Do not call this on UI thread!

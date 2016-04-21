@@ -53,7 +53,7 @@ public class InfoTour extends AppIntro2 {
         description = getString(R.string.infotour_slide5_text);
         addSlide(AppIntroFragment.newInstance(title, description, R.drawable.under_construction_400, android.R.color.transparent));
 
-        addSlide(new InfoLoginFragment());
+        //addSlide(new InfoLoginFragment());
     }
 
     @Override

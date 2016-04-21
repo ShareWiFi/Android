@@ -51,6 +51,11 @@ public class NotificationBuilder {
     }
 
     public void showShareDialog(String ssid) {
+        // only create a notification once
+        if (mNotification != null) {
+            return;
+        }
+
         Context context = ShareWiFiApplication.getAppContext();
 
         // TODO: Find the local (!!) share status for this network
