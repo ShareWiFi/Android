@@ -2,8 +2,10 @@
     <string name="app_name">ShareWiFi</string>
 
     <string name="agb">...</string>
-    <string name="accept_agb1">Ich akzeptiere die</string>
-    <string name="accept_agb2">Nutzungsbedingugen</string>
+    <string name="agb_accept">Ich akzeptiere die vollständigen\ </string>
+    <string name="agb_terms_of_use">Nutzungsbedingugen</string>
+    <string name="agb_short_item1">Du teilst nur mit Zustimmung des WLAN-Betreibers. Bei Verstoß dürfen wir Deinen Account sperren oder gar löschen.</string>
+    <string name="agb_short_item2">Auch wenn wir unser Bestes tun, um Deine Daten abzusichern, erfolgt die Nutzung auf eigene Gefahr. Haftungsansprüche sind ausgeschlossen.</string>
 
 
     <string name="navigation_drawer_open">Öffne die Navigationsbar</string>
