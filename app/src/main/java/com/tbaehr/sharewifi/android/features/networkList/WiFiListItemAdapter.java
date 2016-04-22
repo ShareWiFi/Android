@@ -31,75 +31,65 @@ import com.tbaehr.sharewifi.android.model.viewmodel.WiFiNetwork;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by tbaehr on 21.02.16.
+ * Last modified by tbaehr on 22.04.16.
  */
 public class WiFiListItemAdapter extends ArrayAdapter<WiFiNetwork> {
 
-    //private HashMap<WiFiNetwork, Integer> mIdMap = new HashMap<>();
     private List<WiFiNetwork> listOfWiFiNetworks;
 
     public WiFiListItemAdapter(Context context, List<WiFiNetwork> wiFiNetworks) {
         super(context, R.layout.networklist_item, wiFiNetworks);
-        /*for (int i = 0; i < objects.size(); ++i) {
-            mIdMap.put(objects.get(i), i);
-        }*/
         this.listOfWiFiNetworks = wiFiNetworks;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        // Get inflater which is able to create the list item
-        LayoutInflater inflater = (LayoutInflater) getContext()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        int itemLayoutId = R.layout.networklist_item;
-        View listItem = inflater.inflate(itemLayoutId, parent, false);
-
-        // Find view objects
-        TextView ssidTextView =
-                (TextView) listItem.findViewById(R.id.network_item_title);
-        TextView statusTextView =
-                (TextView) listItem.findViewById(R.id.network_item_description);
-        ImageView networkStatusImageView =
-                (ImageView) listItem.findViewById(R.id.network_item_networkstatus);
-        ImageView shareStatusImageView =
-                (ImageView) listItem.findViewById(R.id.network_item_sharestatus);
-        ImageView encryptedImageView =
-                (ImageView) listItem.findViewById(R.id.network_item_encrypted);
-        ImageView qualityImageView =
-                (ImageView) listItem.findViewById(R.id.network_item_quality);
-
-        // Get the view model item
-        final WiFiNetwork item = listOfWiFiNetworks.get(position);
-
-        // Set values from view model item
-        ssidTextView.setText(item.getSsid());
-        statusTextView.setText(item.getDescription());
-        networkStatusImageView.setImageResource(item.getSignalStrengthIcon());
-        if (item.isUnknownNetwork()) {
-            shareStatusImageView.setVisibility(View.GONE);
+    public View getView(int position, View view, ViewGroup parent) {
+        ViewHolder viewHolder;
+        if (view != null) {
+            viewHolder = (ViewHolder) view.getTag();
         } else {
-            shareStatusImageView.setImageResource(item.getShareStatus().getDrawable());
-        }
-        encryptedImageView.setVisibility(item.isEncrypted() ? View.VISIBLE : View.GONE);
-        if (item.isQualityBad()) {
-            qualityImageView.setVisibility(View.VISIBLE);
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.networklist_item, parent, false);
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         }
 
-        // return the list item
-        return listItem;
-    }
+        final WiFiNetwork viewModelItem = listOfWiFiNetworks.get(position);
+        viewHolder.ssidTextView.setText(viewModelItem.getSsid());
+        viewHolder.statusTextView.setText(viewModelItem.getDescription());
+        viewHolder.networkStatusImageView.setImageResource(viewModelItem.getSignalStrengthIcon());
+        if (viewModelItem.isUnknownNetwork()) {
+            viewHolder.shareStatusImageView.setVisibility(View.GONE);
+        } else {
+            viewHolder.shareStatusImageView.setImageResource(viewModelItem.getShareStatus().getDrawable());
+        }
+        viewHolder.encryptedImageView.setVisibility(viewModelItem.isEncrypted() ? View.VISIBLE : View.GONE);
+        viewHolder.qualityImageView.setVisibility(viewModelItem.isQualityBad() ? View.VISIBLE : View.GONE);
 
-    @Override
-    public long getItemId(int position) {
-        WiFiNetwork item = getItem(position);
-        return position; //mIdMap.get(item);
+        return view;
     }
 
     @Override
     public boolean hasStableIds() {
         return true;
+    }
+
+    static class ViewHolder {
+        @Bind(R.id.network_item_title) TextView ssidTextView;
+        @Bind(R.id.network_item_description) TextView statusTextView;
+        @Bind(R.id.network_item_networkstatus) ImageView networkStatusImageView;
+        @Bind(R.id.network_item_sharestatus) ImageView shareStatusImageView;
+        @Bind(R.id.network_item_encrypted) ImageView encryptedImageView;
+        @Bind(R.id.network_item_quality) ImageView qualityImageView;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
 }

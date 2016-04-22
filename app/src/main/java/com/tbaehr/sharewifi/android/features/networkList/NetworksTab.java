@@ -25,6 +25,9 @@ import com.tbaehr.sharewifi.android.model.viewmodel.WiFiNetwork;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by tbaehr on 05.03.16.
  */
@@ -32,8 +35,11 @@ public class NetworksTab extends Fragment {
 
     public final static String BUNDLE_EXTRA_IN_RANGE = "display networks in range";
 
-    private ListView wiFiNetList;
+    @Bind(R.id.networklist_listView) ListView wiFiNetList;
 
+    /**
+     * This boolean indicates whether the tab displays the network IN RANGE or OUT OF RANGE.
+     */
     private boolean inRangeNetworks;
 
     private BroadcastReceiver wifiStateChangedListener;
@@ -42,6 +48,7 @@ public class NetworksTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate this tab
         View view = inflater.inflate(R.layout.networklist_tab_content, container, false);
+        ButterKnife.bind(this, view);
 
         // Retrieve UI model
         inRangeNetworks = getArguments().getBoolean(BUNDLE_EXTRA_IN_RANGE, true);
@@ -49,7 +56,6 @@ public class NetworksTab extends Fragment {
 
         // Setup list view
         final ArrayAdapter<WiFiNetwork> adapter = new WiFiListItemAdapter(getActivity(), networks);
-        wiFiNetList = (ListView) view.findViewById(R.id.networklist_listView);
         wiFiNetList.setAdapter(adapter);
         wiFiNetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

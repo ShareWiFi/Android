@@ -36,7 +36,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tbaehr.sharewifi.android.R;
-import com.tbaehr.sharewifi.android.features.notificationOnConnect.NotificationBuilder;
+import com.tbaehr.sharewifi.android.features.notification.NotificationBuilder;
 import com.tbaehr.sharewifi.android.model.ShareWiFiSettings;
 import com.tbaehr.sharewifi.android.model.viewmodel.ContactListItem;
 

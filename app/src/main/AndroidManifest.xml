@@ -42,7 +42,7 @@
             android:theme="@style/AppTheme.NoActionBarLight">
         </activity>
 
-        <receiver android:name=".features.notificationOnConnect.ConnectionBroadcastReceiver" >
+        <receiver android:name=".features.notification.ConnectionBroadcastReceiver" >
             <intent-filter android:priority="100">
                 <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>

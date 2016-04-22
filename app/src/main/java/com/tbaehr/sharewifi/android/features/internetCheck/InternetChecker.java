@@ -1,8 +1,6 @@
 package com.tbaehr.sharewifi.android.features.internetCheck;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Locale;
@@ -37,17 +35,6 @@ public class InternetChecker {
         try {
             Process p = Runtime.getRuntime().exec(PING_COMMAND);
             int code = p.waitFor();
-
-            String pingResult = "";
-            BufferedReader in = new BufferedReader(new
-                    InputStreamReader(p.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                System.out.println(inputLine);
-                pingResult += inputLine;
-            }
-            in.close();
-
             return code == EXIT_CODE_SUCCESS;
         } catch (Exception exception) {
             return canReachGoogle();
