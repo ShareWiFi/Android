@@ -2,10 +2,11 @@
     <string name="app_name">ShareWiFi</string>
 
     <string name="agb">...</string>
-    <string name="agb_accept">I accept the full\ </string>
+    <string name="agb_accept">With proceeding you accept the full <![CDATA[<a href="">terms of use</a>]]>.</string>
     <string name="agb_terms_of_use">Terms of use</string>
-    <string name="agb_short_item1">You only share with permission to the Wi-Fi owner. If not we are allowed to lock or even delete your account.</string>
-    <string name="agb_short_item2">We give our best to protect your data but usage is at your own risk. Liability claims are excluded.</string>
+    <string name="agb_short_title"><b>Brief summary of terms:</b></string>
+    <string name="agb_short_item1">1. You <b>only share with permission</b> to the Wi-Fi owner. If not we are allowed to lock or even delete your account.</string>
+    <string name="agb_short_item2">2. We give our best to protect your data but <b>usage is at your own risk</b>. Liability claims are excluded.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -17,6 +18,7 @@
     <string name="_yes">@android:string/yes</string>
     <string name="_settings">Settings</string>
     <string name="_continue">Continue</string>
+    <string name="_close">Close</string>
     <string name="_accept">Accept</string>
     <string name="_decline">Decline</string>
     <string name="_done">Done</string>
