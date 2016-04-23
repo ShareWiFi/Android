@@ -75,7 +75,7 @@ public class InfoTour extends AppIntro2 {
                 .setPositiveButton(R.string._continue, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        leaveInfotour();
+                        goToLastSlide();
                     }
                 })
                 .setNegativeButton(R.string._no, new DialogInterface.OnClickListener() {
@@ -84,6 +84,10 @@ public class InfoTour extends AppIntro2 {
                         // do nothing
                     }
                 }).show();
+    }
+
+    private void goToLastSlide() {
+        pager.setCurrentItem(fragments.size()-1);
     }
 
     private void leaveInfotour() {
