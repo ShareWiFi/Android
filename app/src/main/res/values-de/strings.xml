@@ -17,7 +17,7 @@
     <string name="_cancel">@android:string/cancel</string>
     <string name="_no">@android:string/no</string>
     <string name="_yes">@android:string/yes</string>
-    <string name="_settings">Settings</string>
+    <string name="_settings">Einstellungen</string>
     <string name="_continue">Fortsetzen</string>
     <string name="_close">Schließen</string>
     <string name="_accept">Zustimmen</string>

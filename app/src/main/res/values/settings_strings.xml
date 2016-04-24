@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- 0 --><!-- Sources where networks can come from -->
+    <string name="settings_sources_section_title">Network sources</string>
+    <!-- 0a --><!-- Always visible. Unchecked if 0b || 0c checked. -->
+    <string name="settings_sources_all">All</string>
+    <!-- 0b --><!-- Always visible. Disabled if 0a checked. -->
+    <string name="settings_sources_encrypted">Only encrypted networks</string>
+    <!-- 0c --><!-- Always visible. Disabled if 0a checked. -->
+    <string name="settings_sources_contact_list">Only networks shared from my contacts</string>
+
+    <!-- 1  --><!-- enabled/disabled -->
+    <string name="settings_notifications_section_title">Notifications</string>
+    <!-- 1a --><!-- Visible if 1 enabled. Always enabled iff visible. -->
+    <string name="settings_notifications_notify_net_connected">Notify at established connection</string>
+    <!-- 1b --><!-- Visible if 1 enabled. Enabled when (2 disabled || 2b disabled) -->
+    <string name="settings_notifications_notify_net_detected">Notify about networks in range</string>
+
+    <!-- 2  --><!-- enabled/disabled -->
+    <string name="settings_auto_connect_section_title">Auto connect</string>
+    <!-- 2a --><!-- Visible if 2 enabled.  Always enabled iff visible. -->
+    <string name="settings_auto_connect_all">For all networks</string>
+    <!-- 2b --><!-- Visible if 2 enabled. Enabled when 2a disabled -->
+    <string name="settings_auto_connect_groups">For networks from my contacts</string>
+
+</resources>
