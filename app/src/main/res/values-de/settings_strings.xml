@@ -1,6 +1,6 @@
 <resources>
 
-    !-- 0 --><!-- Sources where networks can come from -->
+    <!-- 0 --><!-- Sources where networks can come from -->
     <string name="settings_sources_section_title">Netzwerkquellen</string>
     <!-- 0a --><!-- Always visible. Unchecked if 0b || 0c checked. -->
     <string name="settings_sources_all">Alle</string>
