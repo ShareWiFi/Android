@@ -18,7 +18,7 @@ public class TextViewHelper {
      * @param listener The listener that is called when the link is clicked
      */
     public static void attachOnLinkClickListener(final TextView textView, final IOnLinkClickListener listener) {
-        CharSequence text = textView.getText();
+        final CharSequence text = textView.getText();
         Spanned html = Html.fromHtml(text.toString());
         SpannableStringBuilder builder = new SpannableStringBuilder(html);
         URLSpan[] urlSpans = builder.getSpans(0, text.length(), URLSpan.class);
@@ -33,6 +33,12 @@ public class TextViewHelper {
                     if (listener != null) {
                         listener.onClick(view, span.getURL());
                     }
+
+                    // Unhighlight the link, remove the current listener and readd the listener
+                    // This will give the user a permanent touch feedback (instead only once)
+                    TextView telekomTextView = ((TextView) view);
+                    telekomTextView.clearComposingText();
+                    attachOnLinkClickListener(textView, listener);
                 }
 
                 /*public void updateDrawState(TextPaint textPaint) {
