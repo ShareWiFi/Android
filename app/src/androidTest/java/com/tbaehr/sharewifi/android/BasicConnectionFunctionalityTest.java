@@ -21,8 +21,8 @@ package com.tbaehr.sharewifi;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.tbaehr.sharewifi.features.WiFiHelper;
-import com.tbaehr.sharewifi.model.SecurityMode;
+import com.tbaehr.sharewifi.android.features.WiFiHelper;
+import com.tbaehr.sharewifi.android.model.SecurityMode;
 
 import junit.framework.Assert;
 

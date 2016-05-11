@@ -33,11 +33,14 @@ import android.widget.ImageView;
 
 import com.tbaehr.sharewifi.android.R;
 import com.tbaehr.sharewifi.android.features.networkList.NetworkListFragment;
+import com.tbaehr.sharewifi.android.features.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static boolean accountPageOpened = false;
+
+    private FragmentHolder mFragmentHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +80,8 @@ public class MainActivity extends AppCompatActivity
         });
 
         // Fragment configuration
-        NetworkListFragment networkTabHostFragment = new NetworkListFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.item_detail_container, networkTabHostFragment).commit();
-
+        mFragmentHolder = new FragmentHolder();
+        mFragmentHolder.showNetworkTabHostFragment();
     }
 
     @Override
@@ -152,11 +153,11 @@ public class MainActivity extends AppCompatActivity
         String tempTesterMessage = "";
 
         if (id == R.id.nav_allnetworks) {
-
+            mFragmentHolder.showNetworkTabHostFragment();
         } else if (id == R.id.nav_contacts) {
             tempTesterMessage = "Sorry, die Kontaktverwaltung gibt's noch nicht. Dauert noch.";
         } else if (id == R.id.nav_settings) {
-            tempTesterMessage = "Sorry, die Einstellungs-Seite gibt's noch nicht. Dauert noch.";
+            mFragmentHolder.showSettingsFragment();
         } else if (id == R.id.nav_help) {
             tempTesterMessage = "Sorry, die Hilfe-Seite gibt's noch nicht. Kommt demnächst.";
         } else if (id == R.id.nav_add_account) {
@@ -176,5 +177,33 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    class FragmentHolder {
+
+        private NetworkListFragment mNetworkTabHostFragment;
+
+        private SettingsFragment mSettingsFragment;
+
+        private FragmentHolder() {
+            mNetworkTabHostFragment = new NetworkListFragment();
+            mSettingsFragment = new SettingsFragment();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.item_detail_container, mNetworkTabHostFragment).commit();
+            getFragmentManager().beginTransaction().add(R.id.item_detail_container, mSettingsFragment).commit();
+        }
+
+        void showNetworkTabHostFragment() {
+            getFragmentManager().beginTransaction().hide(mSettingsFragment).commit();
+
+            getSupportFragmentManager().beginTransaction().show(mNetworkTabHostFragment).commit();
+        }
+
+        void showSettingsFragment() {
+            getSupportFragmentManager().beginTransaction().hide(mNetworkTabHostFragment).commit();
+
+            getFragmentManager().beginTransaction().show(mSettingsFragment).commit();
+        }
+
     }
 }
