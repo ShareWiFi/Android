@@ -189,38 +189,45 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }
 
 class FragmentHolder {
 
-    private static NetworkListFragment mNetworkTabHostFragment;
+    private NetworkListFragment mNetworkTabHostFragment;
 
-    private static SettingsFragment mSettingsFragment;
+    private SettingsFragment mSettingsFragment;
 
-    private static AppCompatActivity mContext;
+    private static final String TAG_NET = "net";
+    private static final String TAG_SETTINGS = "settings";
 
-    FragmentHolder(AppCompatActivity context) {
+    private AppCompatActivity mContext;
+
+    public FragmentHolder(AppCompatActivity context) {
         mContext = context;
-        mNetworkTabHostFragment = new NetworkListFragment();
-        mSettingsFragment = new SettingsFragment();
 
-        mContext.getSupportFragmentManager().beginTransaction().add(R.id.item_detail_container, mNetworkTabHostFragment).commit();
-        mContext.getFragmentManager().beginTransaction().add(R.id.item_detail_container, mSettingsFragment).commit();
+        mNetworkTabHostFragment = (NetworkListFragment) mContext.getSupportFragmentManager().findFragmentByTag(TAG_NET);
+        if (mNetworkTabHostFragment == null) {
+            mNetworkTabHostFragment = new NetworkListFragment();
+            mContext.getSupportFragmentManager().beginTransaction().add(R.id.item_detail_container, mNetworkTabHostFragment, TAG_NET).commit();
+        }
+
+        mSettingsFragment = (SettingsFragment) mContext.getFragmentManager().findFragmentByTag(TAG_SETTINGS);
+        if (mSettingsFragment == null) {
+            mSettingsFragment = new SettingsFragment();
+            mContext.getFragmentManager().beginTransaction().add(R.id.item_detail_container, mSettingsFragment, TAG_SETTINGS).commit();
+        }
 
         showNetworkTabHostFragment();
     }
 
     void showNetworkTabHostFragment() {
-        mContext.getFragmentManager().beginTransaction().hide(mSettingsFragment).commit();
-
-        mContext.getSupportFragmentManager().beginTransaction().show(mNetworkTabHostFragment).commit();
+        mContext.getFragmentManager().beginTransaction().detach(mSettingsFragment).commit();
+        mContext.getSupportFragmentManager().beginTransaction().attach(mNetworkTabHostFragment).commit();
     }
 
     void showSettingsFragment() {
-        mContext.getSupportFragmentManager().beginTransaction().hide(mNetworkTabHostFragment).commit();
-
-        mContext.getFragmentManager().beginTransaction().show(mSettingsFragment).commit();
+        mContext.getSupportFragmentManager().beginTransaction().detach(mNetworkTabHostFragment).commit();
+        mContext.getFragmentManager().beginTransaction().attach(mSettingsFragment).commit();
     }
 
 }
