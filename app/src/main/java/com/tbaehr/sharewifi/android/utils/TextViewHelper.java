@@ -3,11 +3,15 @@ package com.tbaehr.sharewifi.android.utils;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.TextView;
+
+import com.tbaehr.sharewifi.android.R;
+import com.tbaehr.sharewifi.android.ShareWiFiApplication;
 
 public class TextViewHelper {
 
@@ -18,9 +22,9 @@ public class TextViewHelper {
      * @param listener The listener that is called when the link is clicked
      */
     public static void attachOnLinkClickListener(final TextView textView, final IOnLinkClickListener listener) {
-        CharSequence text = textView.getText();
+        final CharSequence text = textView.getText();
         Spanned html = Html.fromHtml(text.toString());
-        SpannableStringBuilder builder = new SpannableStringBuilder(html);
+        final SpannableStringBuilder builder = new SpannableStringBuilder(html);
         URLSpan[] urlSpans = builder.getSpans(0, text.length(), URLSpan.class);
 
         for (final URLSpan span : urlSpans) {
@@ -33,13 +37,18 @@ public class TextViewHelper {
                     if (listener != null) {
                         listener.onClick(view, span.getURL());
                     }
+
+                    // Unhighlight the link, remove the current listener and readd the listener
+                    // This will give the user a permanent touch feedback (instead only once)
+                    textView.clearComposingText();
+                    textView.setText(builder);
                 }
 
-                /*public void updateDrawState(TextPaint textPaint) {
+                public void updateDrawState(TextPaint textPaint) {
                     super.updateDrawState(textPaint);
                     textPaint.setUnderlineText(true);
-                    textPaint.setColor...
-                }*/
+                    textPaint.setColor(ShareWiFiApplication.getAppContext().getResources().getColor(R.color.white));
+                }
             };
             builder.setSpan(clickableSpan, start, end, flags);
             builder.removeSpan(span);

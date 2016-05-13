@@ -1,0 +1,61 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_sources_section_title">
+
+        <CheckBoxPreference
+            android:key="@string/key_settings_sources_unknown_users"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_sources_unknown_users" />
+
+        <CheckBoxPreference
+            android:key="@string/key_settings_sources_nonencrypted"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_sources_nonencrypted" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_auto_connect_section_title">
+
+        <CheckBoxPreference
+            android:disableDependentsState="true"
+            android:key="@string/key_settings_auto_connect_always"
+            android:summary="@string/settings_auto_connect_always" />
+
+        <CheckBoxPreference
+            android:checked="true"
+            android:dependency="@string/key_settings_auto_connect_always"
+            android:key="@string/key_settings_auto_connect_confirm"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_auto_connect_confirm" />
+
+        <CheckBoxPreference
+            android:dependency="@string/key_settings_auto_connect_always"
+            android:key="@string/key_settings_auto_connect_groups"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_auto_connect_groups" />
+
+        <CheckBoxPreference
+            android:dependency="@string/key_settings_auto_connect_always"
+            android:key="@string/key_settings_auto_connect_encrypted_networks"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_auto_connect_encrypted_networks" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_notifications_section_title">
+
+        <CheckBoxPreference
+            android:checked="true"
+            android:key="@string/key_settings_notifications_notify_net_detected"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_notifications_notify_net_detected" />
+
+        <CheckBoxPreference
+            android:checked="true"
+            android:key="@string/key_settings_notifications_notify_share"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_notifications_notify_share" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

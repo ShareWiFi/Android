@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- 0 --><!-- Sources where networks can come from -->
+    <string name="settings_sources_section_title">Exclude Wi-Fi Network Sources</string>
+    <!-- 0b --><!-- Always visible. Enabled if 0a not checked. -->
+    <string name="settings_sources_unknown_users">Exclude networks shared by unknown users</string>
+    <!-- 0c --><!-- Always visible. Enabled if 0a not checked. -->
+    <string name="settings_sources_nonencrypted">Exclude non-encrypted networks</string>
+
+    <!-- 1  -->
+    <string name="settings_auto_connect_section_title">Auto Connect</string>
+    <!-- 1a --><!-- Always visible. Always enabled. -->
+    <string name="settings_auto_connect_always">Always</string>
+    <!-- 1b --><!-- Always visible. Enabled if 1a not checked. If checked then 2b is checked, too. -->
+    <string name="settings_auto_connect_confirm">After confirmation</string>
+    <!-- 1c --><!-- Always visible. Enabled when 1a not checked && 0c checked. -->
+    <string name="settings_auto_connect_groups">For networks from my contacts without confirmation</string>
+    <!-- 1d --><!-- Always visible. Enabled when 1a not checked && 0b is checked. -->
+    <string name="settings_auto_connect_encrypted_networks">For all encrypted networks without confirmation</string>
+
+    <!-- 2  -->
+    <string name="settings_notifications_section_title">Notifications</string>
+    <!-- 2a --><!-- Always visible. Always enabled iff visible. -->
+    <string name="settings_notifications_notify_net_detected">\"Shared network in range. Connect?\"</string>
+    <!-- 2b --><!-- Always visible. Enabled when (1a disabled || 1c disabled) -->
+    <string name="settings_notifications_notify_share">\"Share new network?\"</string>
+
+
+    <!-- KEYS for SharedPrefs and Preference Views -->
+    <string name="key_settings_sources_unknown_users" translatable="false">
+        settings_sources_unknown_users
+    </string>
+    <string name="key_settings_sources_nonencrypted" translatable="false">
+        settings_sources_nonencrypted
+    </string>
+
+    <string name="key_settings_auto_connect_always" translatable="false">
+        settings_auto_connect_always
+    </string>
+    <string name="key_settings_auto_connect_confirm" translatable="false">
+        settings_auto_connect_confirm
+    </string>
+    <string name="key_settings_auto_connect_groups" translatable="false">
+        settings_auto_connect_groups
+    </string>
+    <string name="key_settings_auto_connect_encrypted_networks" translatable="false">
+        settings_auto_connect_encrypted_networks
+    </string>
+
+    <string name="key_settings_notifications_notify_net_detected" translatable="false">
+        settings_notifications_notify_net_detected
+    </string>
+    <string name="key_settings_notifications_notify_share" translatable="false">
+        settings_notifications_notify_share
+    </string>
+
+</resources>
