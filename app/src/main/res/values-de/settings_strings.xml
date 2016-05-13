@@ -5,7 +5,7 @@
     <!-- 0b --><!-- Always visible. Enabled if 0a not checked. -->
     <string name="settings_sources_unknown_users">Geteilte Netze unbekannter Kontakte ausschließen</string>
     <!-- 0c --><!-- Always visible. Enabled if 0a not checked. -->
-    <string name="settings_sources_nonencrypted">Unverschlüsselte Netze ausschließen ausschließen</string>
+    <string name="settings_sources_nonencrypted">Unverschlüsselte Netze ausschließen</string>
 
     <!-- 1  -->
     <string name="settings_auto_connect_section_title">Automatische Verbindungsherstellung</string>
