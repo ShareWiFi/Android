@@ -8,8 +8,8 @@ android {
         applicationId "com.tbaehr.sharewifi.android"
         minSdkVersion 18
         targetSdkVersion 23
-        versionCode 2
-        versionName "0.4.21"
+        versionCode 3
+        versionName "0.5.13"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -30,8 +30,7 @@ dependencies {
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:cardview-v7:23.3.0'
     compile 'com.github.clans:fab:1.6.2'
-    //compile 'com.github.paolorotolo:appintro:v3.4.0'
-    compile 'com.github.timobaehr:AppIntro:ce34c07'
+    compile 'com.github.paolorotolo:appintro:b5aa259'
     compile 'com.jakewharton:butterknife:7.0.1'
 
     testCompile 'junit:junit:4.12'
