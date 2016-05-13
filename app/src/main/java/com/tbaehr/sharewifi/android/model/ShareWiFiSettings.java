@@ -4,19 +4,22 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.tbaehr.sharewifi.android.R;
+
 /**
  * Created by tbaehr on 19.04.16.
  */
 public class ShareWiFiSettings {
 
-    private String KEY_NOTIFICATIONS_ENABLED = "notifications_enabled";
+    private final String KEY_NOTIFICATIONS_ENABLED;
 
-    private String KEY_INFO_TOUR_COMPLETED = "info_tour_completed";
+    private final String KEY_INFO_TOUR_COMPLETED = "info_tour_completed";
 
     private SharedPreferences mSharedPreferences;
 
     public ShareWiFiSettings(Context context) {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        KEY_NOTIFICATIONS_ENABLED = context.getString(R.string.key_settings_notifications_notify_share);
     }
 
     public void setNotificationsEnabled(boolean enabled) {

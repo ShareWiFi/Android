@@ -1,26 +1,28 @@
 <resources>
 
     <!-- 0 --><!-- Sources where networks can come from -->
-    <string name="settings_sources_section_title">Netzwerkquellen</string>
-    <!-- 0a --><!-- Always visible. Unchecked if 0b || 0c checked. -->
-    <string name="settings_sources_all">Alle</string>
-    <!-- 0b --><!-- Always visible. Disabled if 0a checked. -->
-    <string name="settings_sources_encrypted">Nur verschlüsselte Netzwerke</string>
-    <!-- 0c --><!-- Always visible. Disabled if 0a checked. -->
-    <string name="settings_sources_contact_list">Nur von meinen Kontakten geteilte Netzwerke</string>
+    <string name="settings_sources_section_title">WLAN-Netzwerkquellen ausschließen</string>
+    <!-- 0b --><!-- Always visible. Enabled if 0a not checked. -->
+    <string name="settings_sources_unknown_users">Geteilte Netze unbekannter Kontakte ausschließen</string>
+    <!-- 0c --><!-- Always visible. Enabled if 0a not checked. -->
+    <string name="settings_sources_nonencrypted">Unverschlüsselte Netze ausschließen ausschließen</string>
 
-    <!-- 1  --><!-- enabled/disabled -->
+    <!-- 1  -->
+    <string name="settings_auto_connect_section_title">Automatische Verbindungsherstellung</string>
+    <!-- 1a --><!-- Always visible. Always enabled. -->
+    <string name="settings_auto_connect_always">Immer</string>
+    <!-- 1b --><!-- Always visible. Enabled if 1a not checked. If checked then 2b is checked, too. -->
+    <string name="settings_auto_connect_confirm">Nach erstmaliger Bestätigung</string>
+    <!-- 1c --><!-- Always visible. Enabled when 1a not checked && 0c checked. -->
+    <string name="settings_auto_connect_groups">Für von meinen Kontakten geteilte Netze ohne Bestätigung</string>
+    <!-- 1d --><!-- Always visible. Enabled when 1a not checked && 0b is checked. -->
+    <string name="settings_auto_connect_encrypted_networks">Für alle verschlüsselten Netze ohne Bestätigung</string>
+
+    <!-- 2  -->
     <string name="settings_notifications_section_title">Benachrichtigungen</string>
-    <!-- 1a --><!-- Visible if 1 enabled. Always enabled iff visible. -->
-    <string name="settings_notifications_notify_net_connected">Benachrichtigen bei erfolgreichem Verbinden</string>
-    <!-- 1b --><!-- Visible if 1 enabled. Enabled when (2 disabled || 2b disabled) -->
-    <string name="settings_notifications_notify_net_detected">Benachrichtigen über Netzwerke in Reichweite</string>
-
-    <!-- 2  --><!-- enabled/disabled -->
-    <string name="settings_auto_connect_section_title">Automatisches Verbinden</string>
-    <!-- 2a --><!-- Visible if 2 enabled.  Always enabled iff visible. -->
-    <string name="settings_auto_connect_all">Für alle Netzwerke</string>
-    <!-- 2b --><!-- Visible if 2 enabled. Enabled when 2a disabled -->
-    <string name="settings_auto_connect_groups">Für Netzwerke meiner Kontakte</string>
+    <!-- 2a --><!-- Always visible. Always enabled iff visible. -->
+    <string name="settings_notifications_notify_net_detected">\"Verbinden mit Netz in Reichweite?\"</string>
+    <!-- 2b --><!-- Always visible. Enabled when (1a disabled || 1c disabled) -->
+    <string name="settings_notifications_notify_share">\"Neues Netz teilen?\"</string>
 
 </resources>

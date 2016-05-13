@@ -1,26 +1,57 @@
 <resources>
 
     <!-- 0 --><!-- Sources where networks can come from -->
-    <string name="settings_sources_section_title">Network sources</string>
-    <!-- 0a --><!-- Always visible. Unchecked if 0b || 0c checked. -->
-    <string name="settings_sources_all">All</string>
-    <!-- 0b --><!-- Always visible. Disabled if 0a checked. -->
-    <string name="settings_sources_encrypted">Only encrypted networks</string>
-    <!-- 0c --><!-- Always visible. Disabled if 0a checked. -->
-    <string name="settings_sources_contact_list">Only networks shared from my contacts</string>
+    <string name="settings_sources_section_title">Exclude Wi-Fi Network Sources</string>
+    <!-- 0b --><!-- Always visible. Enabled if 0a not checked. -->
+    <string name="settings_sources_unknown_users">Exclude networks shared by unknown users</string>
+    <!-- 0c --><!-- Always visible. Enabled if 0a not checked. -->
+    <string name="settings_sources_nonencrypted">Exclude non-encrypted networks</string>
 
-    <!-- 1  --><!-- enabled/disabled -->
+    <!-- 1  -->
+    <string name="settings_auto_connect_section_title">Auto Connect</string>
+    <!-- 1a --><!-- Always visible. Always enabled. -->
+    <string name="settings_auto_connect_always">Always</string>
+    <!-- 1b --><!-- Always visible. Enabled if 1a not checked. If checked then 2b is checked, too. -->
+    <string name="settings_auto_connect_confirm">After confirmation</string>
+    <!-- 1c --><!-- Always visible. Enabled when 1a not checked && 0c checked. -->
+    <string name="settings_auto_connect_groups">For networks from my contacts without confirmation</string>
+    <!-- 1d --><!-- Always visible. Enabled when 1a not checked && 0b is checked. -->
+    <string name="settings_auto_connect_encrypted_networks">For all encrypted networks without confirmation</string>
+
+    <!-- 2  -->
     <string name="settings_notifications_section_title">Notifications</string>
-    <!-- 1a --><!-- Visible if 1 enabled. Always enabled iff visible. -->
-    <string name="settings_notifications_notify_net_connected">Notify at established connection</string>
-    <!-- 1b --><!-- Visible if 1 enabled. Enabled when (2 disabled || 2b disabled) -->
-    <string name="settings_notifications_notify_net_detected">Notify about networks in range</string>
+    <!-- 2a --><!-- Always visible. Always enabled iff visible. -->
+    <string name="settings_notifications_notify_net_detected">\"Shared network in range. Connect?\"</string>
+    <!-- 2b --><!-- Always visible. Enabled when (1a disabled || 1c disabled) -->
+    <string name="settings_notifications_notify_share">\"Share new network?\"</string>
 
-    <!-- 2  --><!-- enabled/disabled -->
-    <string name="settings_auto_connect_section_title">Auto connect</string>
-    <!-- 2a --><!-- Visible if 2 enabled.  Always enabled iff visible. -->
-    <string name="settings_auto_connect_all">For all networks</string>
-    <!-- 2b --><!-- Visible if 2 enabled. Enabled when 2a disabled -->
-    <string name="settings_auto_connect_groups">For networks from my contacts</string>
+
+    <!-- KEYS for SharedPrefs and Preference Views -->
+    <string name="key_settings_sources_unknown_users" translatable="false">
+        settings_sources_unknown_users
+    </string>
+    <string name="key_settings_sources_nonencrypted" translatable="false">
+        settings_sources_nonencrypted
+    </string>
+
+    <string name="key_settings_auto_connect_always" translatable="false">
+        settings_auto_connect_always
+    </string>
+    <string name="key_settings_auto_connect_confirm" translatable="false">
+        settings_auto_connect_confirm
+    </string>
+    <string name="key_settings_auto_connect_groups" translatable="false">
+        settings_auto_connect_groups
+    </string>
+    <string name="key_settings_auto_connect_encrypted_networks" translatable="false">
+        settings_auto_connect_encrypted_networks
+    </string>
+
+    <string name="key_settings_notifications_notify_net_detected" translatable="false">
+        settings_notifications_notify_net_detected
+    </string>
+    <string name="key_settings_notifications_notify_share" translatable="false">
+        settings_notifications_notify_share
+    </string>
 
 </resources>

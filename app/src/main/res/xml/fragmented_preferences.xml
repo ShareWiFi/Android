@@ -1,50 +1,60 @@
-<PreferenceScreen
-        xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
-            android:title="inline_preferences">
+    <PreferenceCategory android:title="@string/settings_sources_section_title">
 
         <CheckBoxPreference
-                android:key="checkbox_preference"
-                android:title="title_checkbox_preference"
-                android:summary="summary_checkbox_preference" />
+            android:key="@string/key_settings_sources_unknown_users"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_sources_unknown_users" />
+
+        <CheckBoxPreference
+            android:key="@string/key_settings_sources_nonencrypted"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_sources_nonencrypted" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-            android:title="dialog_based_preferences">
+    <PreferenceCategory android:title="@string/settings_auto_connect_section_title">
 
-        <EditTextPreference
-                android:key="edittext_preference"
-                android:title="title_edittext_preference"
-                android:summary="summary_edittext_preference"
-                android:dialogTitle="dialog_title_edittext_preference" />
+        <CheckBoxPreference
+            android:disableDependentsState="true"
+            android:key="@string/key_settings_auto_connect_always"
+            android:summary="@string/settings_auto_connect_always" />
 
-        <ListPreference
-                android:key="list_preference"
-                android:title="title_list_preference"
-                android:summary="summary_list_preference"
-                android:entries="@array/entries_list_preference"
-                android:entryValues="@array/entryvalues_list_preference"
-                android:dialogTitle="dialog_title_list_preference" />
+        <CheckBoxPreference
+            android:checked="true"
+            android:dependency="@string/key_settings_auto_connect_always"
+            android:key="@string/key_settings_auto_connect_confirm"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_auto_connect_confirm" />
+
+        <CheckBoxPreference
+            android:dependency="@string/key_settings_auto_connect_always"
+            android:key="@string/key_settings_auto_connect_groups"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_auto_connect_groups" />
+
+        <CheckBoxPreference
+            android:dependency="@string/key_settings_auto_connect_always"
+            android:key="@string/key_settings_auto_connect_encrypted_networks"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_auto_connect_encrypted_networks" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-            android:title="preference_attributes">
+    <PreferenceCategory android:title="@string/settings_notifications_section_title">
 
         <CheckBoxPreference
-                android:key="parent_checkbox_preference"
-                android:title="title_parent_preference"
-                android:summary="summary_parent_preference" />
+            android:checked="true"
+            android:key="@string/key_settings_notifications_notify_net_detected"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_notifications_notify_net_detected" />
 
-        <!-- The visual style of a child is defined by this styled theme attribute. -->
         <CheckBoxPreference
-                android:key="child_checkbox_preference"
-                android:dependency="parent_checkbox_preference"
-                android:layout="?android:attr/preferenceLayoutChild"
-                android:title="title_child_preference"
-                android:summary="summary_child_preference" />
+            android:checked="true"
+            android:key="@string/key_settings_notifications_notify_share"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="@string/settings_notifications_notify_share" />
 
     </PreferenceCategory>
 
