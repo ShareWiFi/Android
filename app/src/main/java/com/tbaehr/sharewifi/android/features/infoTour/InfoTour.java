@@ -93,6 +93,7 @@ public class InfoTour extends AppIntro2 {
     private void leaveInfotour() {
         Intent nextActivity = new Intent(InfoTour.this, MainActivity.class);
         startActivity(nextActivity);
+        finish();
     }
 
 }
