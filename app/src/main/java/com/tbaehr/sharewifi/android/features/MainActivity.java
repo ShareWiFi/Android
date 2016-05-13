@@ -18,6 +18,8 @@
  */
 package com.tbaehr.sharewifi.android.features;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -78,6 +80,16 @@ public class MainActivity extends AppCompatActivity
                 accountPageOpened = !accountPageOpened;
             }
         });
+
+        // request permssions
+        int permissionCheck = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            permissionCheck = checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION);
+
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 42);
+            }
+        }
 
         // Fragment configuration
         mFragmentHolder = new FragmentHolder(this);
