@@ -1,0 +1,55 @@
+<resources>
+
+    <string name="help_headline">Help &#38; Knowledge</string>
+
+    <string name="help_login_info_text">You are logged in with your mail %1$s.</string>
+    <string name="help_logout_info_text">Your are logged out.</string>
+
+    <string name="help_legal_headline">Legal Info</string>
+    <string name="help_legal_terms_of_use">Terms of usage &#38; Exclusion of liability claims</string>
+
+    <string name="help_feedback_headline">Your Opinion</string>
+    <string name="help_feedback_playstore">Rate us</string>
+    <string name="help_feedback_googleplus">Give feedback or provide suggestions</string>
+
+    <string name="help_about_headline">About the ShareWiFi App</string>
+    <string name="help_about_version">%1$s</string>
+    <string name="help_about_restart_info_tour">Restart the info tour</string>
+    <string name="help_about_faq">Questions &#38; answers</string>
+
+    <!-- FAQ -->
+
+    <string name="help_q1">What does ShareWiFi offer?</string>
+    <string name="help_a1"><b>Automatic connect with hotspots</b>
+        You don't like to manually connect your devices with hotspots? Pretty cool, ShareWiFi is able
+        to automatically connect you with shared hotspots. For sure you can enable or disable this
+        feature using our settings.\n
+        \n
+        <b>Individual share of Wi-Fi credentials</b>
+        Visitors want to have access to your internet? No problem, you can share your network individually.
+        Your credentials keep invisible. The devices of your friends will automatically be connected by ShareWiFi.
+        Undo sharing is always possible.\n
+        \n
+        <b>Once connected, always connected</b>
+        Connecting your devices (smartphone, tablet, notebook, ...) with a hotspot again and again is terrifying.
+        Using ShareWiFi you only have to connect one single device. All your other devices are managed by ShareWiFi.</string>
+
+    <string name="help_q2">How can the sharing of networks be restricted?</string>
+    <string name="help_a2">ShareWiFi never shares a network automatically. You can always specify the devices or users for a share.\n
+        \n
+        ShareWiFi allows to share networks in three ways:\n
+        &#8226; <b>Device Share</b>\n All your devices (where you are logged in) have access to the Wi-Fi credentials.\n
+        &#8226; <b>Group Share</b> All the users you select have access to the shared Wi-Fi network.\n
+        &#8226; <b>Global Share</b> Everybody have access to the shared Wi-Fi network.\n
+        \n
+        <b>Remember that you are only allowed to share networks with confirmation of a network's owner. Else you infringes our <![CDATA[<a href="">terms of usage</a>]]>.</b></string>
+
+    <string name="help_q3">What happens when I share a network?</string>
+    <string name="help_a3">First, the Wi-Fi credentials are encrypted and transmitted to our server. Here they are stored encrypted.\n
+        Next, they are decrypted and reencrypted for each device that has access (specified inside your share).
+        Afterwards, the credentials are transmitted to these devices and stored inside the local ShareWiFi database.
+        Also they are stored inside the Android network storage during the ShareWiFi app is running.
+        This is necessary for the feature to undo the share.</string>
+
+
+</resources>
