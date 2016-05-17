@@ -42,7 +42,7 @@ public class ShareInfoActivity extends AbstractShareActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.sharedialog_info_activity);
+        setContentView(R.layout.activity_sharedialog_info);
 
         configureToolbar();
         configureFab();

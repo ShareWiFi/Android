@@ -47,7 +47,7 @@ public class NetworksTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate this tab
-        View view = inflater.inflate(R.layout.networklist_tab_content, container, false);
+        View view = inflater.inflate(R.layout.tab_networklist, container, false);
         ButterKnife.bind(this, view);
 
         // Retrieve UI model
