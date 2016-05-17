@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             mFragmentHolder.showSettingsFragment();
         } else if (id == R.id.nav_help) {
-            tempTesterMessage = "Sorry, die Hilfe-Seite gibt's noch nicht. Kommt demnächst.";
+            mFragmentHolder.showHelpInfoFragment();
         } else if (id == R.id.nav_add_account) {
             tempTesterMessage = "Sorry, die Account-Verwaltung ist noch nicht fertig. Dauert noch...";
         } else if (id == R.id.nav_logout) {
@@ -197,8 +197,11 @@ class FragmentHolder {
 
     private SettingsFragment mSettingsFragment;
 
+    private HelpInfoFragment mHelpInfoFragment;
+
     private static final String TAG_NET = "net";
     private static final String TAG_SETTINGS = "settings";
+    private static final String TAG_HELP = "help";
 
     private AppCompatActivity mContext;
 
@@ -217,17 +220,31 @@ class FragmentHolder {
             mContext.getFragmentManager().beginTransaction().add(R.id.item_detail_container, mSettingsFragment, TAG_SETTINGS).commit();
         }
 
+        mHelpInfoFragment = (HelpInfoFragment) mContext.getSupportFragmentManager().findFragmentByTag(TAG_HELP);
+        if (mHelpInfoFragment == null) {
+            mHelpInfoFragment = new HelpInfoFragment();
+            mContext.getSupportFragmentManager().beginTransaction().add(R.id.item_detail_container, mHelpInfoFragment, TAG_HELP).commit();
+        }
+
         showNetworkTabHostFragment();
     }
 
     void showNetworkTabHostFragment() {
         mContext.getFragmentManager().beginTransaction().detach(mSettingsFragment).commit();
+        mContext.getSupportFragmentManager().beginTransaction().detach(mHelpInfoFragment).commit();
         mContext.getSupportFragmentManager().beginTransaction().attach(mNetworkTabHostFragment).commit();
     }
 
     void showSettingsFragment() {
         mContext.getSupportFragmentManager().beginTransaction().detach(mNetworkTabHostFragment).commit();
+        mContext.getSupportFragmentManager().beginTransaction().detach(mHelpInfoFragment).commit();
         mContext.getFragmentManager().beginTransaction().attach(mSettingsFragment).commit();
+    }
+
+    void showHelpInfoFragment() {
+        mContext.getSupportFragmentManager().beginTransaction().detach(mNetworkTabHostFragment).commit();
+        mContext.getFragmentManager().beginTransaction().detach(mSettingsFragment).commit();
+        mContext.getSupportFragmentManager().beginTransaction().attach(mHelpInfoFragment).commit();
     }
 
 }
