@@ -8,8 +8,8 @@ android {
         applicationId "com.tbaehr.sharewifi.android"
         minSdkVersion 18
         targetSdkVersion 23
-        versionCode 3
-        versionName "0.5.13"
+        versionCode 4
+        versionName "0.7.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

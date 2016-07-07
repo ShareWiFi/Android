@@ -18,6 +18,8 @@ import com.tbaehr.sharewifi.android.model.ShareWiFiSettings;
  */
 public class InfoTour extends AppIntro2 {
 
+    public static final String KEY_INFOTOUR_RESTARTED = "info tour restarted";
+
     private FrameLayout mBackgroundFrame;
 
     private ShareWiFiSettings mSettings;
@@ -28,7 +30,7 @@ public class InfoTour extends AppIntro2 {
 
         mSettings = new ShareWiFiSettings(this);
 
-        if (mSettings.isInfoTourCompleted()) {
+        if (mSettings.isInfoTourCompleted() && !getIntent().getBooleanExtra(KEY_INFOTOUR_RESTARTED, false)) {
             leaveInfotour();
         }
 

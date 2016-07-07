@@ -13,7 +13,7 @@
     <string name="help_feedback_googleplus">Gebe Feedback oder mache Vorschläge</string>
 
     <string name="help_about_headline">Über die ShareWiFi-App</string>
-    <string name="help_about_version">%1$s</string>
+    <string name="help_about_version">Version %1$s</string>
     <string name="help_about_restart_info_tour">Info-Tour erneut aufrufen</string>
     <string name="help_about_faq">Fragen &#38; Antworten</string>
 
