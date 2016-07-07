@@ -1,0 +1,53 @@
+<resources>
+
+    <string name="help_headline">Hilfe &#38; Wissenswertes</string>
+
+    <string name="help_login_info_text">Du bist mit der E-Mail-Adresse %1$s angemeldet.</string>
+    <string name="help_logout_info_text">Du bist nicht angemeldet.</string>
+
+    <string name="help_legal_headline">Rechtliches</string>
+    <string name="help_legal_terms_of_use">Nutzungsbedingungen &#38; Haftungsausschluss</string>
+
+    <string name="help_feedback_headline">Deine Meinung</string>
+    <string name="help_feedback_playstore">Bewerte uns</string>
+    <string name="help_feedback_googleplus">Gebe Feedback oder mache Vorschläge</string>
+
+    <string name="help_about_headline">Über die ShareWiFi-App</string>
+    <string name="help_about_version">Version %1$s</string>
+    <string name="help_about_restart_info_tour">Info-Tour erneut aufrufen</string>
+    <string name="help_about_faq">Fragen &#38; Antworten</string>
+
+    <!-- FAQ -->
+
+    <string name="help_q1">Was bietet ShareWiFi?</string>
+    <string name="help_a1"><b>Automatisches Verbinden mit Hotspots auf der ganzen Welt</b>
+        Du hast keine Lust mehr manuell Deine Geräte mit Hotspot-Netzen zu verbinden? Super, denn ShareWiFi verbindet Dich mit automatisch mit
+        öffentlichen Hotspots. Es sei denn Du deaktivierst diese Funktion über unsere Einstellung.\n
+        \n
+        <b>Individuelles Teilen von WLAN-Verbindungsdaten</b>
+        Du bekommst Besuch, der Dein Internet mitbenutzen will? Kein Problem, teile Dein Netz ganz einfach mit wem Du willst.
+        Dein Passwort bleibt unsichtbar. Die Geräte deiner Freunde verbinden sich anschließend danke ShareWiFi automatisch.
+        Das Teilen kannst Du jederzeit wieder rückgängig machen.\n
+        \n
+        <b>Einmal verbunden, überall verbunden</b>
+        Du hast keine Lust Dich immer und immer wieder auf verschiedenen Geräten (Handy, Tablet, Laptop, ...)
+        wieder und wieder mit WLAN-Netzen zu verbinden? Mit ShareWiFi verbindest Du eines Deiner Geräte einmalig, den Rest erledigen wir für Dich.</string>
+
+    <string name="help_q2">Wie kann das Teilen von Netzen beschränkt werden?</string>
+    <string name="help_a2">ShareWiFi teilt niemals ein Netz automatisch. Du kannst stets bestimmen, mit welchen Geräten oder Personen geteilt werden soll.\n
+        \n
+        ShareWiFi beherrscht folgende Arten ein Netz zu teilen:\n
+        &#8226; <b>Teilen nur mit Deinen Geräten</b>\n Damit erhalten alle Geräte die WLAN-Verbindungsdaten, auf denen Du eingeloggt bist.
+        &#8226; <b>Teilen nur ausgewählten Nutzern</b> Damit erhalten alle von Dir ausgewählten Nutzer die WLAN-Verbindungsdaten.\n
+        &#8226; <b>Teilen nur der gesamten Welt</b> Damit erhält jeder die von Dir geteilten WLAN-Verbindungsdaten.\n
+        \n
+        <b>Ganz wichtig, Du darfst Netze nur mit Zustimmung des Netzinhabers/Betreibers teilen. Andernfalls verstößt Du gegen unsere <![CDATA[<a href="">Nutzungsbedingungen</a>]]>.</b></string>
+
+    <string name="help_q3">Was passiert, wenn ich ein Netz teile?</string>
+    <string name="help_a3">In diesem Fall werden die WLAN-Verbindungsdaten verschlüsselt auf unseren Server übertragen und dort verschlüsselt gespeichert.
+        Anschließend werden die Daten dekodiert und mit dem Schlüsselpaar ein jeden Geräts verschlüsselt, welches Du mit dem Teilen implizit ausgewählt hast.
+        Diese erneut verschlüsselten Verbindungsdaten werden dann auf diese Geräte übertragen. Auf dem Gerät angekommen, werden Sie in den WLAN-Netz-Speicher
+        von Android eingetragen. Wird die ShareWiFi-App geschlossen, werden zuvor alle Netze wieder entfernt. Andernfalls könnte das Teilen nicht zuverlässig
+        rückgängig gemacht werden.</string>
+
+</resources>

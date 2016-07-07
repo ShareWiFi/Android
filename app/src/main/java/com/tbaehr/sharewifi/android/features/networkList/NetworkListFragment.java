@@ -37,7 +37,7 @@ public class NetworkListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mTabHost = new FragmentTabHost(getActivity());
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.networklist_fragment);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.fragment_networklist);
 
         Bundle bundleInRange = new Bundle();
         bundleInRange.putBoolean(NetworksTab.BUNDLE_EXTRA_IN_RANGE, true);

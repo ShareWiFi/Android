@@ -52,7 +52,7 @@ public class ShareOptionsActivity extends AbstractShareActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.sharedialog_options_activity);
+        setContentView(R.layout.activity_sharedialog_options);
 
         mSettings = new ShareWiFiSettings(this);
 

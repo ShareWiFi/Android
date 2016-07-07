@@ -4,4 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- empty layout used for creating the FragmentTabHost -->
+
 </LinearLayout>

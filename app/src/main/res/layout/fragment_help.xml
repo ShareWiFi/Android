@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/help_page_headline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/help_headline"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/help_login_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp">
+
+            <ImageView
+                android:id="@+id/help_login_status_image"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+                android:src="@drawable/ic_dialog_yes" />
+
+            <TextView
+                android:id="@+id/help_login_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/help_logout_info_text"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/help_law_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginTop="14dp"
+            android:text="@string/help_legal_headline"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/blue" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/help_terms_of_usage_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp">
+
+            <LinearLayout
+                android:id="@+id/help_terms_of_usage"
+                style="@style/Widget.CardContent">
+
+                <ImageView
+                    android:id="@+id/help_terms_of_usage_image"
+                    android:layout_width="@dimen/card_drawable_size"
+                    android:layout_height="@dimen/card_drawable_size"
+                    android:layout_marginLeft="@dimen/card_margin"
+                    android:layout_marginRight="@dimen/card_margin"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_contract" />
+
+                <TextView
+                    android:id="@+id/help_terms_of_usage_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/help_legal_terms_of_use"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/help_feedback_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginTop="14dp"
+            android:text="@string/help_feedback_headline"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/blue" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/help_feedback1_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp">
+
+            <LinearLayout
+                android:id="@+id/help_feedback1"
+                style="@style/Widget.CardContent">
+
+                <ImageView
+                    android:id="@+id/help_feedback1_image"
+                    android:layout_width="@dimen/card_drawable_size"
+                    android:layout_height="@dimen/card_drawable_size"
+                    android:layout_marginLeft="@dimen/card_margin"
+                    android:layout_marginRight="@dimen/card_margin"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_googleplay_light_normal" />
+
+                <TextView
+                    android:id="@+id/help_feedback1_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/help_feedback_playstore"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/help_feedback2_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp">
+
+            <LinearLayout
+                android:id="@+id/help_feedback2"
+                style="@style/Widget.CardContent">
+
+                <ImageView
+                    android:id="@+id/help_feedback2_image"
+                    android:layout_width="@dimen/card_drawable_size"
+                    android:layout_height="@dimen/card_drawable_size"
+                    android:src="@drawable/ic_googleplus_light_normal" />
+
+                <TextView
+                    android:id="@+id/help_feedback2_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/help_feedback_googleplus"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/help_about_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginTop="14dp"
+            android:text="@string/help_about_headline"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/blue" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/help_about1_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp">
+
+            <LinearLayout
+                android:id="@+id/help_about1"
+                style="@style/Widget.CardContent">
+
+                <ImageView
+                    android:id="@+id/help_about1_image"
+                    android:layout_width="@dimen/card_drawable_size"
+                    android:layout_height="@dimen/card_drawable_size"
+                    android:layout_marginLeft="@dimen/card_margin"
+                    android:layout_marginRight="@dimen/card_margin"
+                    android:padding="4dp"
+                    android:src="@drawable/share_wifi_logo" />
+
+                <TextView
+                    android:id="@+id/help_about1_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/help_about_version"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/help_about2_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp">
+
+            <LinearLayout
+                android:id="@+id/help_about2"
+                style="@style/Widget.CardContent">
+
+                <ImageView
+                    android:id="@+id/help_about2_image"
+                    android:layout_width="@dimen/card_drawable_size"
+                    android:layout_height="@dimen/card_drawable_size"
+                    android:layout_marginLeft="@dimen/card_margin"
+                    android:layout_marginRight="@dimen/card_margin"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_menu_help" />
+
+                <TextView
+                    android:id="@+id/help_about2_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/help_about_restart_info_tour"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/help_about3_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp">
+
+            <LinearLayout
+                android:id="@+id/help_about3"
+                style="@style/Widget.CardContent">
+
+                <ImageView
+                    android:id="@+id/help_about3_image"
+                    android:layout_width="@dimen/card_drawable_size"
+                    android:layout_height="@dimen/card_drawable_size"
+                    android:layout_marginLeft="@dimen/card_margin"
+                    android:layout_marginRight="@dimen/card_margin"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_menu_help" />
+
+                <TextView
+                    android:id="@+id/help_about3_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/help_about_faq"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
