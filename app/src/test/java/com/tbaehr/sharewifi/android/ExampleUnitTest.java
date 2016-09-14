@@ -1,4 +1,4 @@
-package com.tbaehr.sharewifi;
+package com.tbaehr.sharewifi.android;
 
 import org.junit.Test;
 
