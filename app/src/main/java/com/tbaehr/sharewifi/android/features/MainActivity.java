@@ -37,51 +37,78 @@ import com.tbaehr.sharewifi.android.R;
 import com.tbaehr.sharewifi.android.features.networkList.NetworkListFragment;
 import com.tbaehr.sharewifi.android.features.settings.SettingsFragment;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static boolean accountPageOpened = false;
+    private static boolean isAccountPageOpened = false;
 
     private FragmentHolder mFragmentHolder;
+
+    /**
+     * The layout that contains toolbar, sideBar and  main activity
+     */
+    @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
+
+    /**
+     * SupportActionBar as toolbar on the top.
+     * Contains the toggleButton to open the navigation bar
+     */
+    @Bind(R.id.toolbar) Toolbar toolbar;
+
+    /**
+     * Side bar at the left
+     */
+    @Bind(R.id.activity_main_nav_view) NavigationView sideBar;
+
+    private ImageView menuSwitchArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-        final NavigationView navigationView = (NavigationView) findViewById(R.id.activity_main_nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        sideBar.setNavigationItemSelectedListener(this);
 
         // set OnContactItemClickListener for the manage account icon
-        final View header = navigationView.getHeaderView(0);
-        FrameLayout manageAccountFrameLayout = (FrameLayout) header.findViewById(R.id.navbar_header_manage_account_frame_layout);
-        manageAccountFrameLayout.setOnClickListener(new View.OnClickListener() {
+        final View sideBarHeader = sideBar.getHeaderView(0);
+        FrameLayout menuSwitchLayout = (FrameLayout) sideBarHeader.findViewById(R.id.navbar_header_manage_account_frame_layout);
+        menuSwitchArrow = (ImageView) sideBarHeader.findViewById(R.id.navbar_header_manage_account_image_view);
+        menuSwitchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageView downArrow = (ImageView) header.findViewById(R.id.navbar_header_manage_account_image_view);
-                navigationView.getMenu().clear();
-                if (!accountPageOpened) {
-                    downArrow.setImageResource(android.R.drawable.arrow_up_float);
-                    navigationView.inflateMenu(R.menu.account_settings);
-                    // TODO: Change between logout and add_account
-                    navigationView.getMenu().removeItem(R.id.nav_logout);
-                } else {
-                    downArrow.setImageResource(android.R.drawable.arrow_down_float);
-                    navigationView.inflateMenu(R.menu.activity_wifilist_drawer);
-                }
-                accountPageOpened = !accountPageOpened;
+                onSideMenuSwitchClick();
             }
         });
 
-        // request permssions
+        requestLocationPermission();
+
+        // Fragment configuration
+        mFragmentHolder = new FragmentHolder(this);
+    }
+
+    private void onSideMenuSwitchClick() {
+        sideBar.getMenu().clear();
+        if (!isAccountPageOpened) {
+            menuSwitchArrow.setImageResource(android.R.drawable.arrow_up_float);
+            sideBar.inflateMenu(R.menu.account_settings);
+            // TODO: Change between logout and add_account
+            sideBar.getMenu().removeItem(R.id.nav_logout);
+        } else {
+            menuSwitchArrow.setImageResource(android.R.drawable.arrow_down_float);
+            sideBar.inflateMenu(R.menu.activity_wifilist_drawer);
+        }
+        isAccountPageOpened = !isAccountPageOpened;
+    }
+
+    private void requestLocationPermission() {
         int permissionCheck = 0;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             permissionCheck = checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION);
@@ -90,19 +117,21 @@ public class MainActivity extends AppCompatActivity
                 requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 42);
             }
         }
-
-        // Fragment configuration
-        mFragmentHolder = new FragmentHolder(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        ButterKnife.unbind(this);
+        super.onDestroy();
     }
 
     @Override
@@ -142,9 +171,9 @@ public class MainActivity extends AppCompatActivity
                 "Replace with your own action",
                 Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.activity_main_nav_view);
+        NavigationView sideBar = (NavigationView) findViewById(R.id.activity_main_nav_view);
 
-        FrameLayout manageAccountFrameLayout = (FrameLayout) navigationView.getHeaderView(R.id.navbar_header_manage_account_frame_layout);
+        FrameLayout manageAccountFrameLayout = (FrameLayout) sideBar.getHeaderView(R.id.navbar_header_manage_account_frame_layout);
         manageAccountFrameLayout.setOnClickListener(new View.OnContactItemClickListener() {
             @Override
             public void onClick(View v) {
