@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -32,6 +33,7 @@ dependencies {
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.github.paolorotolo:appintro:b5aa259'
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.google.android.gms:play-services-auth:9.0.0'
 
     testCompile 'junit:junit:4.12'
 
