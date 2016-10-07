@@ -2,7 +2,9 @@ package com.tbaehr.sharewifi.android.features.googlelogin;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.android.gms.auth.api.Auth;
@@ -17,7 +19,9 @@ import com.google.android.gms.common.api.Status;
 /**
  * Created by timo.baehr@gmail.comm on 27.09.2016.
  */
-public class GoogleAccount implements GoogleApiClient.OnConnectionFailedListener {
+public class GoogleAccount implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+
+    public static final int RC_SIGN_IN = 9001;
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -57,7 +61,19 @@ public class GoogleAccount implements GoogleApiClient.OnConnectionFailedListener
                 .build();
     }
 
+    public void onActivityResult(Intent data) {
+        GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+        handleSignInResult(result);
+    }
+
     public void signIn() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        activity.startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    public void signInSilent() {
+        mGoogleApiClient.registerConnectionCallbacks(this);
+        mGoogleApiClient.connect(); // needed?
         Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient).setResultCallback(
                 new ResultCallback<GoogleSignInResult>() {
                     @Override
@@ -117,5 +133,16 @@ public class GoogleAccount implements GoogleApiClient.OnConnectionFailedListener
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         activity.onConnectionFailed(connectionResult);
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        Log.v("Tme", "onConnected");
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.v("Tme", "onConnectionSuspended(" + i + ")");
     }
 }

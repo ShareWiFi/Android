@@ -20,7 +20,9 @@ package com.tbaehr.sharewifi.android.features;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -28,84 +30,112 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.tbaehr.sharewifi.android.R;
+import com.tbaehr.sharewifi.android.features.googlelogin.AbstractLoginActivity;
 import com.tbaehr.sharewifi.android.features.networkList.NetworkListFragment;
 import com.tbaehr.sharewifi.android.features.settings.SettingsFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AbstractLoginActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static boolean isAccountPageOpened = false;
+
+    private static boolean isGoogleAccountRegistered = false;
 
     private FragmentHolder mFragmentHolder;
 
     /**
      * The layout that contains toolbar, sideBar and  main activity
      */
-    @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
+    @Bind(R.id.activity_main_drawer_layout)
+    DrawerLayout drawerLayout;
 
     /**
      * SupportActionBar as toolbar on the top.
      * Contains the toggleButton to open the navigation bar
      */
-    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     /**
      * Side bar at the left
      */
-    @Bind(R.id.activity_main_nav_view) NavigationView sideBar;
+    @Bind(R.id.activity_main_nav_view)
+    NavigationView sideBar;
 
     private ImageView menuSwitchArrow;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        ButterKnife.bind(this);
-
+    private void initActionBar() {
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         sideBar.setNavigationItemSelectedListener(this);
+    }
 
-        // set OnContactItemClickListener for the manage account icon
+    private void initSideMenuSwitch() {
         final View sideBarHeader = sideBar.getHeaderView(0);
         FrameLayout menuSwitchLayout = (FrameLayout) sideBarHeader.findViewById(R.id.navbar_header_manage_account_frame_layout);
         menuSwitchArrow = (ImageView) sideBarHeader.findViewById(R.id.navbar_header_manage_account_image_view);
         menuSwitchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSideMenuSwitchClick();
+                switchSideMenuContent();
             }
         });
-
-        requestLocationPermission();
-
-        // Fragment configuration
-        mFragmentHolder = new FragmentHolder(this);
     }
 
-    private void onSideMenuSwitchClick() {
+    /**
+     * Switch between default menu and account settings menu
+     */
+    private void switchSideMenuContent() {
+        isAccountPageOpened = !isAccountPageOpened;
+        refreshSideMenu();
+    }
+
+    private void refreshSideMenu() {
+        TextView menuNameTextView = (TextView) findViewById(R.id.navbar_header_textUserName);
+        TextView menuMailTextView = (TextView) findViewById(R.id.navbar_header_textLoginCredential);;
+        ImageView menuAccountIcon = (ImageView) findViewById(R.id.navbar_header_imageView);;
+
+        if (isGoogleAccountRegistered) {
+            menuNameTextView.setText(googleAccount.getAccountName());
+            menuMailTextView.setText(googleAccount.getEmail());
+            menuAccountIcon.setImageURI(googleAccount.getPhotoUri());
+        } else {
+            menuNameTextView.setText(R.string.nav_noaccount_title);
+            menuMailTextView.setText(R.string.nav_noaccount_subtitle);
+            menuAccountIcon.setImageResource(android.R.drawable.sym_def_app_icon);
+        }
+
+        // refresh all menu items
         sideBar.getMenu().clear();
-        if (!isAccountPageOpened) {
+        if (isAccountPageOpened) {
             menuSwitchArrow.setImageResource(android.R.drawable.arrow_up_float);
             sideBar.inflateMenu(R.menu.account_settings);
             // TODO: Change between logout and add_account
-            sideBar.getMenu().removeItem(R.id.nav_logout);
+            sideBar.getMenu().removeItem(R.id.nav_account_settings);
+            if (isGoogleAccountRegistered) {
+                sideBar.getMenu().removeItem(R.id.nav_add_account);
+            } else {
+                sideBar.getMenu().removeItem(R.id.nav_logout);
+            }
         } else {
             menuSwitchArrow.setImageResource(android.R.drawable.arrow_down_float);
             sideBar.inflateMenu(R.menu.activity_wifilist_drawer);
         }
-        isAccountPageOpened = !isAccountPageOpened;
     }
 
     private void requestLocationPermission() {
@@ -117,6 +147,26 @@ public class MainActivity extends AppCompatActivity
                 requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 42);
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        ButterKnife.bind(this);
+
+        initActionBar();
+        initSideMenuSwitch();
+
+        requestLocationPermission();
+
+        mFragmentHolder = new FragmentHolder(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        googleAccount.signInSilent();
     }
 
     @Override
@@ -177,7 +227,7 @@ public class MainActivity extends AppCompatActivity
         manageAccountFrameLayout.setOnClickListener(new View.OnContactItemClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(findViewById(R.id.activity_main_drawer_layout),
+                Snackbar.make(drawerLayout,
                         "Replace with your own action",
                         Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
@@ -201,15 +251,17 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_help) {
             mFragmentHolder.showHelpInfoFragment();
         } else if (id == R.id.nav_add_account) {
-            tempTesterMessage = "Sorry, die Account-Verwaltung ist noch nicht fertig. Dauert noch...";
+            //tempTesterMessage = "Sorry, die Account-Verwaltung ist noch nicht fertig. Dauert noch...";
+            googleAccount.signIn();
         } else if (id == R.id.nav_logout) {
-            tempTesterMessage = "Sorry, Du kannst Dich noch nicht einloggen oder registrieren. Dauert noch...";
+            googleAccount.signOut();
+            //tempTesterMessage = "Sorry, Du kannst Dich noch nicht einloggen oder registrieren. Dauert noch...";
         } else if (id == R.id.nav_account_settings) {
             tempTesterMessage = "Sorry, die Account-Verwaltung ist noch nicht fertig. Dauert noch...";
         }
 
         if (!tempTesterMessage.isEmpty()) {
-            Snackbar.make(findViewById(R.id.activity_main_drawer_layout),
+            Snackbar.make(drawerLayout,
                     tempTesterMessage,
                     Snackbar.LENGTH_LONG).setAction("Action", null).show();
         }
@@ -217,6 +269,38 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        isGoogleAccountRegistered = false;
+        refreshSideMenu();
+        Log.v("Tme", "onConnectionFailed("+connectionResult+")");
+        Toast.makeText(this, "onConnectionFailed("+connectionResult+")", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSignIn(String accountName, String email, Uri photoUri) {
+        isGoogleAccountRegistered = true;
+        refreshSideMenu();
+        Log.v("Tme", String.format("onSignIn(%s$1, %s$2, %s$3)", accountName, email, photoUri));
+        Toast.makeText(this, String.format("onSignIn(%s$1, %s$2, %s$3)", accountName, email, photoUri), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSignOut() {
+        isGoogleAccountRegistered = false;
+        refreshSideMenu();
+        Log.v("Tme", "onSignOut()");
+        Toast.makeText(this, "onSignOut()", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRevokeAccount() {
+        isGoogleAccountRegistered = false;
+        refreshSideMenu();
+        Log.v("Tme", "onRevokeAccount()");
+        Toast.makeText(this, "onRevokeAccount()", Toast.LENGTH_LONG).show();
     }
 }
 
