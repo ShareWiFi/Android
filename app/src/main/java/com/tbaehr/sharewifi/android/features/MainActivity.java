@@ -20,8 +20,18 @@ package com.tbaehr.sharewifi.android.features;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -43,6 +53,14 @@ import com.tbaehr.sharewifi.android.R;
 import com.tbaehr.sharewifi.android.features.googlelogin.AbstractLoginActivity;
 import com.tbaehr.sharewifi.android.features.networkList.NetworkListFragment;
 import com.tbaehr.sharewifi.android.features.settings.SettingsFragment;
+import com.tbaehr.sharewifi.android.utils.ImageViewHelper;
+
+import java.io.BufferedInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -106,14 +124,14 @@ public class MainActivity extends AbstractLoginActivity
     }
 
     private void refreshSideMenu() {
-        TextView menuNameTextView = (TextView) findViewById(R.id.navbar_header_textUserName);
-        TextView menuMailTextView = (TextView) findViewById(R.id.navbar_header_textLoginCredential);;
-        ImageView menuAccountIcon = (ImageView) findViewById(R.id.navbar_header_imageView);;
+        final TextView menuNameTextView = (TextView) findViewById(R.id.navbar_header_textUserName);
+        final TextView menuMailTextView = (TextView) findViewById(R.id.navbar_header_textLoginCredential);;
+        final ImageView menuAccountIcon = (ImageView) findViewById(R.id.navbar_header_imageView);;
 
         if (isGoogleAccountRegistered) {
             menuNameTextView.setText(googleAccount.getAccountName());
             menuMailTextView.setText(googleAccount.getEmail());
-            menuAccountIcon.setImageURI(googleAccount.getPhotoUri());
+            ImageViewHelper.downloadAndSetFromUri(this, menuAccountIcon, googleAccount.getPhotoUri());
         } else {
             menuNameTextView.setText(R.string.nav_noaccount_title);
             menuMailTextView.setText(R.string.nav_noaccount_subtitle);
