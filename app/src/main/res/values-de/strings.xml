@@ -26,6 +26,7 @@
     <string name="_contacts">Kontakte</string>
     <string name="_login">Einloggen</string>
     <string name="_logout">Ausloggen</string>
+    <string name="_undo">Rückgängig machen</string>
 
     <string name="nav_header_networks">WLAN-Netze</string>
     <string name="nav_allnetworks">Alle Netze</string>
@@ -43,6 +44,9 @@
 
     <string name="nav_noaccount_title">Nicht eingeloggt</string>
     <string name="nav_noaccount_subtitle">Jetzt anmelden</string>
+
+    <string name="snackbarmessage.loggedInAs">Eingeloggt als %s</string>
+    <string name="snackbarmessage.loggedOut">Ausgeloggt</string>
 
     <string name="sharedialog.title">%1$s teilen?</string>
     <string name="sharedialog.title.alreadyshared">%1$s weiterhin teilen?</string>

@@ -21,17 +21,8 @@ package com.tbaehr.sharewifi.android.features;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -46,7 +37,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.tbaehr.sharewifi.android.R;
@@ -55,15 +45,10 @@ import com.tbaehr.sharewifi.android.features.networkList.NetworkListFragment;
 import com.tbaehr.sharewifi.android.features.settings.SettingsFragment;
 import com.tbaehr.sharewifi.android.utils.ImageViewHelper;
 
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static com.tbaehr.sharewifi.android.utils.ImageViewHelper.PROFILE_IMAGE;
 
 public class MainActivity extends AbstractLoginActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -71,28 +56,23 @@ public class MainActivity extends AbstractLoginActivity
     private static boolean isAccountPageOpened = false;
 
     private static boolean isGoogleAccountRegistered = false;
-
-    private FragmentHolder mFragmentHolder;
-
     /**
      * The layout that contains toolbar, sideBar and  main activity
      */
     @Bind(R.id.activity_main_drawer_layout)
     DrawerLayout drawerLayout;
-
     /**
      * SupportActionBar as toolbar on the top.
      * Contains the toggleButton to open the navigation bar
      */
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-
     /**
      * Side bar at the left
      */
     @Bind(R.id.activity_main_nav_view)
     NavigationView sideBar;
-
+    private FragmentHolder mFragmentHolder;
     private ImageView menuSwitchArrow;
 
     private void initActionBar() {
@@ -131,7 +111,32 @@ public class MainActivity extends AbstractLoginActivity
         if (isGoogleAccountRegistered) {
             menuNameTextView.setText(googleAccount.getAccountName());
             menuMailTextView.setText(googleAccount.getEmail());
-            ImageViewHelper.downloadAndSetFromUri(this, menuAccountIcon, googleAccount.getPhotoUri());
+            Uri profilePhotoUri = googleAccount.getPhotoUri();
+            Bitmap profilePhoto = ImageViewHelper.loadImageFromStorage(getApplicationContext(), PROFILE_IMAGE);
+            if (profilePhoto != null) {
+                menuAccountIcon.setImageBitmap(profilePhoto);
+            } else {
+                ImageViewHelper.loadImageInBackground(profilePhotoUri, new ImageViewHelper.OnDownloadListener() {
+                    @Override
+                    public void onDownloadStarted() {
+                        // ;
+                    }
+
+                    @Override
+                    public void onDownloadCompleted(Bitmap bitmap) {
+                        int size = menuAccountIcon.getWidth();
+                        bitmap = ImageViewHelper.scale(bitmap, size, size);
+                        bitmap = ImageViewHelper.cropCircular(bitmap);
+                        ImageViewHelper.saveToInternalStorage(getApplicationContext(), PROFILE_IMAGE, bitmap);
+                        menuAccountIcon.setImageBitmap(bitmap);
+                    }
+
+                    @Override
+                    public void onDownloadError() {
+                        Log.e(MainActivity.this.getClass().getSimpleName(), "Profile photo download failed");
+                    }
+                });
+            }
         } else {
             menuNameTextView.setText(R.string.nav_noaccount_title);
             menuMailTextView.setText(R.string.nav_noaccount_subtitle);
@@ -143,7 +148,6 @@ public class MainActivity extends AbstractLoginActivity
         if (isAccountPageOpened) {
             menuSwitchArrow.setImageResource(android.R.drawable.arrow_up_float);
             sideBar.inflateMenu(R.menu.account_settings);
-            // TODO: Change between logout and add_account
             sideBar.getMenu().removeItem(R.id.nav_account_settings);
             if (isGoogleAccountRegistered) {
                 sideBar.getMenu().removeItem(R.id.nav_add_account);
@@ -269,11 +273,9 @@ public class MainActivity extends AbstractLoginActivity
         } else if (id == R.id.nav_help) {
             mFragmentHolder.showHelpInfoFragment();
         } else if (id == R.id.nav_add_account) {
-            //tempTesterMessage = "Sorry, die Account-Verwaltung ist noch nicht fertig. Dauert noch...";
             googleAccount.signIn();
         } else if (id == R.id.nav_logout) {
             googleAccount.signOut();
-            //tempTesterMessage = "Sorry, Du kannst Dich noch nicht einloggen oder registrieren. Dauert noch...";
         } else if (id == R.id.nav_account_settings) {
             tempTesterMessage = "Sorry, die Account-Verwaltung ist noch nicht fertig. Dauert noch...";
         }
@@ -293,47 +295,56 @@ public class MainActivity extends AbstractLoginActivity
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         isGoogleAccountRegistered = false;
         refreshSideMenu();
-        Log.v("Tme", "onConnectionFailed("+connectionResult+")");
-        Toast.makeText(this, "onConnectionFailed("+connectionResult+")", Toast.LENGTH_LONG).show();
+        Log.e(MainActivity.this.getClass().getSimpleName(), "onConnectionFailed(" + connectionResult + ")");
+    }
+
+    @Override
+    public void onFirstSignIn(String accountName, String email, Uri photoUri) {
+        onSignIn(accountName, email, photoUri);
+        Snackbar.make(drawerLayout, getString(R.string.snackbarmessage_loggedInAs, accountName), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string._undo), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        googleAccount.signOut();
+                    }
+                }).show();
     }
 
     @Override
     public void onSignIn(String accountName, String email, Uri photoUri) {
         isGoogleAccountRegistered = true;
         refreshSideMenu();
-        Log.v("Tme", String.format("onSignIn(%s$1, %s$2, %s$3)", accountName, email, photoUri));
-        Toast.makeText(this, String.format("onSignIn(%s$1, %s$2, %s$3)", accountName, email, photoUri), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onSignOut() {
         isGoogleAccountRegistered = false;
         refreshSideMenu();
-        Log.v("Tme", "onSignOut()");
-        Toast.makeText(this, "onSignOut()", Toast.LENGTH_LONG).show();
+        Snackbar.make(drawerLayout, getString(R.string.snackbarmessage_loggedOut), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string._undo), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        googleAccount.signIn();
+                    }
+                }).show();
     }
 
     @Override
     public void onRevokeAccount() {
         isGoogleAccountRegistered = false;
         refreshSideMenu();
-        Log.v("Tme", "onRevokeAccount()");
-        Toast.makeText(this, "onRevokeAccount()", Toast.LENGTH_LONG).show();
+        Log.v(MainActivity.this.getClass().getSimpleName(), "onRevokeAccount()");
     }
 }
 
 class FragmentHolder {
 
-    private NetworkListFragment mNetworkTabHostFragment;
-
-    private SettingsFragment mSettingsFragment;
-
-    private HelpInfoFragment mHelpInfoFragment;
-
     private static final String TAG_NET = "net";
     private static final String TAG_SETTINGS = "settings";
     private static final String TAG_HELP = "help";
-
+    private NetworkListFragment mNetworkTabHostFragment;
+    private SettingsFragment mSettingsFragment;
+    private HelpInfoFragment mHelpInfoFragment;
     private AppCompatActivity mContext;
 
     public FragmentHolder(AppCompatActivity context) {

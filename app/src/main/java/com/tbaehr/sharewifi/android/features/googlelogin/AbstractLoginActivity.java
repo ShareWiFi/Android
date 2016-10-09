@@ -35,6 +35,8 @@ public abstract class AbstractLoginActivity extends AppCompatActivity {
 
     public abstract void onConnectionFailed(@NonNull ConnectionResult connectionResult);
 
+    public abstract void onFirstSignIn(String accountName, String email, Uri photoUri);
+
     public abstract void onSignIn(String accountName, String email, Uri photoUri);
 
     public abstract void onSignOut();

@@ -63,7 +63,7 @@ public class GoogleAccount implements GoogleApiClient.OnConnectionFailedListener
 
     public void onActivityResult(Intent data) {
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-        handleSignInResult(result);
+        handleSignInResult(result, true);
     }
 
     public void signIn() {
@@ -78,7 +78,7 @@ public class GoogleAccount implements GoogleApiClient.OnConnectionFailedListener
                 new ResultCallback<GoogleSignInResult>() {
                     @Override
                     public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
-                        handleSignInResult(googleSignInResult);
+                        handleSignInResult(googleSignInResult, false);
                     }
                 }
         );
@@ -120,11 +120,15 @@ public class GoogleAccount implements GoogleApiClient.OnConnectionFailedListener
         return acct == null ? null : acct.getEmail();
     }
 
-    private void handleSignInResult(GoogleSignInResult result) {
+    private void handleSignInResult(GoogleSignInResult result, boolean firstLogin) {
         Log.d(this.getClass().getName(), "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             acct = result.getSignInAccount();
-            activity.onSignIn(getAccountName(), getEmail(), getPhotoUri());
+            if (firstLogin) {
+                activity.onFirstSignIn(getAccountName(), getEmail(), getPhotoUri());
+            } else {
+                activity.onSignIn(getAccountName(), getEmail(), getPhotoUri());
+            }
         } else {
             acct = null;
         }
