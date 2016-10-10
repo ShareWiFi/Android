@@ -71,6 +71,8 @@ public class WiFiListItemAdapter extends ArrayAdapter<WiFiNetwork> {
         viewHolder.encryptedImageView.setVisibility(viewModelItem.isEncrypted() ? View.VISIBLE : View.GONE);
         viewHolder.qualityImageView.setVisibility(viewModelItem.isQualityBad() ? View.VISIBLE : View.GONE);
 
+        view.setContentDescription(String.format("network %d: %s: %s", position + 1, viewModelItem.getSsid(), viewModelItem.getDescription()));
+
         return view;
     }
 
