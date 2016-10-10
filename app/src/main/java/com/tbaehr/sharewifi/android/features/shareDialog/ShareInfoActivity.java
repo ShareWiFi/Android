@@ -69,9 +69,9 @@ public class ShareInfoActivity extends AbstractShareActivity {
         // Make back arrow white or disable it if opened over notification
         final Drawable backArrow;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            backArrow = getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            backArrow = getDrawable(R.drawable.abc_ic_ab_back_material);
         } else {
-            backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
         }
         actionBar.setDisplayHomeAsUpEnabled(true);
         int color;
